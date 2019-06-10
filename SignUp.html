@@ -3,13 +3,32 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <style>
+      body {
+        background-color: grey;
+      }
+      div {
+        background-color: black;
+        text-align: center;
+      }
+    </style>
   </head>
   <body>
     <form action="Register.php" method="post">
+      <fieldset>
+      <div>
       <input type="text" name="userName" placeholder="Name">
+      </div>
+      <div>
       <input type="text" name="userID" placeholder="ID">
+    </div>
+    <div>
       <input type="password" name="userPassword" placeholder="Password">
-      <input type="submit" value="Submit"> asdf
+    </div>
+    <div>
+      <input type="submit" value="Submit">
+    </div>
+    </fieldset>
     </form>
   </body>
 </html>
