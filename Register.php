@@ -12,17 +12,13 @@
       <input type="submit" value="submit">
       <?php
         $con = mysqli_connect('miminishin.cafe24.com','miminishin','s7731731','miminishin');
-        if($con) {
-          echo "hello";
-        }else {
-          echo mysqli_connect_errno() , ":";
-        }
+
         $userID = $_POST['userID'];
         $userPassword = $_POST['userPassword'];
         $userName = $_POST['userName'];
         $sql = "INSERT INTO USER(userID,userPassword,userName) VALUES('$userID','$userPassword','$userName')";
         $result = mysqli_query($con,$sql);
-
+        
        ?>
     </form>
   </body>
