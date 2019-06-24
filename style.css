@@ -1,7 +1,7 @@
   body {
     margin:0;
     padding:0;
-    background:url(login_background.jpg) no-repeat;
+    background:url(login_background.png) no-repeat;
     background-size:cover;
     font-family:sans-serif;
   }
@@ -33,4 +33,9 @@
     width: 26px;
     float:left;
     text-align: center;
+  }
+  .loginform {
+  border:none;
+  outline:none;
+  background: none;
   }
