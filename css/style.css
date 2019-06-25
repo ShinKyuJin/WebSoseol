@@ -1,10 +1,9 @@
 body {
   margin:0;
   padding:0;
-  background:url(../images/login_background.png) no-repeat;
+  background:url(login_background.png) no-repeat;
   background-size:cover;
   font-family:sans-serif;
-  background-color: black;
 }
 .loginbox {
   width: 220px;
@@ -40,4 +39,8 @@ border:none;
 outline:none;
 background: none;
 color:red;
+}
+
+.textbox:focus {
+  border-bottom: 1px solid red;
 }

@@ -5,42 +5,38 @@
     <title></title>
     <style>
       body {
-        background-color: #252525;
-      }
-      div {
         text-align: center;
-        margin-left: 20%;
-        margin-right: 20%;
-      }
-      input {
-        border-radius: 5px;
-        width:30%;
-        height:40%;
-        margin-top: 10px;
-      }
-      img {
-        border: 1px solid red;
-        width: 30%;
-      }
-      fieldset {
       }
     </style>
   </head>
   <body>
-    <div>
-    <img src="../images/웹소설.png">
-    </div>
-    <form action="Register.php" method="post">
+    <form action="userRegister.php" method="post">
       <fieldset>
-      <div>
-      <input type="text" name="userName" placeholder=" Name">
-      </div>
-      <div>
-      <input type="text" name="userID" placeholder=" ID">
-    </div>
-    <div>
-      <input type="password" name="userPassword" placeholder=" Password">
-    </div>
+        <div>
+          ID :
+          <input type="text" name="userID">
+        </div>
+        <div>
+          PW :
+          <input type="password" name="userPassword">
+        </div>
+        <div>
+          PWC :
+          <input type="password" name="userPassword2">
+        </div>
+        <div>
+          Email :
+          <input type="email" name="userEmail">
+        </div>
+        <div>
+          Name :
+          <input type="text" name="userName">
+        </div>
+        <div>
+          Birth :
+          <input type="date" name="userBirth">
+        </div>
+
     <div>
       <input type="submit" value="Submit">
     </div>
