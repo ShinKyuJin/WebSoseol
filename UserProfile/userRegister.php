@@ -21,7 +21,7 @@
   $result = mysqli_query($con,$sql);
   if($result) {
     session_start();
-    $_SESSION['userID'] = $userID;
+    $_SESSION['userID'] = $userID; // 유저 세션 등록해줌
     echo '<script>alert("Success");location.replace("../index.php");</script>';
   }
   else {
