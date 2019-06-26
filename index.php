@@ -5,11 +5,12 @@
   }
   $userID = $_SESSION['userID']; // 세션 초기화
   $ip_address = $_SERVER['REMOTE_ADDR'];
-  $sql = "INSERT INTO USERACCESS(userID,userIP) VALUES('$userID','$ip_address')";
+  $now_date = date("Y-m-d H:i:s");
+  $sql = "INSERT INTO USERACCESS(userID,userIP,nowDate) VALUES('$userID','$ip_address','$now_date')";
   $con = mysqli_connect('miminishin.cafe24.com','miminishin','s7731731','miminishin');
   $statement = mysqli_query($con,$sql);
   if($statement){
-    echo '<script>alert("'.$userID.' : '.$ip_address.'");</script>';
+    echo '<script>alert("'.$userID.' '.$ip_address.' : '.$now_date.'");</script>';
   }
   else {
     echo "fail";
@@ -22,11 +23,9 @@
      <meta charset="utf-8">
      <title></title>
    </head>
-   <script>
-   document.body.innerHTML = "<?php ?>"
-   </script>
    <body>
      hello!<br>
+
      <a href="UserProfile/userLogout.php">Logout</a>
    </body>
  </html>
