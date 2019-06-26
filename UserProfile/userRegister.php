@@ -10,6 +10,11 @@
     echo "<script>alert('비밀번호가 일치하지 않습니다.');location.replace('userRegister.html');";
   }
 
+  $check = "SELECT * FROM USERPROFILE WHERE userID = '$userID'";
+  if($check) {
+    echo "<script>alert('중복된 아이디입니다.');location.replace('userRegister.html');</script>";
+  }
+
   $encrypted_password = password_hash($userPassword, PASSWORD_DEFAULT);
   $sql = "INSERT INTO USERPROFILE(userID,userPassword,userEmail,userName,userBirth) VALUES('$userID','$encrypted_password','$userEmail','$userName','$userBirth')";
   $con = mysqli_connect('miminishin.cafe24.com','miminishin','s7731731','miminishin');
