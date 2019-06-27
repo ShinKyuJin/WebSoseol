@@ -16,20 +16,23 @@
   #이부분까지 실행이안됨?ㅋㅋ
   $con = mysqli_connect('miminishin.cafe24.com','miminishin','s7731731','miminishin');
 
-  $overlap_chk = sprintf("SELECT * FROM USERPROFILE WHERE userID = '%s'",$userID);
-  $res = mysqli_query($con,$overlap_chk);
-  $row = mysqli_fetch_array($res);
+  $chk = sprintf("SELECT * FROM USERPROFILE WHERE userID = '%s'",$userID);
+
+  $result = mysqli_query($con,$chk);
+  $row = mysqli_fetch_array($result);
+
   if($row[0] == $userID) {
-    echo "<script>alert('".$row[0]."는 이미 사용중인 아이디입니다.');history.go(-1);</script>";
+    echo "<script>alert('아이디 중복임');history.go(-1);</script>";
   }
 
   $sql = sprintf("INSERT INTO USERPROFILE(userID,userPassword,userEmail,userName,userBirth) VALUES('%s','%s','%s','%s','%s')",$userID,$userPassword,$userEmail,$userName,$userBirth);
+
   $stmt = mysqli_query($con,$sql);
 
-  session_start();
-
   if($stmt) {
-    echo "<script>alert('회원 가입 성공');location.replace('userLogin.html');</script>";
+    echo "<script>alert('회원가입 성공');location.replace('userLogin.html');</script>";
   }
-
+  else {
+    echo "<script>alert('회원가입 실패');history.go(-1);</script>";
+  }
  ?>
