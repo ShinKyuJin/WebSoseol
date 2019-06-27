@@ -7,10 +7,13 @@
 
   $row = mysqli_fetch_array($result);
 
+  session_start();
   if($userID == $row[0] && password_verify($userPassword,$row[1])) {
-    session_start();
-    $_SESSION['userID'] = $userID;
-    echo '<script>alert("로그인 성공");location.replace("../index.php");</script>';
+    if (isset($_POST['userID'])) {
+      $_SESSION['last_login_timestamp'] = time();
+      $_SESSION['userID'] = $userID;
+      echo '<script>alert("로그인 성공");location.replace("../index.php");</script>';
+    }
   }
   else {
     echo '<script>alert("아이디나 비밀번호가 일치하지 않습니다.");location.replace("userLogin.html");</script>';

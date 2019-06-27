@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <?php
-    echo date("Y-m-d H:i:s");
-     ?>
-  </body>
-</html>
+<?php
+  if($_SESSION['EmailSession'] == 'hello'){
+    echo "<script>alert('이메일확인 성공');</script>";
+  }
+  else {
+    echo "<script>alert('이메일확인 실패');</script>";
+  }
+ ?>
