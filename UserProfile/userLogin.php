@@ -12,6 +12,20 @@
     if (isset($_POST['userID'])) {
       $_SESSION['last_login_timestamp'] = time();
       $_SESSION['userID'] = $userID;
+
+      $_SESSION['EmailSession'] = 'hello';
+
+      $subject = "Test Email from KyuJin";
+      $msg = "<a href='localhost/test.php'>Click here Session</a>";
+
+      $headers = "MIME-Version: 1.0" . "\r\n";
+      $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+      $headers .= 'From: <webmaster@example.com>' . "\r\n";
+      $headers .= 'Cc: myboss@example.com' . "\r\n";
+
+      mail($_SESSION['userEmail'],$subject,$msg,$headers);
+
       echo '<script>alert("로그인 성공");location.replace("../index.php");</script>';
     }
   }

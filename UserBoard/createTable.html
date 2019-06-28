@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form action="createTable.php" method="post">
+      FIELD1 :
+      <select name="f1">
+        <option value="Idx">글 번호</option>
+      </select>
+      <br>
+      FIELD2 :
+      <select name="f2">
+        <option value="Writer">글쓴이</option>
+      </select>
+      <br>
+      FIELD3 :
+      <select name="f3">
+        <option value="Title">제목</option>
+      </select>
+      <br>
+      FIELD4 :
+      <select name="f4">
+        <option value="Content">내용</option>
+      </select>
+      <br>
+      FIELD5 :
+      <select name="f5">
+        <option value="Datetime">날짜 및 시간</option>
+        <option value="Date">날짜</option>
+        <option value="NoOption">없음</option>
+      </select>
+      <br>
+      FIELD6 :
+      <select name="f6">
+        <option value="view">조회 수</option>
+        <option value="NoOption">없음</option>
+      </select>
+      <br>
+      FIELD7 :
+      <select name="f7">
+        <option value="SecretMode">비밀글</option>
+        <option value="NoOption">없음</option>
+      </select>
+      <br>
+      BoardName :
+      <input type="text" name="BoardName">
+      <input type="submit" value="게시판 생성">
+    </form>
+  </body>
+</html>

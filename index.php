@@ -4,8 +4,8 @@
      <meta charset="utf-8">
      <title></title>
    </head>
+   <link rel="stylesheet" href="/css/nav.css">
    <body>
-     hello!<br>
      <div id = "server_time">
      <?php
       session_start(); // 세션 시작
@@ -18,9 +18,9 @@
       $sql = "INSERT INTO USERACCESS(userID,userIP,nowDate) VALUES('$userID','$ip_address','$now_date')";
       $con = mysqli_connect('miminishin.cafe24.com','miminishin','s7731731','miminishin');
       $statement = mysqli_query($con,$sql);
-  
-      if($statement){  
-        echo '<script>alert("'.$userID.' '.$ip_address.' : '.$now_date.'");</script>';  
+
+      if($statement){
+        echo '<script>alert("'.$userID.' '.$ip_address.' : '.$now_date.'");</script>';
       }
       else {
         echo '<script>alert("잘못된 접근!");';
@@ -31,10 +31,10 @@
 
       if(isset($_SESSION['userID']))
       {
-        if((time() - $_SESSION['last_login_timestamp']) > 15)
+        if((time() - $_SESSION['last_login_timestamp']) > 100)
         {
           session_destroy();
-          echo '<script>alert("세션 타임 오버!");';
+          echo '<script>alert("세션 타임 오버!");</script>';
           header("location:UserProfile/userLogin.html");
         }
         else
@@ -51,6 +51,15 @@
     ?>
 
   </div>
-    <a href="UserProfile/userLogout.php">Logout</a>
+    <img class="logo" src="images/logo.png">
+<div class="tab">
+  <br>
+<button >공지사항</button>
+<button >학생회소개</button>
+<button >민원게시판</button>
+<button >공모전</button>
+<button >세종소융봉사</button>
+<button> 로그아웃</button>
+</div>
   </body>
  </html>

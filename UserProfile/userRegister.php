@@ -22,14 +22,16 @@
   $row = mysqli_fetch_array($result);
 
   if($row[0] == $userID) {
-    echo "<script>alert('아이디 중복임');history.go(-1);</script>";
+    echo "<script>alert('아이디 중복임');location.replace('userRegister.html');</script>";
   }
-
-  $sql = sprintf("INSERT INTO USERPROFILE(userID,userPassword,userEmail,userName,userBirth) VALUES('%s','%s','%s','%s','%s')",$userID,$userPassword,$userEmail,$userName,$userBirth);
+  $password_encryption = password_hash($userPassword,PASSWORD_DEFAULT);
+  echo "<script>alert('".$password_encryption."');</script>";
+  $sql = sprintf("INSERT INTO USERPROFILE(userID,userPassword,userEmail,userName,userBirth) VALUES('%s','%s','%s','%s','%s')",$userID,$password_encryption,$userEmail,$userName,$userBirth);
 
   $stmt = mysqli_query($con,$sql);
-
+  session_start();
   if($stmt) {
+    $_SESSION['userEmail'] = $userEmail;
     echo "<script>alert('회원가입 성공');location.replace('userLogin.html');</script>";
   }
   else {
