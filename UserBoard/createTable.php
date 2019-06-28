@@ -9,54 +9,52 @@
   $f7 = $_POST['f7'];
   $BoardName = $_POST['BoardName'];
 
-  $sqlForNumOfBoard = sprintf("SELECT * FROM LISTOFBOARD");
-  $res = mysqli_query($con,$sqlForNumOfBoard);
-  $BoardCnt = $res->num_rows;
-
-  $s2 = sprintf("CREATE TABLE BOARD'%s' ",$BoardCnt+1,);
-  $s2. = "(";
+  $s1 = "SELECT * FROM LISTOFBOARD";
+  $stmt = mysqli_query($con,$s1);
+  $boardCnt = mysqli_num_rows($stmt);
+  $k = (string)$boardCnt;
+  $name = "BOARD"."$k";
+  $s2 = "CREATE TABLE $name";
+  $s2 = $s2."(";
   for($i=1;$i<=7;$i++) {
-    if(${'f'.$i} != 'NoOption') {
-      $s2. = "'.{${"f".$i}}.'"
-      if($i == 1 || $i == 6) { // int
-        $s2. = " int,";
+    if(${"f".$i} != 'NoOption') {
+      if($i == 1||$i == 6) { // int
+        $s2 = $s2.${"f".$i}." int";
+        if($i == 1) {
+          $s2 = $s2." auto_increment";
+        }
+        $s2 = $s2.",";
       }
-      else if($i == 2 || $i == 3) { // varchar
-        $s2. = " VARCHAR(255),";
+      else if($i == 2 || $i == 3) { // varchar(255)
+        $s2 = $s2.${"f".$i}." varchar(255),";
       }
       else if($i == 4) { // text
-        $s2. = " text,";
+        $s2 = $s2.${"f".$i}." text,";
       }
-      else if($i == 5) { // datetime/date/time
+      else if($i == 5) { // datetime,date
         if(${"f".$i} == "Datetime") {
-          $s2. = " datetime,";
+          $s2 = $s2.${"f".$i}." datetime,";
         }
         else if(${"f".$i} == "Date") {
-          $s2. = " date,";
+          $s2 = $s2.${"f".$i}." date,";
         }
       }
       else if($i == 7) { // bool
-        $s2. = " bool,";
+        $s2 = $s2.${"f".$i." bool"};
       }
     }
   }
-  $s2. = ")";
-  if($s2[strlen($s2) - 2] == ','){
-    $s2[strlen($s2) - 2] = '';
+  $s2 = $s2."PRIMARY KEY($f1)";
+  $s2 = $s2.");";
+  if($s2[strlen($s2)-3] == ',') {
+    $s2[strlen($s2)-3] = ' ';
   }
-  $stmt = mysqli_query($con,$s2);
-  if($stmt) {
-    $s3 = "INSERT INTO LISTOFBOARD(BoardName,BoardField) VALUES('.$BoardName.','.$s2.')";
-    $stmt2 = mysqli_query($con,$s3);
-    if($stmt2) {
-      echo "<script>alert('성공');</script>";
-    }
-    else {
-      echo "<script>alert('게시판은 만들었으나, LISTOFBOARD에 안들어감');</script>";
-    }
+  echo $s2;
+  $res = mysqli_query($con,$s2);
+  if($res) {
+    echo "Table 만들기 성공";
   }
   else {
-    echo "<script>alert('실패');</script>";
+    echo "실패";
   }
-
  ?>
