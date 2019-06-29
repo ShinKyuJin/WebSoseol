@@ -7,16 +7,22 @@
   $f5 = $_POST['f5'];
   $f6 = $_POST['f6'];
   $f7 = $_POST['f7'];
-  $BoardName = $_POST['BoardName'];
+  $BoardName = mysqli_real_escape_string($con,$_POST['BoardName']);
 
-  $s1 = "SELECT * FROM LISTOFBOARD";
-  $stmt = mysqli_query($con,$s1);
-  $boardCnt = mysqli_num_rows($stmt);
-  $k = (string)$boardCnt;
-  $name = "BOARD"."$k";
+  $s1 = "SELECT MAX(Idx) AS hello FROM LISTOFBOARD";
+  $st = mysqli_query($con,$s1);
+  $row = mysqli_fetch_array($st);
+
+  if($row['hello'] == 0) {
+    $name = "BOARD0";
+  }
+  else {
+    $name = "BOARD".$row['hello'];
+  }
+
   $s2 = "CREATE TABLE $name";
   $s2 = $s2."(";
-  for($i=1;$i<=7;$i++) {
+  for($i=1;$i<8;$i++) {
     if(${"f".$i} != 'NoOption') {
       if($i == 1||$i == 6) { // int
         $s2 = $s2.${"f".$i}." int";
@@ -40,21 +46,29 @@
         }
       }
       else if($i == 7) { // bool
-        $s2 = $s2.${"f".$i." bool"};
+        $s2 = $s2.${"f".$i}." bool,";
       }
     }
   }
-  $s2 = $s2."PRIMARY KEY($f1)";
-  $s2 = $s2.");";
-  if($s2[strlen($s2)-3] == ',') {
-    $s2[strlen($s2)-3] = ' ';
+
+  if($s2[strlen($s2)-1] != ',') {
+    $s2[strlen($s2)-1] = ',';
   }
+  $s2 = $s2."PRIMARY KEY($f1), FOREIGN KEY($f2) REFERENCES USERPROFILE(userID)";
+  $s2 = $s2.");";
   echo $s2;
   $res = mysqli_query($con,$s2);
   if($res) {
-    echo "Table 만들기 성공";
+    $s3 = "INSERT INTO LISTOFBOARD(BoardName,BoardField,Idx,BoardID) VALUES('$BoardName','$s2','','$name')";
+    $res2 = mysqli_query($con,$s3);
+    if($res2) {
+      echo "<script>alert('게시판 만들기 성공');</script>";
+    }
+    else {
+      echo "<script>alert('게시판은 만들었으나, 보드리스트에 안들어감');</script>";
+    }
   }
   else {
-    echo "실패";
+    echo "<script>alert('Fail');</script>";
   }
  ?>

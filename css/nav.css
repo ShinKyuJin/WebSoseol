@@ -2,16 +2,8 @@
 left: 100%;
 width:100px;
 }
-.tab {
-left:auto;
-border: none;
-background-color: none;
-width: 300px;
-height: 10%;
-margin-top: 150px;
-}
 
-.tab button {
+.navBox button {
 font-weight:bold;
 font-size: 16px;
 display: block;
@@ -26,10 +18,10 @@ cursor: pointer;
 transition: 0.3s;
 }
 
-.tab button:hover {
+.navBox button:hover {
 background-color: #ddd;
 }
 
-.tab button.active {
+.navBox button.active {
 background-color: #ccc;
 }
