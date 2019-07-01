@@ -40,7 +40,7 @@
       }
       echo "</div>";
 
-      $cur_src = "UserProfile/userLogin.html";
+      $cur_src = "User  Profile/userLogin.html";
         echo "
         <div class='iFrameBox'>
           <iframe src='$cur_src' width='100%' height='100%'></iframe>
@@ -48,8 +48,7 @@
         function btnClick() {
           if($cur_src == "UserProfile/userLogin.html"){
             $cur_src = "UserProfile/userRegister.html";
-          }
-          else {
+          }          else {
             $cur_src = "UserProfile/userLogin.html";
           }
         }

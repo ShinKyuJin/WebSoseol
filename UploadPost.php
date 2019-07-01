@@ -15,6 +15,23 @@
       <table>
         <tbody>
           <tr>
+            <th scope="row">
+              <select name="BoardName">
+                <?php
+                  include "db.php";
+                  echo "<select name='BoardName'>";
+                  $sql1 = "SELECT * FROM LISTOFBOARD";
+                  $stmt = mysqli_query($con,$sql1);
+                  for($i=0;$i<$stmt->num_rows;$i++) {
+                    $row = mysqli_fetch_array($stmt);
+                    echo "<option value='$row[0]'>$row[0]</option>";
+                  }
+                  echo "</select>";
+                 ?>
+              </select>
+            </th>
+          </tr>
+          <tr>
             <th scope="row">제목</th>
             <td><input type="text" name="Title"></td>
           </tr>
