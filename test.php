@@ -35,16 +35,24 @@
       for($i = 0;$i<$stmt->num_rows;$i++) {
         $res = mysqli_fetch_array($stmt);
         echo "
-        <button type='button' name = ''>$res[0]</button>
-        "; #여기까지했었음
+        <button type='button' onclick='btnClick();'>$res[0]</button>
+        ";
       }
       echo "</div>";
 
-      $cur_src = "index.php";
+      $cur_src = "UserProfile/userLogin.html";
         echo "
         <div class='iFrameBox'>
           <iframe src='$cur_src' width='100%' height='100%'></iframe>
         </div>";
+        function btnClick() {
+          if($cur_src == "UserProfile/userLogin.html"){
+            $cur_src = "UserProfile/userRegister.html";
+          }
+          else {
+            $cur_src = "UserProfile/userLogin.html";
+          }
+        }
        ?>
        <iframe src="" width="" height=""></iframe>
   </body>
