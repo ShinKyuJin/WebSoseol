@@ -11,24 +11,12 @@
     <div id="jb-container">
       <div id="jb-header">
         <img src="logo.png" class="rounded-circle">
-
-          <?php
-          include "db.php";
-          $sql = "SELECT * FROM LISTOFBOARD";
-          $stmt = mysqli_query($con,$sql);
-          for($i=0;$i<$stmt->num_rows;$i++) {
-            $row = mysqli_fetch_array($stmt);
-            $link = 'board.php?categoryIdx='.$categoryIdx;
-            echo "
-            <a href='$link'>$row[1]</a>
-            ";
-          }
-           ?>
        </div>
       <div id="jb-content">
         <h2>Content</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec mollis nulla. Phasellus lacinia tempus mauris eu laoreet. Proin gravida velit dictum dui consequat malesuada. Aenean et nibh eu purus scelerisque aliquet nec non justo. Aliquam vitae aliquet ipsum. Etiam condimentum varius purus ut ultricies. Mauris id odio pretium, sollicitudin sapien eget, adipiscing risus.</p>
+        <?php include "board.php"; ?>
       </div>
+
       <div id="jb-sidebar">
         <h2>Sidebar</h2>
         <ul>
@@ -42,4 +30,9 @@
       </div>
     </div>
   </body>
+  <script type="text/javascript">
+    var boardContent = <?php
+
+     ?>;
+  </script>
 </html>
