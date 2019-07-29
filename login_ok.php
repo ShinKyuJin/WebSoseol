@@ -1,21 +1,17 @@
 <?php
   session_start();
   include "db.php";
-  $userID = $_POST['userID'];
-  $userPassword = $_POST['userPassword'];
+  $con = mysqli_connect('miminishin.cafe24.com','miminishin','s7731731','miminishin');
+  $userID = mysqli_real_escape_string($con,$_POST['userID']);
+  $userPassword = mysqli_real_escape_string($con,$_POST['userPassword']);
 
-  $stmt = mq("SELECT * FROM USERPROFILE WHERE userID='$userID'");
-
-  $row = mysqli_fetch_array($stmt);
-
-  echo $row['userID'].' '.$userID.' '.$row['userPassword'].' '.$userPassword;
+  $row = mysqli_fetch_array(mq("SELECT userID,userPassword FROM USERPROFILE WHERE userID='$userID'"));
 
   if($row['userID'] == $userID && password_verify($userPassword,$row['userPassword'])) {
-    echo "suc";
     $_SESSION['userID'] = $userID;
+    echo json_encode(array('res'=>'suc'));
   }
   else {
-    echo "fail";
+    echo json_encode(array('res'=>'fail'));
   }
-
  ?>
