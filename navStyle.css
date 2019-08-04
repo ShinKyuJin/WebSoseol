@@ -64,3 +64,6 @@ li a:hover{
   color: #B90000;
   font-weight: bold;
 }
+div img {
+  margin:0;
+}

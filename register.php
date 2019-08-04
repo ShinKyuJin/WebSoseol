@@ -61,7 +61,7 @@
 
       <div class="mySlides fade">
         <div class="form-popup" id="myForm">
-        <div class="form-container" onsubmit="return retry()">
+        <div class="form-container">
           <label for="register">회원가입</label><br>
           <label for="userPassword1">비밀번호</label><br>
           <input type="password" placeholder="비밀번호를 입력하세요." id="userPassword1" name="userPassword1" required><br>
@@ -124,7 +124,7 @@
            <label for="register">회원가입</label><br>
            <label for="userStudentID">학번</label><br>
            <input type="text" placeholder="학번을 입력하세요." name="userStudentID" required><br>
-           <input type="submit" value="제출" onclick="location.href='http://localhost/web_sua/registerfinish.html'">
+           <input type="submit" value="제출">
          </div>
          </div>
          <div class="w3-container">
@@ -148,6 +148,6 @@
 
     <?php include "footer.php"; ?>
   </body>
-  <script type="text/javascript" src="register5.js">
+  <script type="text/javascript" src="register.js">
   </script>
 </html>

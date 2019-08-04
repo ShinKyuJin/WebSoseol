@@ -1,4 +1,5 @@
 <?php
+  session_start();
   include "db.php";
   $boardIdx = $_POST['boardIdx'];
   $commentWriter = $_SESSION['userID'];

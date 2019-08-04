@@ -1,14 +1,9 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
     <link rel="stylesheet" href="navStyle.css">
-    <style media="screen">
-      div img {
-        margin:0;
-      }
-    </style>
   </head>
   <body>
     <div class="TOP">
@@ -18,6 +13,7 @@
          echo "<a href='login.php'style='text-decoration: none; color: white; float: right; margin-top: 7px; margin-right: 15px;'>로그인</a>";
        }
        else {
+         echo $_SESSION['userID'];
          echo "<a href='logout.php'>로그아웃</a>";
        }
        ?>
@@ -29,7 +25,7 @@
         </div>
         <div class="navMenu">
           <ul>
-            <li><a href="#">게시판</a></li>
+            <li><a href="boardList.php">게시판</a></li>
             <li><a href="#">학생회소개</a></li>
             <li><a href="#">공모전</a></li>
             <li><a href="#">소융대사회봉사</a></li>

@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -10,6 +12,11 @@
     body {
       margin: 0;
     }
+    .Card {
+      padding : 10px;
+      margin:10px;
+    }
+
   </style>
   <body>
     <?php include "nav.php"; ?>
@@ -19,6 +26,10 @@
       include "db.php";
       $boardIdx = $_GET['bi'];
       $row = mysqli_fetch_array(mq("SELECT * FROM BOARD WHERE boardIdx = '$boardIdx'"));
+      if($row['boardWriter'] != $_SESSION['userID']){
+        $boardHit = $row['boardHit']+1;
+        $updateHit = mq("UPDATE BOARD SET boardHit='$boardHit' WHERE boardIdx='$boardIdx'");
+      }
      ?>
      <hr>
      <div class="boardTitle">
@@ -31,6 +42,14 @@
      <?php echo $row['boardDate']; ?>
      <hr>
      <?php echo nl2br($row['boardContent']); ?>
+     <hr>
+     <?php echo $row['boardFile']; ?>
+     <hr>
+     <div class="md-form">
+       <textarea name="boardContent" class="md-textarea form-control commentRegisterBox commentContent" rows="3" cols="80" placeholder="<?php if(!isset($_SESSION['userID'])) echo '로그인을 해주세요'; ?>"></textarea>
+       <button type="button" name="button" class="commentMakeBtn">작성</button>
+     </div>
+     <input type="hidden" class="isLogined"value="<?php if(isset($_SESSION['userID'])) echo 1; else echo 0; ?>">
      <?php
      $boardIdx = $_GET['bi'];
      $chk = 0;
@@ -43,10 +62,9 @@
         <div class="commentWriter">작성자 <?php echo $cRow['commentWriter']; ?></div>
         <div class="commentContent">내용 <?php echo $cRow['commentContent']; ?></div>
         <div class="commentDateTime">시간 <?php echo $cRow['commentDateTime']; ?></div>
-        <div class="commnetIdx">인덱스 <?php echo $cRow['commentIdx']; ?></div>
       </div>
       <?php
-        echo "<div class='replyBox ".$cRow['commentIdx']."'><input type='text' name='commentContent' class='commentContent'><div class='buttonBox' style='width:40px'>작성</div></div>";
+        echo "<div class='replyBox ".$cRow['commentIdx']."'><input type='text' class='commentContent'><div class='buttonBox' style='width:40px'>작성</div></div>";
        ?>
 
       <?php
@@ -54,9 +72,8 @@
        ?>
        <div class="Card" style="margin-left:20px; border:1px solid black;">
          <div class="replyWriter">작성자 <?php echo $rRow['commentWriter']; ?></div>
-         <div class="replyContent">내용 <?php echo $rRow['commentContent']; ?></div>
+         <div class="replyContent">내용 <?php echo nl2br($rRow['commentContent']); ?></div>
          <div class="replyDateTime">시간 <?php echo $rRow['commentDateTime']; ?></div>
-         <div class="replyIdx">인덱스 <?php echo $rRow['commentIdx']; ?></div>
        </div>
      <?php endwhile; ?>
    <?php endwhile; ?>

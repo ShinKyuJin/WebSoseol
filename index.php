@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -26,11 +25,13 @@
     <div class="slideShow">
       <h2>SlideShow</h2>
     </div>
+    <div class="container">
     <?php
     include "indexBoardClass.php";
     $board = new boardClass();
     $board->echoBoard(1,5);
      ?>
+   </div>
 
      <?php include "footer.php"; ?>
   </body>

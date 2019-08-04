@@ -4,41 +4,21 @@
     <meta charset="utf-8">
     <title></title>
   </head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <body>
-    <table>
-      <thead>
-        <tr>
-          <th>번호</th>
-          <th>제목</th>
-          <th>작성자</th>
-          <th>작성일</th>
-          <th>조회수</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php
-         include "db.php";
-         $res = mq("SELECT * FROM BOARD");
-         while($row = mysqli_fetch_assoc($res)) {
-           $date = substr($row['boardDate'],0,10);
-           $time = substr($row[7],10,18);
+    <?php include "nav.php"; ?>
 
-           echo $row['boardDate'];
-           if($date == Date('Y-m-d'))
-            $row['boardDate'] = $time;
-          else
-            $row['boardDate'] = $date;
+    <?php
+      include "db.php";
+      $stmt = mq('SELECT * FROM LISTOFBOARD');
+      while($row = mysqli_fetch_array($stmt)):
+        $link = "boardIdx.php?bi=".$row['categoryIdx'];
+     ?>
+     <div class="container">
+     <a href="<?php echo $link; ?>"><?php echo $row['boardSubject']; ?></a>
+      </div>
+   <?php endwhile; ?>
 
-        ?>
-        <tr>
-          <td><?php echo $row['Idx']; ?></td>
-          <td><?php echo $row['boardTitle']; ?></td>
-          <td><?php echo $row['boardWriter']; ?></td>
-          <td><?php echo $row['boardDate']; ?></td>
-          <td><?php echo $row['boardHit']; ?></td>
-        </tr>
-      <?php } ?>
-      </tbody>
-    </table>
+    <?php include "footer.php"; ?>
   </body>
 </html>
