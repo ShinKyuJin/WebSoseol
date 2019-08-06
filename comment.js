@@ -1,64 +1,14 @@
-var isLogined = $('.isLogined');
-$('.buttonBox').click(function() {
-  var name = $(this).parent().attr('class');
-  var commentContent = $(this).parent().children('.commentContent');
-  name = name.split(' ');
-  var url = $(location).attr('href');
-  url = url.split('=');
-  $.ajax({
-    type:'post',
-    dataType:'json',
-    url:'replyComment.php',
-    data:{replySourceIdx:name[1],commentContent:commentContent.val(),boardIdx:url[1]},
-    success:function(json) {
-      if(json.res == 'suc') {
-        commentContent.val('');
-        console.log('suc');
-      }
-      else {
-        console.log('fail2');
-      }
-    },
-    error:function() {
-      console.log('fail');
-    }
-  })
-});
+$('.makeBtn').click(function() {
+  var index = $(this).parent().attr('class').split(' ');
+  var className = '';
+  className = className.concat('.Card',index[1]);
+  alert(className);
+  var string=  '<div class="Card" style="border:1px solid black; margin-left:10px">
+    <div class="replyWriter"><?php echo $replyRow["commentWriter"]; ?></div>
+    <div class="replyContent"><?php echo $replyRow["commentContent"]; ?></div>
+    <div class="replyDate"><?php echo $replyRow["commentDateTime"]; ?></div>
+  </div>'
+  $(className).parent().append('
 
-$('.commentRegisterBox').click(function() {
-  $.ajax({
-    type:'post',
-    dataType:'json',
-    url:'loginChk.php',
-    data:{isLogined:isLogined.val()},
-    success:function(json) {
-      if(json.res != 'logged') {
-        var loginQuestion = confirm('로그인 하러 갈래?');
-        if(loginQuestion) {
-          location.replace('login.php');
-        }
-      }
-    },
-    error:function() {
-      console.log('failed to check login');
-    }
-  })
-});
-
-$('.commentMakeBtn').click(function() {
-  var commentContent = $(this).parent().children('.commentContent');
-  var url = $(location).attr('href');
-  url = url.split('=');
-  $.ajax({
-    type:'post',
-    dataType:'json',
-    url:'commentPost.php',
-    data:{commentContent:commentContent,boardIdx:url[1]},
-    success:function(json) {
-      
-    },
-    error:function() {
-
-    }
-  })
+  ');
 });

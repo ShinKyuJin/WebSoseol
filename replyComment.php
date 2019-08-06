@@ -5,7 +5,13 @@
   $commentWriter = $_SESSION['userID'];
   $commentContent = $_POST['commentContent'];
   $commentDateTime = date('Y-m-d H:i:s');
-  $replySourceIdx = $_POST['replySourceIdx'];
+  if($_POST['replySourceIdx']) {
+    $replySourceIdx = $_POST['replySourceIdx'];
+  }
+  else {
+    $replySourceIdx = NULL;
+  }
+
   $stmt = mq("INSERT INTO COMMENT_BOARD(boardIdx,commentWriter,commentContent,commentDateTime,replySourceIdx) VALUES(
     '$boardIdx',
     '$commentWriter',

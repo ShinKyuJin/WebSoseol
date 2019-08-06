@@ -9,7 +9,7 @@
         height:100%;
       }
       .md-form{
-        height:300px;
+        height:600px;
       }
       textarea {
         height:50%;
@@ -26,7 +26,7 @@
         </div>
         <hr>
         <div class="md-form">
-          <textarea name="boardContent" class="md-textarea form-control" rows="12" cols="80"placeholder="내용을 입력하세요."></textarea>
+          <textarea name="boardContent" id="ckeditor"></textarea>
         </div>
         <hr>
         파일첨부
@@ -46,4 +46,10 @@
     </div>
     <?php include "footer.php"; ?>
   </body>
+  <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+  <script type="text/javascript">
+    window.onload=function() {
+      CKEDITOR.replace('ckeditor',{height:'500px'});
+    };
+  </script>
 </html>

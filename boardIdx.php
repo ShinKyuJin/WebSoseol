@@ -24,11 +24,13 @@
         </thead>
         <?php
           while($row = mysqli_fetch_array($stmt)) :
+            $boardIdx = $row['boardIdx'];
+            $commentCnt = mq("SELECT * FROM COMMENT_BOARD WHERE boardIdx='$boardIdx'");
             $link = "board.php?bi=".$row['boardIdx'];
             $boardDate = substr($row['boardDate'],0,10) == date('Y-m-d') ? substr($row['boardDate'],10,8) : substr($row['boardDate'],0,10);
          ?>
          <tr>
-           <td><a href="<?php echo $link; ?>"><?php echo $row['boardTitle']; ?></a>[<?php echo $row['boardRecommend']; ?>]</td>
+           <td><a href="<?php echo $link; ?>"><?php echo $row['boardTitle']; ?></a>[<?php echo $commentCnt->num_rows; ?>]</td>
            <td><?php echo $row['boardWriter']; ?></td>
            <td><?php echo $boardDate; ?></td>
            <td><?php echo $row['boardHit']; ?></td>

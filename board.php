@@ -1,6 +1,9 @@
 <?php
-  session_start();
-?>
+  include "db.php";
+  $boardIdx = re('bi','get');
+  $board = mysqli_fetch_array(mq("SELECT * FROM BOARD WHERE boardIdx='$boardIdx'"));
+ ?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -8,78 +11,51 @@
     <title></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   </head>
-  <style media="screen">
-    body {
-      margin: 0;
-    }
-    .Card {
-      padding : 10px;
-      margin:10px;
-    }
-
-  </style>
   <body>
     <?php include "nav.php"; ?>
     <div class="container">
+      <div class="boardTitle"><h2><?php echo $board['boardTitle'] ?></h2></div>
+      <div class="boardWriter"><?php echo $board['boardWriter']; ?></div><hr>
+      <div class="boardContent"><?php echo nl2br($board['boardContent']); ?></div><hr>
 
-    <?php
-      include "db.php";
-      $boardIdx = $_GET['bi'];
-      $row = mysqli_fetch_array(mq("SELECT * FROM BOARD WHERE boardIdx = '$boardIdx'"));
-      if($row['boardWriter'] != $_SESSION['userID']){
-        $boardHit = $row['boardHit']+1;
-        $updateHit = mq("UPDATE BOARD SET boardHit='$boardHit' WHERE boardIdx='$boardIdx'");
-      }
-     ?>
-     <hr>
-     <div class="boardTitle">
-       <h1>
-       <?php echo $row['boardTitle']; ?>
-      </h1>
-     </div>
-     <hr>
-     <?php echo $row['boardWriter']; ?>
-     <?php echo $row['boardDate']; ?>
-     <hr>
-     <?php echo nl2br($row['boardContent']); ?>
-     <hr>
-     <?php echo $row['boardFile']; ?>
-     <hr>
-     <div class="md-form">
-       <textarea name="boardContent" class="md-textarea form-control commentRegisterBox commentContent" rows="3" cols="80" placeholder="<?php if(!isset($_SESSION['userID'])) echo '로그인을 해주세요'; ?>"></textarea>
-       <button type="button" name="button" class="commentMakeBtn">작성</button>
-     </div>
-     <input type="hidden" class="isLogined"value="<?php if(isset($_SESSION['userID'])) echo 1; else echo 0; ?>">
-     <?php
-     $boardIdx = $_GET['bi'];
-     $chk = 0;
-     $comment = mq("SELECT * FROM COMMENT_BOARD WHERE boardIdx='$boardIdx' and replySourceIdx IS NULL");
-     while($cRow = mysqli_fetch_array($comment)) :
-       $commentIdx = $cRow['commentIdx'];
-       $reply = mq("SELECT * FROM COMMENT_BOARD WHERE replySourceIdx='$commentIdx' and replySourceIdx IS NOT NULL");
-      ?>
-      <div class="Card" style="border:1px solid black;">
-        <div class="commentWriter">작성자 <?php echo $cRow['commentWriter']; ?></div>
-        <div class="commentContent">내용 <?php echo $cRow['commentContent']; ?></div>
-        <div class="commentDateTime">시간 <?php echo $cRow['commentDateTime']; ?></div>
-      </div>
-      <?php
-        echo "<div class='replyBox ".$cRow['commentIdx']."'><input type='text' class='commentContent'><div class='buttonBox' style='width:40px'>작성</div></div>";
-       ?>
+      <textarea rows="3" cols="80" class="commentContent"></textarea>
+      <button type="button" class="commentButton">작성</button>
 
       <?php
-       while($rRow = mysqli_fetch_array($reply)):
+        $comment = mq("SELECT * FROM COMMENT_BOARD WHERE boardIdx='$boardIdx' and replySourceIdx='0'");
+        while($commentRow = mysqli_fetch_array($comment)) :
        ?>
-       <div class="Card" style="margin-left:20px; border:1px solid black;">
-         <div class="replyWriter">작성자 <?php echo $rRow['commentWriter']; ?></div>
-         <div class="replyContent">내용 <?php echo nl2br($rRow['commentContent']); ?></div>
-         <div class="replyDateTime">시간 <?php echo $rRow['commentDateTime']; ?></div>
+       <div class="ONE">
+       <div class="Card<?php echo $commentRow['commentIdx']; ?>" style="border:1px solid black;">
+         <div class="commentWriter"><?php echo $commentRow['commentWriter']; ?></div>
+         <div class="commentContent"><?php echo $commentRow['commentContent']; ?></div>
+         <div class="commentDate"><?php echo $commentRow['commentDateTime']; ?></div>
        </div>
-     <?php endwhile; ?>
-   <?php endwhile; ?>
- </div>
+       <div class="createReply <?php echo $commentRow['commentIdx']; ?>">
+         <input type="text" class="content">
+         <div class="makeBtn" style="width:40px;">작성</div>
+       </div>
+       <?php
+        $reply = mq("SELECT * FROM COMMENT_BOARD WHERE boardIdx='$boardIdx' and replySourceIdx!='0'");
+        while($replyRow = mysqli_fetch_array($reply)) :
+        ?>
+        <div class="Card" style="border:1px solid black; margin-left:10px">
+          <div class="replyWriter"><?php echo $replyRow['commentWriter']; ?></div>
+          <div class="replyContent"><?php echo $replyRow['commentContent']; ?></div>
+          <div class="replyDate"><?php echo $replyRow['commentDateTime']; ?></div>
+        </div>
+        <?php endwhile; ?>
+        </div>
+        <?php endwhile; ?>
+    </div>
     <?php include "footer.php"; ?>
   </body>
-  <script src="comment.js" charset="utf-8"></script>
-
+  <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js" ></script>
+  <script type="text/javascript" src="comment.js"></script>
+  <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+  <script type="text/javascript">
+    window.onload=function() {
+      CKEDITOR.replace('ckeditor');
+    };
+  </script>
 </html>
