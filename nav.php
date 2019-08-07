@@ -13,7 +13,7 @@
          echo "<a href='login.php'style='text-decoration: none; color: white; float: right; margin-top: 7px; margin-right: 15px;'>로그인</a>";
        }
        else {
-         echo $_SESSION['userID'];
+         echo "<div class='userName'>".$_SESSION['userID']."</div>";
          echo "<a href='logout.php'>로그아웃</a>";
        }
        ?>
