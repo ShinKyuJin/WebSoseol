@@ -35,7 +35,7 @@ include "db.php";
                 <tbody>
                     <tr>
                         <td width="70"><?php echo $board["contentIdx"]; ?></td>
-                        <td width="500"><a href="board_read.php?idx=<?php echo $board["contentIdx"]; ?>"><?php echo $board["contentTitle"]; ?>
+                        <td width="500"><a href="overflow_board_read.php?idx=<?php echo $board["contentIdx"]; ?>"><?php echo $board["contentTitle"]; ?>
                         <td width="120"><?php echo $board["contentWriter"]; ?></td>
                         <td width="100"><?php echo $board["contentWriteDateTime"]; ?></td>
                     </tr>
