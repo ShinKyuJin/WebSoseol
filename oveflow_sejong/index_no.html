@@ -1,0 +1,39 @@
+<!Doctype html>
+<head>
+    <meta charset="utf-8" />
+    <title>OVERFLOW SEJONG</title>
+    <script src="lib/codemirror.js"></script>
+    <link rel="stylesheet" href="lib/codemirror.css" />
+    <link rel="stylesheet" href="theme/blackboard.css" />
+    <script src="mode/javascript/javascript.js"></script>
+    <script src="mode/css/css.js"></script>
+    <style>
+        body {
+            background-color: #999;
+        }
+    </style>
+</head>
+<body>
+    <h2>OVERFLOW SEJONG</h2>
+    <div id="codeeditor"></div>
+    <script>
+        var editor = CodeMirror(document.getElementById("codeeditor"), {
+            value: "test {\n\tposition: absolute; \n\twidth: 200px; \n\theight: 50px;\n}",
+            mode: "css",
+            theme: "blackboard",
+            tabSize: 4,
+            indentWithTabs: true,
+            lineNumbers: true
+        });
+    </script>
+    <article>
+        <script src="getcode.js"></script>
+    </article>
+    <script>
+        function obtainCode() {
+            var text = editor.mirror.getValue();
+            alert(text);
+        }
+    </script>
+</body>
+</html>

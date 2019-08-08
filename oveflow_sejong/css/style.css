@@ -1,0 +1,166 @@
+@charset "utf-8";
+
+* {
+    margin: 0 auto;
+    padding: 0;
+    font-family: Verdana, Tahoma, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+ul li {
+    list-style: none;
+}
+
+.fl {
+    float: left;
+}
+
+.tc {
+    text-align: center;
+}
+
+#board-area {
+    width: 900px;
+    position: relative;
+}
+
+.list-table {
+    margin-top: 40px;
+}
+
+.list-table thead th {
+    height: 40px;
+    border-top: 2px solid #09C;
+    border-bottom: 1px solid #CCC;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.list-table tbody td {
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #CCC;
+    font-size: 14px;
+}
+
+.comment_ct {
+    font-weight:bold;
+    color:blue;
+}
+
+#write-btn {
+    padding: absolute;
+    margin-top: 20px;
+    right: 0;
+}
+
+#board-write {
+    width:900px;
+    position: relative;
+    margin: 0 auto;
+}
+
+#write-area {
+    margin-top:70px;
+    font-size:14px;
+}
+
+.wi_line {
+    border: solid 1px lightgray;
+    margin-top: 10px;
+}
+
+#in_title {
+    margin-top: 30px;
+}
+
+#in_title textarea {
+    font-weight: bold;
+    font-size: 26px;
+    color: #333;
+    width: 900px;
+    border: none;
+    resize: none;
+}
+
+#in_name {
+    margin-top: 30px;
+}
+
+#in_name textarea {
+    font-weight: bold;
+    font-size: 26px;
+    color: #333;
+    width: 900px;
+    border: none;
+    resize: none;
+}
+
+#in_content {
+    margin-top: 10px;
+}
+
+#in_content textarea {
+    font: 14px;
+    color: #333;
+    width: 900px;
+    height: 400px;
+    resize: none;
+}
+
+#in_pw input {
+    font: 14px;
+    margin-top: 10px;
+}
+
+.bt_se {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.bt_se button {
+    width: 100px;
+    height: 30px;
+}
+
+#board_read {
+    width: 900px;
+    position: relative;
+    word-break:break-all;
+}
+
+#user_info {
+    font-size: 14px;
+}
+
+#user_info ul li {
+    float:left;
+    margin-left:10px;
+}
+
+#bo_line {
+    width: 880px;
+    height: 2px;
+    background: gray;
+    margin-top: 20px;
+}
+
+#bo_content {
+    margin-top: 20px;
+}
+
+#bo_ser {
+    font-size: 14px;
+    color: #333;
+    position: absolute;
+    right: 0;
+}
+
+#bo_ser > ul > li {
+    float:left;
+    margin-left: 10px;
+}
