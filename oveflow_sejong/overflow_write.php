@@ -1,48 +1,56 @@
 <!DOCTYPE html>
-    <head>
-        <meta charset="utf-8" />
-        <title>OVERFLOW SEJONG</title>
-        <script src="lib/codemirror.js"></script>
-        <link rel="stylesheet" href="lib/codemirror.css" />
-        <link rel="stylesheet" href="theme/blackboard.css" />
-        <script src="mode/javascript/javascript.js"></script>
-        <script src="mode/css/css.js"></script>
-        <style>
-            body {
-                background-color: #999;
-            }
-        </style>
-    </head>
-    <body>
-        <div id="board-write">
-            <h1>자유게시판</h1>
-            <h4>게시글을 작성하는 공간입니다.</h4>
-            <div id="write-area">
-                <form action="overflow_write_ok.php" method="post">
-                    <div id="in_title">
-                        <textarea name="title", id="utitle", rows="1", cols="55", placeholder="제목(필수)", maxlength="100", required></textarea>
-                    </div>
-                    <div class="wi_line"></div>
-                    <div id="codeeditor"></div>
-                    <div class="wi_line"></div> 
-                    <div id="in_content">
-                        <textarea name="content_2", id="ucontent", placeholder="내용",  style="width:80%; height:200px;", required></textarea>
-                    </div>
-                    <div class="bt_se">
-                        <button type="submit">글 작성</button>
-                    </div>          
-                    <script>
-                        var editor = CodeMirror(document.getElementById("codeeditor"), {
-                            value: "test {\n\tposition: absolute; \n\twidth: 200px; \n\theight: 50px;\n}",
-                            mode: "css",
-                            theme: "blackboard",
-                            tabSize: 4,
-                            indentWithTabs: true,
-                            lineNumbers: true
-                        });
-                    </script>      
-                </form>
-            </div>
+
+<head>
+    <meta charset="utf-8" />
+    <title>OVERFLOW SEJONG</title>
+    <script src="lib/codemirror.js"></script>
+    <link rel="stylesheet" href="lib/codemirror.css" />
+    <link rel="stylesheet" href="theme/blackboard.css" />
+    <script src="mode/javascript/javascript.js"></script>
+    <script src="mode/css/css.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        body {
+            background-color: #999;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="preview-form" method="post" action="overflow_write_ok.php">
+        <div id="in_title">
+            <textarea name="title" , id="utitle" , rows="1" , cols="55" , placeholder="제목(필수)" , maxlength="100" , required></textarea>
         </div>
-    </body>
+        <div class="wi_line"></div>
+        <textarea id="code" name="content_1"></textarea>
+        <textarea class="content_2" name="content_2" id="preview-form-comment">
+            I am a paragraph
+        </textarea>
+        <br />
+        <textarea class="content_tag" name="content_tag" id="content_tag"></textarea>
+        <input type="submit" name="preview-form-submit" id="preiew-form-submit" value="Submit">
+    </form>
+
+    <script>
+        $(document).ready(function() {
+            var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+                mode: "css",
+                theme: "blackboard",
+                tabSize: 4,
+                indentWithTabs: true,
+                lineNumbers: true
+            });
+
+            $("#preview-form").submit(function(e) {
+                var codeValue = editor.getValue();
+
+                $(".code").val() = codeValue;
+
+                if (codeValue.length == 0) alert('void');
+                else alert(codeValue);
+            });
+        });
+    </script>
+</body>
+
 </html>

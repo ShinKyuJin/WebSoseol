@@ -15,6 +15,10 @@
         body {
             background-color: #999;
         }
+        .wi_line {
+            border: solid 1px lightgray;
+            margin-top: 10px;
+        }
     </style>
 </head>
 
@@ -24,6 +28,8 @@
 
     $sql = mq("select * from OVERFLOW_BOARD where contentIdx='" . $index . "'");
     $board = $sql->fetch_array();
+
+    $tagIdx_sql = mq("select tagName from OVERFLOW_BOARD_TAG_RELATION where contentIdx='" . $index . "'");
     ?>
 
     <div id="board_read">
@@ -40,6 +46,16 @@
         <div id="bo_content2">
             <?php echo nl2br(htmlentities("$board[contentTextSecondary]")); ?>
         </div>
+        <div class="wi_line"></div> 
+        <div class="wi_line"></div> 
+        <div id="bo_content_tags">
+            <?php 
+                while($tagIdxes = $tagIdx_sql->fetch_array()){
+                    echo $tagIdxes['tagName'];
+                    echo ' ';
+                }    
+            ?>    
+        <div>
         <div id="bo_ser">
             <ul>
                 <li><a href="board.php">[목록]</a></li>

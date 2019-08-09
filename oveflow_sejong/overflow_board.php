@@ -43,7 +43,7 @@ include "db.php";
             <?php } ?>
         </table>
         <div id="write-btn">
-            <a href="form.php"><button>글쓰기</button></a>
+            <a href="overflow_write.php"><button>글쓰기</button></a>
         </div>
     </div>
 </body>
