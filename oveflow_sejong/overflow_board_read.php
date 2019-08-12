@@ -51,14 +51,14 @@
         <div id="bo_content_tags">
             <?php 
                 while($tagIdxes = $tagIdx_sql->fetch_array()){
-                    echo $tagIdxes['tagName'];
-                    echo ' ';
-                }    
-            ?>    
-        <div>
+            ?>
+                    <a href="overflow_board_sortbytag.php?tname=<?php echo $tagIdxes['tagName']; ?>">
+                    <?php echo $tagIdxes['tagName']; ?></a>
+            <?php } ?>
+        </div>
         <div id="bo_ser">
             <ul>
-                <li><a href="board.php">[목록]</a></li>
+                <li><a href="overflow_board.php">[목록]</a></li>
                 <li><a href="modify.php?idx=<?php echo $board['contentIdx']; ?>">[수정]</a></li>
                 <li><a href="delete.php?idx=<?php echo $board['contentIdx']; ?>">[삭제]</a></li>
             </ul>

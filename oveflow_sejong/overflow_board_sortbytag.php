@@ -24,8 +24,12 @@
                 </tr>
             </thead>
             <?php
-            $osql = mq("select * from OVERFLOW_BOARD where contentIsRoot = 1 order by contentIdx desc");
-            while ($board = $osql->fetch_array()) {
+            $tag_name = $_GET['tname'];
+            $sql = mq("select contentIdx from OVERFLOW_BOARD_TAG_RELATION where tagName = '$tag_name'");
+            while ($cidx = $sql->fetch_array()) {
+                $osql = mq("select * from OVERFLOW_BOARD where contentIdx = '$cidx[contentIdx]'");
+                $board = $osql->fetch_array();
+                
                 $title = $board["contentTitle"];
                 if (strlen($title) > 30) {
                     $title = str_replace($board["contentTitle"], mb_substr($board["contentTitle"], 0, 30, "utf-8") . "...", $board["contentTitle"]);
