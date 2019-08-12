@@ -12,7 +12,7 @@
       include "db.php";
       $stmt = mq('SELECT * FROM LISTOFBOARD');
       while($row = mysqli_fetch_array($stmt)):
-        $link = "boardIdx.php?bi=".$row['categoryIdx'];
+        $link = "boardIdx.php?ci=".$row['categoryIdx'];
      ?>
      <div class="container">
      <a href="<?php echo $link; ?>"><?php echo $row['boardSubject']; ?></a>

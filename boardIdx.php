@@ -1,6 +1,6 @@
 <?php
   include "db.php";
-  $categoryIdx = re('bi','get');
+  $categoryIdx = re('ci','get');
   $boardSubject = mysqli_fetch_array(mq("SELECT * FROM LISTOFBOARD WHERE categoryIdx='$categoryIdx'"));
   $stmt = mq("SELECT * FROM BOARD WHERE categoryIdx='$categoryIdx'");
  ?>
@@ -26,7 +26,7 @@
           while($row = mysqli_fetch_array($stmt)) :
             $boardIdx = $row['boardIdx'];
             $commentCnt = mq("SELECT * FROM COMMENT_BOARD WHERE boardIdx='$boardIdx'");
-            $link = "board.php?bi=".$row['boardIdx'];
+            $link = "board.php?bi=".$row['boardIdx']."&ci=".$categoryIdx;
             $boardDate = substr($row['boardDate'],0,10) == date('Y-m-d') ? substr($row['boardDate'],10,8) : substr($row['boardDate'],0,10);
          ?>
          <tr>

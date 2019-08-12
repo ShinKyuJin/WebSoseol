@@ -25,7 +25,8 @@
       <div class="boardTitle"><h2><?php echo $board['boardTitle'] ?></h2></div>
       <div class="boardWriter"><?php echo $board['boardWriter']; ?></div><hr>
       <div class="boardContent"><?php echo nl2br($board['boardContent']); ?></div><hr>
-
+      <div class="boardFile"><?php echo $board['boardFile']; ?></div><hr>
+      <a href="deleteBoard.php?bi=<?php echo $board['boardIdx']; ?>&ci=<?php echo $board['categoryIdx']; ?>" action = "alert('hello');"style="float:right;">삭제</a>
       <textarea rows="3" cols="80" class="commentContent"></textarea>
       <button type="button" class="commentButton">작성</button>
 

@@ -24,9 +24,9 @@ $(document).on('click','.makeBtn',function() {
       console.log('fail');
     }
   });
-
   var element = "<div class='Card reply'>" + "<div class='replyWriter'>" + userName + "</div>" + "<div class='replyContent'>" + content + "</div>" + "<div class='replyDate'>" + dateString + "</div></div>";
   $(this).parent().parent().append(element);
+  $(this).parent().children('.content').val('');
 });
 
 $('.commentButton').click(function() {
@@ -45,6 +45,7 @@ $('.commentButton').click(function() {
         replySourceIdx = json.res;
         var element = "<div class='ONE'><div class='Card " + replySourceIdx + "'>" + "<div class='commentWriter'>" + userName + "</div>" + "<div class='commentContent'>" + content + "</div>" + "<div class='commentDate'>" + dateString + "</div></div>" + "<div class='createReply " + replySourceIdx + "'>" + "<input type='text' class='content'>" + "<div class='makeBtn' style='width:40px;'>작성</div></div>";
         $('.commentZone').append(element);
+        $('.commentContent').val('');
       }
     },
     error:function() {

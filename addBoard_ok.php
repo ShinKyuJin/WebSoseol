@@ -8,6 +8,8 @@
   $boardFile = re('boardFile','post');
   $boardDate = date('Y-m-d H:i:s');
 
+
+
   $sql = "INSERT INTO BOARD(
     categoryIdx,
     boardTitle,
@@ -23,7 +25,7 @@
     '$boardFile',
     '$boardDate'
   )";
-  $link = 'boardIdx.php?bi='.$categoryIdx;
+  $link = 'boardIdx.php?ci='.$categoryIdx;
   if($stmt = mq($sql)) {
     header("Location:$link");
   }

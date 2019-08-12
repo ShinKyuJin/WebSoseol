@@ -1,0 +1,82 @@
+.container{
+  margin-top: 80px;
+}
+.tab_menu{
+  width: 1110px;
+  line-height: 22.5px;
+  overflow: hidden;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #990e17;
+  padding: 0px;
+}
+.tab_menu ul{
+  height: auto;
+}
+.tab_menu li a{
+  width: auto;
+  height: auto;
+}
+.tab_menu ul li a{
+  display: block;
+  float: left;
+  overflow: auto;
+  padding: 13px 45px;
+  border: 1px solid #dfdfdf;
+  border-bottom: none;
+  font-size: 18px;
+  letter-spacing: -1px;
+  margin-top: 5px;
+  margin-right: -1px;
+}
+.tab_menu ul li a:hover{
+  background-color: #990e17;
+  color: white;
+  text-decoration-line: none;
+}
+form{
+  border-top: 2px solid #990e17;
+  border-bottom: 2px solid #990e17;
+  height: auto;
+}
+.writing th {
+  width: 200px;
+  border-bottom: 1px solid #e1e1e1;
+  background: #f4f5f9;
+  font-size: 15px;
+  color: #222;
+  text-align: center;
+  letter-spacing: -1px;
+}
+.writing td {
+height: 36px;
+padding: 9px 10px;
+border-bottom: 1px solid #e1e1e1;
+line-height: 36px;
+resize: none;
+}
+#ckeditor{
+}
+input[type=text]{
+border-radius: 0px;
+}
+input[type=file]{
+border: 1px solid #e1e1e1;
+width: 100%;
+background-color: white;
+}
+.fileName{
+border: 1px solid #990e17;
+background-color: white;
+}
+.buttonBox input[type=submit]{
+margin-top: 50px;
+width: 75px;
+height: 45px;
+background-color: white;
+border: 1px solid #990e17;
+color: black;
+}
+.buttonBox input[type=submit]:hover{
+background-color: #990e17;
+color: white;
+}

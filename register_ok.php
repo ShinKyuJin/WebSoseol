@@ -11,13 +11,11 @@
 
   $hashPassword = password_hash($userPassword,PASSWORD_DEFAULT);
 
-  $stmt = mq("INSERT INTO USERPROFILE(userID,userPassword,userEmail,userBirth,userGrant,userPoint,userName,userMajor,userStudentID) VALUES(
+  $stmt = mq("INSERT INTO USERPROFILE(userID,userPassword,userEmail,userBirth,userName,userMajor,userStudentID) VALUES(
     '$userID',
     '$hashPassword',
     '$userEmail',
     '$userBirth',
-    '',
-    '',
     '$userName',
     '$userMajor',
     '$userStudentID'
