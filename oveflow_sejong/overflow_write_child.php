@@ -23,11 +23,11 @@
         </div>
         <div class="wi_line"></div>
         <textarea id="code" name="content_1"></textarea>
-        <textarea class="content_2" name="content_2" id="preview-form-comment", placeholder="질문 작성"></textarea>
+        <textarea class="content_2" name="content_2" id="preview-form-comment", placeholder="질문 혹은 답변 작성"></textarea>
         <br />
         <textarea class="content_tag" name="content_tag" id="content_tag" placeholder="태그 삽입"></textarea>
-        <input type="hidden" name="root" value="true">
-        <input type="hidden" name="rootIdx" value="0">
+        <input type="hidden" name="root" value="false">
+        <input type="hidden" name="rootIdx" value="<?php echo $index; ?>">
         <input type="submit" name="preview-form-submit" id="preiew-form-submit" value="Submit">
     </form>
 

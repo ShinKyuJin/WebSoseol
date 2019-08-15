@@ -50,22 +50,43 @@
     $content2 = $_POST['content_2'];
     $contentTags = $_POST['content_tag'];
 
+    $isRoot = $_POST['root'];
+    $rootIdx = $_POST['rootIdx'];
+
     $title = $_POST['title'];
     if($title == '') die();
 
     $date = date('Y-m-d h:m:s');
-    $sql = mq("INSERT INTO OVERFLOW_BOARD (contentWriter, contentTitle, contentCategoryNo,
-    contentTextPrimary, contentTextSecondary, contentTextTags, contentWriteDateTime, contentIsRoot, contentIsQuestion) 
-    values (
-        'admin',
-        '$title',
-        -1,
-        '$content',
-        '$content2',
-        '$contentTags',
-        '$date',
-        true,
-        true)");
+
+    if($isRoot == 1){
+        $sql = mq("INSERT INTO OVERFLOW_BOARD (contentWriter, contentTitle, contentCategoryNo,
+        contentTextPrimary, contentTextSecondary, contentTextTags, contentWriteDateTime, contentIsRoot, contentIsQuestion, contentRootIdx) 
+        values (
+            'admin',
+            '$title',
+            -1,
+            '$content',
+            '$content2',
+            '$contentTags',
+            '$date',
+            '$isRoot',
+            true,
+            0)");
+    } else {
+        $sql = mq("INSERT INTO OVERFLOW_BOARD (contentWriter, contentTitle, contentCategoryNo,
+        contentTextPrimary, contentTextSecondary, contentTextTags, contentWriteDateTime, contentIsRoot, contentIsQuestion, contentRootIdx) 
+        values (
+            'admin',
+            '$title',
+            -1,
+            '$content',
+            '$content2',
+            '$contentTags',
+            '$date',
+            '$isRoot',
+            true,
+            $rootIdx)");
+    }
 
     $contentIdx = $db->insert_id;
 
@@ -73,4 +94,5 @@
 
     if($sql) echo 'suc';
     else echo mysqli_error($con);
+    
 ?>

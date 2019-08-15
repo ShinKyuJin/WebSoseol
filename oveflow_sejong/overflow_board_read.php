@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="lib/codemirror.css" />
     <link rel="stylesheet" href="theme/blackboard.css" />
     <script src="mode/javascript/javascript.js"></script>
+    <script src="mode/css/css.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <style>
         body {
@@ -56,8 +57,25 @@
                     <?php echo $tagIdxes['tagName']; ?></a>
             <?php } ?>
         </div>
+
+        <?php
+        
+        $sql = mq("select * from OVERFLOW_BOARD where contentRootIdx='" . $index . "'");
+
+        $iterator = 1;
+
+        while($reboard = $sql->fetch_array()) {
+            $reindex = $reboard['contentIdx'];
+            $retagIdx_sql = mq("select tagName from OVERFLOW_BOARD_TAG_RELATION where contentIdx='" . $reindex . "'");
+            
+            include "overflow_board_read_re.php";        
+            $iterator++;
+        }
+        ?>
+
         <div id="bo_ser">
             <ul>
+                <?php include "overflow_write_child.php"; ?>
                 <li><a href="overflow_board.php">[목록]</a></li>
                 <li><a href="modify.php?idx=<?php echo $board['contentIdx']; ?>">[수정]</a></li>
                 <li><a href="delete.php?idx=<?php echo $board['contentIdx']; ?>">[삭제]</a></li>
