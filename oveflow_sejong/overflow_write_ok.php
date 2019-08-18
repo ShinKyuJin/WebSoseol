@@ -69,7 +69,7 @@
             '$content2',
             '$contentTags',
             '$date',
-            '$isRoot',
+            $isRoot,
             true,
             0)");
     } else {
@@ -83,7 +83,7 @@
             '$content2',
             '$contentTags',
             '$date',
-            '$isRoot',
+            $isRoot,
             true,
             $rootIdx)");
     }

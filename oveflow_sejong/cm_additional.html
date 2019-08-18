@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>OVERFLOW SEJONG</title>
+    <script src="../lib/codemirror.js"></script>
+    <link rel="stylesheet" href="../lib/codemirror.css" />
+
+    <!-- Editor Themes -->
+    <link rel="stylesheet" href="../theme/3024-day.css">
+    <link rel="stylesheet" href="../theme/3024-night.css">
+    <link rel="stylesheet" href="../theme/abcdef.css">
+    <link rel="stylesheet" href="../theme/ambiance.css">
+    <link rel="stylesheet" href="../theme/base16-dark.css">
+    <link rel="stylesheet" href="../theme/bespin.css">
+    <link rel="stylesheet" href="../theme/base16-light.css">
+    <link rel="stylesheet" href="../theme/blackboard.css">
+    <link rel="stylesheet" href="../theme/cobalt.css">
+    <link rel="stylesheet" href="../theme/colorforth.css">
+    <link rel="stylesheet" href="../theme/dracula.css">
+    <link rel="stylesheet" href="../theme/duotone-dark.css">
+    <link rel="stylesheet" href="../theme/duotone-light.css">
+    <link rel="stylesheet" href="../theme/eclipse.css">
+    <link rel="stylesheet" href="../theme/elegant.css">
+    <link rel="stylesheet" href="../theme/erlang-dark.css">
+    <link rel="stylesheet" href="../theme/hopscotch.css">
+    <link rel="stylesheet" href="../theme/icecoder.css">
+    <link rel="stylesheet" href="../theme/isotope.css">
+    <link rel="stylesheet" href="../theme/lesser-dark.css">
+    <link rel="stylesheet" href="../theme/liquibyte.css">
+    <link rel="stylesheet" href="../theme/material.css">
+    <link rel="stylesheet" href="../theme/mbo.css">
+    <link rel="stylesheet" href="../theme/mdn-like.css">
+    <link rel="stylesheet" href="../theme/midnight.css">
+    <link rel="stylesheet" href="../theme/monokai.css">
+    <link rel="stylesheet" href="../theme/neat.css">
+    <link rel="stylesheet" href="../theme/neo.css">
+    <link rel="stylesheet" href="../theme/night.css">
+    <link rel="stylesheet" href="../theme/panda-syntax.css">
+    <link rel="stylesheet" href="../theme/paraiso-dark.css">
+    <link rel="stylesheet" href="../theme/paraiso-light.css">
+    <link rel="stylesheet" href="../theme/pastel-on-dark.css">
+    <link rel="stylesheet" href="../theme/railscasts.css">
+    <link rel="stylesheet" href="../theme/rubyblue.css">
+    <link rel="stylesheet" href="../theme/seti.css">
+    <link rel="stylesheet" href="../theme/solarized.css">
+    <link rel="stylesheet" href="../theme/the-matrix.css">
+    <link rel="stylesheet" href="../theme/tomorrow-night-bright.css">
+    <link rel="stylesheet" href="../theme/tomorrow-night-eighties.css">
+    <link rel="stylesheet" href="../theme/ttcn.css">
+    <link rel="stylesheet" href="../theme/twilight.css">
+    <link rel="stylesheet" href="../theme/vibrant-ink.css">
+    <link rel="stylesheet" href="../theme/xq-dark.css">
+    <link rel="stylesheet" href="../theme/xq-light.css">
+    <link rel="stylesheet" href="../theme/yeti.css">
+    <link rel="stylesheet" href="../theme/zenburn.css">
+
+    <!-- Editor Modes -->
+    <script src="../mode/javascript/javascript.js"></script>
+    <script src="../mode/css/css.js"></script>
+    <script src="../mode/clike/clike.js"></script>
+    <script src="../mode/python/python.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        body {
+            background-color: #999;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <select id="theme">
+                <option selected>default</option>
+                <option>3024-day</option>
+                <option>3024-night</option>
+                <option>abcdef</option>
+                <option>ambiance</option>
+                <option>base16-dark</option>
+                <option>base16-light</option>
+                <option>bespin</option>
+                <option>blackboard</option>
+                <option>cobalt</option>
+                <option>colorforth</option>
+                <option>dracula</option>
+                <option>duotone-dark</option>
+                <option>duotone-light</option>
+                <option>eclipse</option>
+                <option>elegant</option>
+                <option>erlang-dark</option>
+                <option>hopscotch</option>
+                <option>icecoder</option>
+                <option>isotope</option>
+                <option>lesser-dark</option>
+                <option>liquibyte</option>
+                <option>material</option>
+                <option>mbo</option>
+                <option>mdn-like</option>
+                <option>midnight</option>
+                <option>monokai</option>
+                <option>neat</option>
+                <option>neo</option>
+                <option>night</option>
+                <option>panda-syntax</option>
+                <option>paraiso-dark</option>
+                <option>paraiso-light</option>
+                <option>pastel-on-dark</option>
+                <option>railscasts</option>
+                <option>rubyblue</option>
+                <option>seti</option>
+                <option>solarized dark</option>
+                <option>solarized light</option>
+                <option>the-matrix</option>
+                <option>tomorrow-night-bright</option>
+                <option>tomorrow-night-eighties</option>
+                <option>ttcn</option>
+                <option>twilight</option>
+                <option>vibrant-ink</option>
+                <option>xq-dark</option>
+                <option>xq-light</option>
+                <option>yeti</option>
+                <option>zenburn</option>
+            </select>
+        </li>
+        <li>
+            <select id="mode">
+                <option selected>javascript</option>
+                <option>python</option>
+                <option>C</option>
+                <option>C++</option>
+                <option>java</option>
+            </select>
+        </li>
+    </ul>
+
+    <form id="preview-form" method="post" action="overflow_write_ok.php">
+        <div id="in_title">
+            <textarea name="title" , id="utitle" , rows="1" , cols="55" , placeholder="제목(필수)" , maxlength="100" , required></textarea>
+        </div>
+        <div class="wi_line"></div>
+        <textarea id="code" name="content_1"></textarea>
+        <textarea class="content_2" name="content_2" id="preview-form-comment", placeholder="질문 혹은 답변 작성"></textarea>
+        <br />
+        <textarea class="content_tag" name="content_tag" id="content_tag" placeholder="태그 삽입"></textarea>
+        <input type="hidden" name="root" value="false">
+        <input type="hidden" name="rootIdx" value="0">
+        <input type="submit" name="preview-form-submit" id="preiew-form-submit" value="Submit">
+    </form>
+
+    <script>
+        $(document).ready(function() {
+            var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+                mode: "javascript",
+                theme: "default",
+                tabSize: 4,
+                indentWithTabs: true,
+                lineNumbers: true
+            });
+
+            $("#preview-form").submit(function(e) {
+                var codeValue = editor.getValue();
+
+                $(".code").val() = codeValue;
+
+                if (codeValue.length == 0) alert('void');
+                else alert(codeValue);
+            });
+
+            // Theme Selection
+            var selTheme = document.getElementById("theme");
+            selTheme.addEventListener("input",selectTheme);
+
+            function selectTheme() {
+                var theme = selTheme.options[selTheme.selectedIndex].textContent;
+                localStorage.setItem("theme",theme);
+                editor.setOption("theme", theme);
+                // location.hash = "#" + theme;
+            }
+
+            var selMode = document.getElementById("mode");
+            selMode.addEventListener("input",selectMode);
+            function selectMode() {
+                var mode = selMode.options[selMode.selectedIndex].textContent;
+                if(mode == "C") {
+                    mode = "text/x-csrc";
+                } else if (mode == "C++") {
+                    mode = "text/x-c++src";
+                } else if (mode == "java") {
+                    mode = "text/x-java";
+                }
+                localStorage.setItem("mode",mode);
+                editor.setOption("mode", mode);
+            }
+        });
+    </script>
+</body>
+
+</html>
