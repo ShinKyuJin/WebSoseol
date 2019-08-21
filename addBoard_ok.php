@@ -1,14 +1,12 @@
 <?php
   include "db.php";
 
-  $categoryIdx = re('categoryIdx','post');
+  $categoryIdx = re('categoryIdx','get');
   $boardTitle = re('boardTitle','post');
-  $boardWriter = re('boardWriter','post');
+  $boardWriter = $_SESSION['userID'];
   $boardContent = re('boardContent','post');
   $boardFile = re('boardFile','post');
   $boardDate = date('Y-m-d H:i:s');
-
-
 
   $sql = "INSERT INTO BOARD(
     categoryIdx,

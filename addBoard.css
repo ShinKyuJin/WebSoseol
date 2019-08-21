@@ -48,11 +48,12 @@ form{
   letter-spacing: -1px;
 }
 .writing td {
-height: 36px;
-padding: 9px 10px;
-border-bottom: 1px solid #e1e1e1;
-line-height: 36px;
-resize: none;
+  width: 1020px;
+  height: 36px;
+  padding: 9px 10px;
+  border-bottom: 1px solid #e1e1e1;
+  line-height: 36px;
+  resize: none;
 }
 #ckeditor{
 }

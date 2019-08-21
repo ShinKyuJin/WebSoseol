@@ -12,15 +12,18 @@
       <div class="tab_menu">
         <ul style="height: auto;">
           <?php
-            include "db.php";
-            $stmt = mq("SELECT * FROM LISTOFBOARD");
-            while($row = mysqli_fetch_array($stmt)) {
-              echo "<li><a href='boardIdx.php?ci=".$row['categoryIdx']."'>".$row['boardSubject'].'</a></li>';
-            }
-           ?>
+          include "db.php";
+          $link = mq("SELECT * FROM LISTOFBOARD");
+          while($linkRow = mysqli_fetch_array($link)) : ?>
+          <li ><a href="boardIdx.php?ci=<?php echo $linkRow['categoryIdx']; ?>"
+            <?php
+            if($linkRow['categoryIdx'] == $_GET['ci']) echo "style='background-color:#990e17;color:white;'";
+
+             ?>><?php echo $linkRow['boardSubject']; ?></a></li>
+          <?php endwhile; ?>
         </ul>
       </div>
-      <form class="" action="addBoard_ok.php" method="post" style="width: 100%;">
+      <form class="" action="addBoard_ok.php?ci=<?php echo $linkRow['categoryIdx']; ?>" method="post" style="width: 100%;">
         <table class="writing">
           <tbody>
             <tr class="form-group">
@@ -40,7 +43,7 @@
             <tr class="md-form">
                <th scope="row">파일첨부</th>
                <td colspan="3">
-                 <input type="file" name="fileName">
+                 <input type="file" name="boardFile">
                </td>
              </th>
            </tbody>
