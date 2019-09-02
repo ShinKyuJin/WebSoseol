@@ -1,223 +1,227 @@
-.mySlides{
-  display: none;
+body{
+  margin: 0;
+  padding: 0;
 }
-.form-popup{
-box-shadow: 10px 10px 10px #404040;
-position: relative;
-height: 350px;
-width: 500px;
-margin-top: 150px;
-margin-left: 700px;
-text-align: middle;
-transition: background-color 0.6s ease;
-background-color: white;
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+.slidershow{
+  width: 600px;
+  height: 400px;
+  overflow: hidden;
+}
+.middle{
+  position: absolute;
+  top: 400px;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  box-shadow : rgba(0,0,0,0.5) 0 0 0 9999px;
+  z-index : 100;
+}
+.navigation{
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+.bar{
+  width: 50px;
+  height: 10px;
+  border: 2px solid #990e17;;
+  margin: 6px;
+  cursor: pointer;
+  display: inline-block;
+  background-color: white;
+  transition: 0.4s ease;
+}
+.bar:hover{
+  background-color: #990e17;
+}
+.active{
+  background-color: #990e17;
+}
+
+input[name="r"]{
+    position: absolute;
+    visibility: hidden;
+}
+.slides{
+  width: 700%;
+  height: 100%;
+  display: flex;
+}
+.slide{
+  width: 14.3%;
+  transition: 0.6s;
 }
 .form-container{
+  width: 100%;
+  height: 100%;
   text-align: center;
 }
 .form-container label[for="register"]{
-  font-size: 30px;
+  font-size: 35px;
+  font-family: 'Hanna',sans-serif;
   position: relative;
-  top: 5px;
+  top: 15px;
 }
 .form-container label[for="userName"]{
-  font-size: 25px;
+  font-size: 29px;
   position: relative;
-  top: 35px;
+  top: 47px;
 }
 .form-container input[type=text] {
   width: 70%;
   position: relative;
-  top: 50px;
+  top: 85px;
   padding: 15px;
-  border: none;
-  background: #f1f1f1;
+  border: 0.5px solid black;
+  background: white;
 }
-.w3-container{
-  position: relative;
-  top: 45px;
-  left: 685px;
-}
-.w3-light-grey{
-  height: 24px;
-  width: 500px;
-}
-#progressbar1{
-  height: 24px;
-  width: 14.3%;
-}
-
 .form-container label[for="userBirth"]{
-  font-size: 25px;
+  font-size: 29px;
   position: relative;
-  top: 35px;
+  top: 47px;
 }
 .form-container input[type=date] {
   width: 70%;
   position: relative;
-  top: 50px;
+  top: 85px;
   padding: 15px;
-  border: none;
-  background: #f1f1f1;
+  border: 0.5px solid black;
+  background: white;
 }
-#progressbar2{
-  height: 24px;
-  width: 28.6%;
-}
-
 .form-container label[for="userID"]{
-  font-size: 25px;
+  font-size: 29px;
   position: relative;
-  top: 35px;
+  top: 47px;
 }
-.form-container input[type=text] {
-  width: 70%;
-  position: relative;
-  top: 50px;
-  padding: 15px;
-  border: none;
-  background: #f1f1f1;
-}
-#progressbar3{
-  height: 24px;
-  width: 42.9%;
-}
-
 .form-container label[for="userPassword1"]{
   font-size: 25px;
   position: relative;
-  top: 10px;
+  top: 47px;
 }
 .form-container input[name=userPassword1] {
   width: 70%;
   position: relative;
-  top: 25px;
+  top: 60px;
   padding: 15px;
-  border: none;
-  background: #f1f1f1;
+  border: 0.5px solid black;
+  background: white;
 }
-#progressbar4{
-  height: 24px;
-  width: 57.2%;
-}
-
 .form-container label[for="userPassword2"]{
   font-size: 25px;
   position: relative;
-  top: 40px;
+  top: 73px;
 }
 .form-container input[name=userPassword2] {
   width: 70%;
   position: relative;
-  top: 55px;
+  top: 83px;
   padding: 15px;
-  border: none;
-  background: #f1f1f1;
+  border: 0.5px solid black;
+  background: white;
 }
-#progressbar5{
-  height: 24px;
-  width: 71.5%;
-}
-
 .form-container label[for="userEmail"]{
-  font-size: 25px;
+  font-size: 29px;
   position: relative;
-  top: 35px;
+  top: 47px;
 }
 .form-container input[type=email] {
   width: 70%;
   position: relative;
-  top: 50px;
+  top: 85px;
   padding: 15px;
-  border: none;
-  background: #f1f1f1;
-}
-#progressbar6{
-  height: 24px;
-  width: 85.8%;
+  border: 0.5px solid black;
+  background: white;
 }
 .form-container label[for="userMajor"]{
-  font-size: 25px;
+  font-size: 29px;
   position: relative;
-  top: 35px;
+  top: 47px;
 }
 select {
   width: 70%;
   position: relative;
-  top: 50px;
+  top: 85px;
   padding: 15px;
-  border: none;
-  background: #f1f1f1;
+  border: 0.5px solid black;
+  background: white;
 }
 .form-container label[for="userStudentID"]{
-  font-size: 25px;
+  font-size: 29px;
   position: relative;
-  top: 35px;
-}
-.form-container input[type=text] {
-  width: 70%;
-  position: relative;
-  top: 50px;
-  padding: 15px;
-  border: none;
-  background: #f1f1f1;
+  top: 47px;
 }
 .form-container input[type=submit] {
-  width: 80px;
+  width: 85px;
   height: 45px;
   position: relative;
-  top: 90px;
-  padding: 15px;
+  font-size: 16px;
+  color: white;
   border: none;
-  background: lightgray;
-  font-size: 13px;
+  top: 120px;
+  padding: 9px;
+  border-radius: 5px;
+  background: #990e17;
 }
-#progressbar7{
-  height: 24px;
-  width: 100%;
+#r1:checked ~ .s1{
+  margin-left: 0;
 }
-
+#r2:checked ~ .s1{
+  margin-left: -14.3%;
+}
+#r3:checked ~ .s1{
+  margin-left: -28.6%;
+}
+#r4:checked ~ .s1{
+  margin-left: -42.9%;
+}
+#r5:checked ~ .s1{
+  margin-left: -57.2%;
+}
+#r6:checked ~ .s1{
+  margin-left: -71.5%;
+}
+#r7:checked ~ .s1{
+  margin-left: -85.8%;
+}
 .prev{
   cursor: pointer;
   display: inline;
   position: relative;
-  top: -220px;
-  left: 700px;
+  top: -240px;
+  left: 0px;
   padding: 16px;
-  color: black;
+  color:  black;
   font-weight: bold;
   font-size: 18px;
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
   user-select: none;
 }
-
 .next {
   cursor: pointer;
   display: inline-block;
   position: relative;
-  top: -220px;
-  left: 1110px;
+  top: -240px;
+  left: 510px;
   padding: 16px;
-  color: black;
+  color:  black;
   font-weight: bold;
   font-size: 18px;
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
   user-select: none;
 }
-
 .prev:hover, .next:hover {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.1);
 }
-
 .fade {
   -webkit-animation-name: fade;
   -webkit-animation-duration: 1.5s;
   animation-name: fade;
   animation-duration: 1.5s;
 }
-
 @-webkit-keyframes fade {
   from {opacity: .4}
   to {opacity: 1}
@@ -227,7 +231,21 @@ select {
   from {opacity: .4}
   to {opacity: 1}
 }
-
 @media only screen and (max-width: 300px) {
   .prev, .next,.text {font-size: 11px}
+}
+.error{
+  position: relative;
+  animation: shake 0.5s;
+}
+@keyframes shake{
+  0%,100%{
+    left:0px;
+  }
+  20%,80%{
+    left:-15px;
+  }
+  40%,60%{
+    left:15px;
+  }
 }

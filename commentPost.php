@@ -19,11 +19,8 @@
     '$commentDateTime'
   )");
 
-  $row = mysqli_fetch_array(mq("SELECT MAX(commentIdx) FROM COMMENT_BOARD"));
-  $replySourceIdx = $row[0];
-
   if($stmt) {
-    echo json_encode(array("res"=>$replySourceIdx));
+    echo json_encode(array("res"=>"suc"));
   }
   else {
     echo json_encode(array("res"=>"fail"));

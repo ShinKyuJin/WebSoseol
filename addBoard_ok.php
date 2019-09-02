@@ -1,9 +1,9 @@
 <?php
   include "db.php";
 
-  $categoryIdx = re('categoryIdx','get');
+  $categoryIdx = re('categoryIdx','post');
   $boardTitle = re('boardTitle','post');
-  $boardWriter = $_SESSION['userID'];
+  $boardWriter = re('userID','post');
   $boardContent = re('boardContent','post');
   $boardFile = re('boardFile','post');
   $boardDate = date('Y-m-d H:i:s');

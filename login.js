@@ -1,5 +1,5 @@
-var userID = $('.userID');
-var userPassword = $('.userPassword');
+var userID = $('#userID');
+var userPassword = $('#userPassword');
 var loginComment = $('.loginComment');
 var loginBtn = $('.loginBtn');
 loginBtn.click(function() {
@@ -7,13 +7,13 @@ loginBtn.click(function() {
     type:'post',
     dataType:'json',
     url:'login_ok.php',
-    data:{userID:userID.val(),userPassword:userPassword.val()},
+    data:{userID1:userID.val(),userPassword1:userPassword.val()},
     success:function(json) {
       if(json.res == 'suc') {
         location.href = 'index.php';
       }
       else {
-        loginComment.text('아이디나 비밀번호가 틀렸습니다.');
+        loginComment.text(json.res);
         loginComment.css('color','red');
         loginComment.css('margin-left','125px');
         loginComment.css('font-size','16px');

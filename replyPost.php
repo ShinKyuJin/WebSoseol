@@ -27,6 +27,6 @@
     echo json_encode(array("res"=>"suc"));
   }
   else {
-    echo json_encode(array("res"=>"unlogged"));
+    echo json_encode(array("res"=>"fail"));
   }
  ?>

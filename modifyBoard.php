@@ -1,4 +1,6 @@
-<?php session_start();?>
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -24,20 +26,25 @@
           <?php endwhile; ?>
         </ul>
       </div>
-      <form class="" action="addBoard_ok.php?ci=<?php echo $linkRow['categoryIdx']; ?>" method="post" style="width: 100%;">
+      <form class="" action="modifyBoard_ok.php?ci=<?php echo $linkRow['categoryIdx']; ?>" method="post" style="width: 100%;">
         <table class="writing">
           <tbody>
+            <?php
+              $boardIdx = re('bi','get');
+              $value = mysqli_fetch_array(mq("SELECT boardTitle,boardContent FROM BOARD WHERE boardIdx='$boardIdx'"));
+             ?>
             <tr class="form-group">
               <th scope="row">제목</th>
               <td colspan="3">
-                <input type="text" name="boardTitle" class="form-control" placeholder="제목" >
+                <input type="text" name="boardTitle3" class="form-control" placeholder="제목" value="<?php echo $value['boardTitle']; ?>">
               </td>
             </th>
 
            <tr class="md-form">
               <th scope="row">내용</th>
               <td colspan="3">
-                <textarea name="boardContent" id="ckeditor" style="resize: none; border: 1px solid #e1e1e1;"></textarea>
+
+                <textarea name="boardContent3" id="ckeditor" style="resize: none; border: 1px solid #e1e1e1;"><?php echo $value['boardContent']; ?></textarea>
               </td>
             </th>
 
@@ -51,9 +58,9 @@
          </table>
 
          <div class="buttonBox">
-           <input type="hidden" name="categoryIdx" value="<?php echo re('ci','get'); ?>">
-           <input type="hidden" name="userID" value="<?php echo $_SESSION['userID']; ?>">
-           <input type="submit" name="" value="저장" style="float:right;" class="buttons">
+           <input type="hidden" name="categoryIdx3" value="<?php echo re('ci','get'); ?>">
+           <input type="hidden" name="boardIdx3" value="<?php echo re('bi','get'); ?>">
+           <input type="submit" name="" value="저장" style="float:right;" class="buttons submitBtn">
          </div>
        </form>
      </div>

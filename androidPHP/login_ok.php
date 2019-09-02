@@ -1,7 +1,7 @@
 <?php
   include "../db.php";
-  $userID = $_POST['userID'];
-  $userPassword = $_POST['userPassword'];
+  $userID = $_POST['userID2'];
+  $userPassword = $_POST['userPassword2'];
   $stmt = mq("SELECT * FROM USERPROFILE WHERE userID='$userID'");
   if($stmt) {
     $row = mysqli_fetch_array($stmt);

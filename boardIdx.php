@@ -50,7 +50,7 @@
             while($row = mysqli_fetch_array($stmt)) :
               $boardIdx = $row['boardIdx'];
               $commentCnt = mq("SELECT * FROM COMMENT_BOARD WHERE boardIdx='$boardIdx'");
-              $link = "board.php?bi=".$row['boardIdx'];
+              $link = "board.php?bi=".$row['boardIdx']."&ci=".$categoryIdx;
               $boardDate = substr($row['boardDate'],0,10) == date('Y-m-d') ? substr($row['boardDate'],10,8) : substr($row['boardDate'],0,10);
            ?>
            <tr>
@@ -61,8 +61,13 @@
            </tr>
          <?php endwhile; ?>
         </table>
+        <?php
+        if(isset($_SESSION['userID'])) :
+         ?>
         <div class="submit"><a href="addBoard.php?ci=<?php echo $categoryIdx; ?>">글쓰기</a></div>
+      <?php endif; ?>
       </div>
+    </div>
   <?php include "footer.php"; ?>
   </body>
   <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js" ></script>

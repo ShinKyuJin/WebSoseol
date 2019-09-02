@@ -17,4 +17,8 @@
   function getUserID() {
     return $_SESSION['userID'];
   }
+  function getErrorMsg() {
+    global $con;
+    return mysqli_error($con);
+  }
  ?>

@@ -13,7 +13,7 @@
 
   $stmt = mq("INSERT INTO USERPROFILE(userID,userPassword,userEmail,userBirth,userName,userMajor,userStudentID) VALUES(
     '$userID',
-    '$hashPassword',
+    '$userPassword',
     '$userEmail',
     '$userBirth',
     '$userName',
