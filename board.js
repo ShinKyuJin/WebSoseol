@@ -23,14 +23,17 @@ $('.commentMakeBtn').click(function() {
   var commentWriter = $('.userID').val();
   var commentContent = $('.commentContent').val();
   var commentDateTime = "방금 전";
+  var replySourceIdx = null;
   $.ajax({
     type:'post',
     dataType:'json',
     url:'commentPost.php',
+    async:false,
     data:{commentWriter:commentWriter,commentContent:commentContent,boardIdx:boardIdx},
     success:function(json) {
-      if(json.res == 'suc') {
+      if(json.res != 'fail') {
         console.log(json.res);
+        replySourceIdx = json.res;
       }
       else {
         console.log("fail2");
@@ -40,7 +43,8 @@ $('.commentMakeBtn').click(function() {
       console.log('fail');
     }
   })
-  var element = "<div class='commentCard'><div class='commentWriter'><i class='fas fa-user'>"+commentWriter+"</i></div>"+"<div class='commentDateTime'>&nbsp&nbsp"+commentDateTime+"</div>" + "<div class='commentContent'>"+commentContent+"</div><div class='replyMakeZone'><input type='text' class='replyContent' placeholder='대댓글을 입력하세요.'><button type='button' class='replyMakeBtn'>작성</button></div></div>";
+  alert(replySourceIdx);
+  var element = "<div class='commentCard'><div class='commentWriter'><i class='fas fa-user'>"+commentWriter+"</i></div>"+"<div class='commentDateTime'>&nbsp&nbsp"+commentDateTime+"</div>" + "<div class='commentContent'>"+commentContent+"</div><div class='replyMakeZone'><input type='text' class='replyContent' placeholder='대댓글을 입력하세요.'><button type='button' class='replyMakeBtn'>작성</button></div>"+"<input type='hidden' class='commentIdx' value='"+replySourceIdx+"'></div>";
   $(this).parent().parent().append(element);
 });
 
@@ -49,6 +53,7 @@ $(document).on('click','.replyMakeBtn',(function() {
   var commentContent = $(this).parent().children('.replyContent').val();
   var commentDateTime = "방금 전";
   var replySourceIdx = $(this).parent().parent().children('.commentIdx').val();
+  var a = 3;
   $.ajax({
     type:'post',
     dataType:'json',
