@@ -1,6 +1,6 @@
 <?php
   include "db.php";
-  $userID = $_POST['userID'];
+  $userID = $_POST['userID1'];
 
   $stmt = mq("SELECT userID FROM USERPROFILE WHERE userID='$userID'");
 

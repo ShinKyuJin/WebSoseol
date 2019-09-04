@@ -4,10 +4,14 @@
   $userID = $_POST['userID'];
   $userPassword = $_POST['userPassword'];
   $userEmail = $_POST['userEmail'];
-  $userBirth = $_POST['userBirth'];
+  $userBirth_1 = $_POST['userBirth_1'];
+  $userBirth_2 = $_POST['userBirth_2'];
+  $userBirth_3 = $_POST['userBirth_3'];
   $userName = $_POST['userName'];
   $userMajor = $_POST['userMajor'];
   $userStudentID = $_POST['userStudentID'];
+
+  $userBirth = $userBirth_1."-".$userBirth_2."-".$userBirth_3;
 
   $hashPassword = password_hash($userPassword,PASSWORD_DEFAULT);
 

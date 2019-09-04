@@ -9,13 +9,13 @@ include "db.php";
     <meta charset="utf-8">
     <title></title>
       <link rel="stylesheet" href="board.css">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   </head>
 
   <body>
     <?php include "nav.php"; ?>
     <div class="container">
-
       <?php
       $boardIdx = re('bi','get');
       $categoryIdx = re('ci','get');
@@ -36,7 +36,7 @@ include "db.php";
           $tmp = mq("SELECT * FROM LISTOFBOARD");
           while($tmpRow = mysqli_fetch_array($tmp)) :
           ?>
-          <li><a href="boardIdx.php?ci=<?php echo $tmpRow['categoryIdx']; ?>"><?php echo $tmpRow['boardSubject']; ?></a></li>
+          <li><a href="boardIdx.php?ci=<?php echo $tmpRow['categoryIdx']; ?>" style='<?php if($tmpRow['categoryIdx'] == $categoryIdx) echo "background-color:#990e17;color:white;" ?>'><?php echo $tmpRow['boardSubject']; ?></a></li>
         <?php endwhile; ?>
         </ul>
       </div>
@@ -53,6 +53,13 @@ include "db.php";
                 <span class="sort">등록일</span><?php echo $board['boardDate']; ?>
               </span>
               <span class="view">
+                <?php
+                if($_SESSION['userID'] != $board['boardWriter']) {
+                  $board['boardHit'] = $board['boardHit']+1;
+                  $tmpBoardHit = $board['boardHit'];
+                  $updateBoardHit = mq("UPDATE BOARD SET boardHit='$tmpBoardHit' WHERE boardIdx = '$boardIdx'");
+                }
+                 ?>
                 <span class="sort">조회수</span><?php echo $board['boardHit']; ?>
               </span>
             </div>
@@ -97,7 +104,30 @@ include "db.php";
        ?>
        <div class="commentCard">
          <div class="commentWriter"> <i class="fas fa-user"><?php echo $commentRow['commentWriter']; ?></i></div>
-         <div class="commentDateTime">&nbsp&nbsp<?php echo $commentRow['commentDateTime']; ?></div>
+         <div class="commentDateTime">&nbsp&nbsp
+           <?php
+           $timeString = (strtotime(date("Y-m-d H:i:s")) - strtotime($commentRow['commentDateTime']));
+           $timeString = (int)$timeString;
+           if($timeString / 31536000 >= 1) {
+             echo floor($timeString / 31536000)."년 전";
+           }
+           else if($timeString / 2592000 >= 1) {
+             echo floor($timeString / 2592000)."달 전";
+           }
+           else if($timeString / 86400 >= 1) {
+             echo floor($timeString / 86400)."일 전";
+           }
+           else if($timeString / 3600 >= 1) {
+             echo floor($timeString / 3600)."시간 전";
+           }
+           else if($timeString / 60 >= 1) {
+             echo floor($timeString / 60)."분 전";
+           }
+           else {
+             echo "방금 전";
+           }
+           ?>
+         </div>
          <div class="commentContent"><?php echo $commentRow['commentContent']; ?></div>
 
          <input type="hidden" class="commentIdx" value="<?php echo $commentRow['commentIdx']; ?>">
@@ -113,8 +143,31 @@ include "db.php";
          while($replyRow = mysqli_fetch_array($reply)) :
           ?>
           <div class='replyCard'>
-            <div class='commentWriter'> <i class="fas fa-user"><?php echo $replyRow['commentWriter']; ?></i></div>
-            <div class='commentDateTime'>&nbsp&nbsp<?php echo $replyRow['commentDateTime']; ?></div>
+            <div class='commentWriter'><i class="fas fa-user"><?php echo $replyRow['commentWriter']; ?></i></div>
+            <div class='commentDateTime'>&nbsp&nbsp
+              <?php
+              $timeString = (strtotime(date("Y-m-d H:i:s")) - strtotime($replyRow['commentDateTime']));
+              $timeString = (int)$timeString;
+              if($timeString / 31536000 >= 1) {
+                echo floor($timeString / 31536000)."년 전";
+              }
+              else if($timeString / 2592000 >= 1) {
+                echo floor($timeString / 2592000)."달 전";
+              }
+              else if($timeString / 86400 >= 1) {
+                echo floor($timeString / 86400)."일 전";
+              }
+              else if($timeString / 3600 >= 1) {
+                echo floor($timeString / 3600)."시간 전";
+              }
+              else if($timeString / 60 >= 1) {
+                echo floor($timeString / 60)."분 전";
+              }
+              else {
+                echo "방금 전";
+              }
+               ?>
+            </div>
             <div class='commentContent'><?php echo $replyRow['commentContent']; ?></div>
           </div>
         <?php endwhile; ?>

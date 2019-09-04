@@ -67,3 +67,25 @@ li a:hover{
 div img {
   margin:0;
 }
+
+.registerBtn {
+  text-decoration: none;
+  color: white;
+  float: right;
+  margin-top: 7px;
+  margin-right: 7px;
+}
+.loginBtn {
+  text-decoration: none;
+  color: white;
+  float: right;
+  margin-top: 7px;
+  margin-right: 15px;
+}
+.logoutBtn {
+  text-decoration: none;
+  color: white;
+  float: right;
+  margin-top: 7px;
+  margin-right: 15px;
+}

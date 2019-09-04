@@ -1,16 +1,15 @@
-<?php
-  include "db.php";
-  include "passwordEncryption.php";
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
 
-  $userID = $_POST['userID'];
-  $userPassword = $_POST['userPassword'];
-
-  $sql = mysqli_fetch_array(mq("SELECT * FROM USERPROFILE WHERE userID='$userID'"));
-
-  if($sql['userID'] == $userID && $sql['userPassword'] == $userPassword) {
-    echo "suc";
-  }
-  else {
-    echo "fail";
-  }
- ?>
+  </body>
+  <script type="text/javascript">
+    var tmp = 1;
+    var string = "hello" + tmp;
+    console.log(string);
+  </script>
+</html>

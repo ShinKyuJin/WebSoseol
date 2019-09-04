@@ -249,3 +249,20 @@ select {
     left:15px;
   }
 }
+
+.shake {
+  animation:shake 0.3s;
+}
+
+.userNamechk {
+  position:relative;
+  top:100px;
+}
+.userIDchk {
+  position:relative;
+  top:100px;
+}
+.userPasswordchk {
+  position:relative;
+  top:23%;
+}

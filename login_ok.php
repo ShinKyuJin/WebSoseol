@@ -16,6 +16,7 @@
   if($row['userID'] == $userID && password_verify($userPassword,$row['userPassword'])) {
     session_start();
     $_SESSION['userID'] = $userID;
+    $_SESSION['userGrant'] = $row['userGrant'];
     echo json_encode(array("res"=>"suc"));
   }
   else {

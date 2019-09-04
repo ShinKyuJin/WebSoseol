@@ -24,28 +24,40 @@ $('.commentMakeBtn').click(function() {
   var commentContent = $('.commentContent').val();
   var commentDateTime = "방금 전";
   var replySourceIdx = null;
-  $.ajax({
-    type:'post',
-    dataType:'json',
-    url:'commentPost.php',
-    async:false,
-    data:{commentWriter:commentWriter,commentContent:commentContent,boardIdx:boardIdx},
-    success:function(json) {
-      if(json.res != 'fail') {
-        console.log(json.res);
-        replySourceIdx = json.res;
-      }
-      else {
-        console.log("fail2");
-      }
-    },
-    error:function() {
-      console.log('fail');
+
+  if(commentWriter == "") {
+    var toLogin = confirm("로그인이 필요한 작업입니다. 로그인 하시겠습니까?");
+    if(toLogin) {
+      location.href = "login.php";
     }
-  })
-  alert(replySourceIdx);
-  var element = "<div class='commentCard'><div class='commentWriter'><i class='fas fa-user'>"+commentWriter+"</i></div>"+"<div class='commentDateTime'>&nbsp&nbsp"+commentDateTime+"</div>" + "<div class='commentContent'>"+commentContent+"</div><div class='replyMakeZone'><input type='text' class='replyContent' placeholder='대댓글을 입력하세요.'><button type='button' class='replyMakeBtn'>작성</button></div>"+"<input type='hidden' class='commentIdx' value='"+replySourceIdx+"'></div>";
-  $(this).parent().parent().append(element);
+  }
+  if(commentWriter != "" && commentContent == "") {
+    alert("한글자 이상을 입력해주세요");
+  }
+  else {
+    $.ajax({
+      type:'post',
+      dataType:'json',
+      url:'commentPost.php',
+      async:false,
+      data:{commentWriter:commentWriter,commentContent:commentContent,boardIdx:boardIdx},
+      success:function(json) {
+        if(json.res != 'fail') {
+          console.log(json.res);
+          replySourceIdx = json.res;
+        }
+        else {
+          console.log("fail2");
+        }
+      },
+      error:function() {
+        console.log('fail');
+      }
+    })
+    var element = "<div class='commentCard'><div class='commentWriter'><i class='fas fa-user'>"+commentWriter+"</i></div>"+"<div class='commentDateTime'>&nbsp&nbsp&nbsp"+commentDateTime+"</div>" + "<div class='commentContent'>"+commentContent+"</div><div class='replyMakeZone'><input type='text' class='replyContent' placeholder='대댓글을 입력하세요.'><button type='button' class='replyMakeBtn'>작성</button></div>"+"<input type='hidden' class='commentIdx' value='"+replySourceIdx+"'></div>";
+    $(this).parent().parent().append(element);
+    var commentContent = $('.commentContent').val("");
+  }
 });
 
 $(document).on('click','.replyMakeBtn',(function() {
@@ -53,24 +65,36 @@ $(document).on('click','.replyMakeBtn',(function() {
   var commentContent = $(this).parent().children('.replyContent').val();
   var commentDateTime = "방금 전";
   var replySourceIdx = $(this).parent().parent().children('.commentIdx').val();
-  var a = 3;
-  $.ajax({
-    type:'post',
-    dataType:'json',
-    url:'replyPost.php',
-    data:{commentWriter:commentWriter,commentContent:commentContent,boardIdx:boardIdx,replySourceIdx:replySourceIdx},
-    success:function(json) {
-      if(json.res == 'suc') {
-        console.log(json.res);
-      }
-      else {
-        console.log("fail2");
-      }
-    },
-    error:function() {
-      console.log('fail');
+
+  if(commentWriter == "") {
+    var toLogin = confirm("로그인이 필요한 작업입니다. 로그인 하시겠습니까?");
+    if(toLogin) {
+      location.href = "login.php";
     }
-  })
-  var element = "<div class='replyCard'><div class='commentWriter'><i class='fas fa-user'>"+commentWriter+"</i></div><div class='commentDateTime'>&nbsp&nbsp"+commentDateTime+"</div><div class='commentContent'>"+commentContent+"</div></div>";
-  $(this).parent().parent().append(element);
+  }
+  else if(commentWriter != "" && commentContent == "") {
+    alert("한글자 이상을 입력해주세요");
+  }
+  else {
+    $.ajax({
+      type:'post',
+      dataType:'json',
+      url:'replyPost.php',
+      data:{commentWriter:commentWriter,commentContent:commentContent,boardIdx:boardIdx,replySourceIdx:replySourceIdx},
+      success:function(json) {
+        if(json.res == 'suc') {
+          console.log(json.res);
+        }
+        else {
+          console.log("fail2");
+        }
+      },
+      error:function() {
+        console.log('fail');
+      }
+    })
+    var element = "<div class='replyCard'><div class='commentWriter'><i class='fas fa-user'>"+commentWriter+"</i></div><div class='commentDateTime'>&nbsp&nbsp"+commentDateTime+"</div><div class='commentContent'>"+commentContent+"</div></div>";
+    $(this).parent().parent().append(element);
+    var commentContent = $(this).parent().children('.replyContent').val("");
+  }
 }));
