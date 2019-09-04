@@ -9,13 +9,13 @@ include "db.php";
     <meta charset="utf-8">
     <title></title>
       <link rel="stylesheet" href="board.css">
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   </head>
 
   <body>
     <?php include "nav.php"; ?>
     <div class="container">
+
       <?php
       $boardIdx = re('bi','get');
       $categoryIdx = re('ci','get');
@@ -36,7 +36,7 @@ include "db.php";
           $tmp = mq("SELECT * FROM LISTOFBOARD");
           while($tmpRow = mysqli_fetch_array($tmp)) :
           ?>
-          <li><a href="boardIdx.php?ci=<?php echo $tmpRow['categoryIdx']; ?>" style='<?php if($tmpRow['categoryIdx'] == $categoryIdx) echo "background-color:#990e17;color:white;" ?>'><?php echo $tmpRow['boardSubject']; ?></a></li>
+          <li><a href="boardIdx.php?ci=<?php echo $tmpRow['categoryIdx']; ?>"><?php echo $tmpRow['boardSubject']; ?></a></li>
         <?php endwhile; ?>
         </ul>
       </div>
@@ -53,13 +53,6 @@ include "db.php";
                 <span class="sort">등록일</span><?php echo $board['boardDate']; ?>
               </span>
               <span class="view">
-                <?php
-                if($_SESSION['userID'] != $board['boardWriter']) {
-                  $board['boardHit'] = $board['boardHit']+1;
-                  $tmpBoardHit = $board['boardHit'];
-                  $updateBoardHit = mq("UPDATE BOARD SET boardHit='$tmpBoardHit' WHERE boardIdx = '$boardIdx'");
-                }
-                 ?>
                 <span class="sort">조회수</span><?php echo $board['boardHit']; ?>
               </span>
             </div>
@@ -85,6 +78,7 @@ include "db.php";
         </div>
     </div>
     <!-- 여기까지 !-->
+    <div class="comment"><img src="chat.png" style="width: 20px; height: 20px;">&nbsp&nbsp댓글</div>
     <hr>
     <!-- 여기부터 Comment관련 !-->
 
@@ -92,6 +86,8 @@ include "db.php";
       <!-- TextArea !-->
       <div class="commentMakeZone">
         <textarea class="commentContent"></textarea>
+      </div>
+      <div class="submit">
         <button type="button" class="commentMakeBtn">작성</button>
       </div>
       <!-- /TextArea !-->
@@ -107,46 +103,6 @@ include "db.php";
          <div class="commentDateTime">&nbsp&nbsp
            <?php
            $timeString = (strtotime(date("Y-m-d H:i:s")) - strtotime($commentRow['commentDateTime']));
-           $timeString = (int)$timeString;
-           if($timeString / 31536000 >= 1) {
-             echo floor($timeString / 31536000)."년 전";
-           }
-           else if($timeString / 2592000 >= 1) {
-             echo floor($timeString / 2592000)."달 전";
-           }
-           else if($timeString / 86400 >= 1) {
-             echo floor($timeString / 86400)."일 전";
-           }
-           else if($timeString / 3600 >= 1) {
-             echo floor($timeString / 3600)."시간 전";
-           }
-           else if($timeString / 60 >= 1) {
-             echo floor($timeString / 60)."분 전";
-           }
-           else {
-             echo "방금 전";
-           }
-           ?>
-         </div>
-         <div class="commentContent"><?php echo $commentRow['commentContent']; ?></div>
-
-         <input type="hidden" class="commentIdx" value="<?php echo $commentRow['commentIdx']; ?>">
-
-         <div class="replyMakeZone">
-           <input type='text' class='replyContent' placeholder='대댓글을 입력하세요.'>
-           <button type='button' class='replyMakeBtn'>작성</button>
-         </div>
-
-         <?php
-         $commentIdx = $commentRow['commentIdx'];
-         $reply = mq("SELECT * FROM COMMENT_BOARD WHERE replySourceIdx = $commentIdx");
-         while($replyRow = mysqli_fetch_array($reply)) :
-          ?>
-          <div class='replyCard'>
-            <div class='commentWriter'><i class="fas fa-user"><?php echo $replyRow['commentWriter']; ?></i></div>
-            <div class='commentDateTime'>&nbsp&nbsp
-              <?php
-              $timeString = (strtotime(date("Y-m-d H:i:s")) - strtotime($replyRow['commentDateTime']));
               $timeString = (int)$timeString;
               if($timeString / 31536000 >= 1) {
                 echo floor($timeString / 31536000)."년 전";
@@ -166,9 +122,49 @@ include "db.php";
               else {
                 echo "방금 전";
               }
-               ?>
+          ?></div>
+         <div class="recommentContent"><?php echo $commentRow['commentContent']; ?></div>
+
+         <input type="hidden" class="commentIdx" value="<?php echo $commentRow['commentIdx']; ?>">
+
+         <div class="replyMakeZone">
+           <input type='text' class='replyContent' placeholder='대댓글을 입력하세요.'>
+           <button type='button' class='replyMakeBtn'>작성</button>
+         </div>
+
+         <?php
+         $commentIdx = $commentRow['commentIdx'];
+         $reply = mq("SELECT * FROM COMMENT_BOARD WHERE replySourceIdx = $commentIdx");
+         while($replyRow = mysqli_fetch_array($reply)) :
+          ?>
+          <div class='replyCard'>
+            <div class='reCommentZone'>
+              <div class='commentWriter'> <i class="fas fa-user"><?php echo $replyRow['commentWriter']; ?></i></div>
+              <div class='commentDateTime'>&nbsp&nbsp
+                <?php
+                $timeString = (strtotime(date("Y-m-d H:i:s")) - strtotime($replyRow['commentDateTime']));
+              $timeString = (int)$timeString;
+              if($timeString / 31536000 >= 1) {
+                echo floor($timeString / 31536000)."년 전";
+              }
+              else if($timeString / 2592000 >= 1) {
+                echo floor($timeString / 2592000)."달 전";
+              }
+              else if($timeString / 86400 >= 1) {
+                echo floor($timeString / 86400)."일 전";
+              }
+              else if($timeString / 3600 >= 1) {
+                echo floor($timeString / 3600)."시간 전";
+              }
+              else if($timeString / 60 >= 1) {
+                echo floor($timeString / 60)."분 전";
+              }
+              else {
+                echo "방금 전";
+              }
+                ?></div>
+              <div class='recommentContent'><?php echo $replyRow['commentContent']; ?></div>
             </div>
-            <div class='commentContent'><?php echo $replyRow['commentContent']; ?></div>
           </div>
         <?php endwhile; ?>
        </div>
@@ -178,9 +174,8 @@ include "db.php";
 
 
     <!-- 여기까지 !-->
-
-    <?php include "footer.php"; ?>
   </div>
+  <?php include "footer.php"; ?>
   </body>
   <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js" ></script>
   <script type="text/javascript"src = "board.js"></script>

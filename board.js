@@ -54,7 +54,7 @@ $('.commentMakeBtn').click(function() {
         console.log('fail');
       }
     })
-    var element = "<div class='commentCard'><div class='commentWriter'><i class='fas fa-user'>"+commentWriter+"</i></div>"+"<div class='commentDateTime'>&nbsp&nbsp&nbsp"+commentDateTime+"</div>" + "<div class='commentContent'>"+commentContent+"</div><div class='replyMakeZone'><input type='text' class='replyContent' placeholder='대댓글을 입력하세요.'><button type='button' class='replyMakeBtn'>작성</button></div>"+"<input type='hidden' class='commentIdx' value='"+replySourceIdx+"'></div>";
+    var element = "<div class='commentCard'><div class='commentWriter'><i class='fas fa-user'>"+commentWriter+"</i></div>"+"<div class='commentDateTime'>&nbsp&nbsp&nbsp"+commentDateTime+"</div>" + "<div class='recommentContent'>"+commentContent+"</div><div class='replyMakeZone'><input type='text' class='replyContent' placeholder='대댓글을 입력하세요.'><button type='button' class='replyMakeBtn'>작성</button></div>"+"<input type='hidden' class='commentIdx' value='"+replySourceIdx+"'></div>";
     $(this).parent().parent().append(element);
     var commentContent = $('.commentContent').val("");
   }
@@ -93,7 +93,7 @@ $(document).on('click','.replyMakeBtn',(function() {
         console.log('fail');
       }
     })
-    var element = "<div class='replyCard'><div class='commentWriter'><i class='fas fa-user'>"+commentWriter+"</i></div><div class='commentDateTime'>&nbsp&nbsp"+commentDateTime+"</div><div class='commentContent'>"+commentContent+"</div></div>";
+    var element = "<div class='replyCard'><div class='reCommentZone'><div class='commentWriter'><i class='fas fa-user'>"+commentWriter+"</i></div><div class='commentDateTime'>&nbsp&nbsp"+commentDateTime+"</div><div class='recommentContent'>"+commentContent+"</div></div></div>";
     $(this).parent().parent().append(element);
     var commentContent = $(this).parent().children('.replyContent').val("");
   }

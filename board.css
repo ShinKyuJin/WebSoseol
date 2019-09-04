@@ -69,7 +69,7 @@ border-bottom: 1px solid #dfdfdf;
 }
 .text .txtInfo span {
 display: table-cell;
-width: calc(33.33% - 15px);
+width: calc(33.33% - 20%);
 height: 57px;
 box-sizing: border-box;
 margin: 0 15px 0 0;
@@ -81,7 +81,7 @@ text-align: left;
 }
 .text .txtInfo span>.sort {
 display: inline-block;
-width: 130px;
+width: 40%;
 height: 57px;
 margin-right: 20px;
 background: #f4f5f9;
@@ -98,6 +98,10 @@ overflow: hidden;
 color: #222;
 font-size: 15px;
 line-height: 27px;
+}
+hr{
+  border: 1px solid rgb(220, 220, 220) !important;
+  width: 110% !important;
 }
 .buttonArea {
 margin: 0 !important;
@@ -116,6 +120,16 @@ background: #fff url(edit.png) no-repeat left 17px top 50%;
 background-size: 16px 16px;
 vertical-align: top;
 }
+.modify:hover {
+display: inline-block;
+width: auto;
+margin-right: 10px;
+box-sizing: border-box;
+padding: 0 0 0 30px;
+background: #990e17 url(edit-1.png) no-repeat left 17px top 50%;
+background-size: 16px 16px;
+vertical-align: top;
+}
 .modify>span {
 display: block;
 width: auto;
@@ -131,6 +145,9 @@ line-height: 20px;
 text-align: left;
 letter-spacing: -1px;
 }
+.modify>span:hover{
+  color: white;
+}
 .delete {
 display: inline-block;
 width: auto;
@@ -139,6 +156,17 @@ box-sizing: border-box;
 padding: 0 0 0 30px;
 border: 2px solid #990e17;
 background: #fff url(delete.png) no-repeat left 17px top 50%;
+background-size: 18px 18px;
+vertical-align: top;
+}
+.delete:hover {
+display: inline-block;
+width: auto;
+margin-right: 10px;
+box-sizing: border-box;
+padding: 0 0 0 30px;
+background: #990e17 url(delete-1.png) no-repeat left 17px top 50%;
+color: white;
 background-size: 18px 18px;
 vertical-align: top;
 }
@@ -157,6 +185,9 @@ line-height: 20px;
 text-align: left;
 letter-spacing: -1px;
 }
+.delete>span:hover{
+  color: white;
+}
 .list {
 display: inline-block;
 width: auto;
@@ -167,6 +198,16 @@ border: 2px solid #990e17;
 background: #fff url(text.png) no-repeat left 17px top 50%;
 background-size: 18px 18px;
 vertical-align: top;
+}
+.list:hover{
+  display: inline-block;
+  width: auto;
+  margin: 0 0 5px 0;
+  box-sizing: border-box;
+  padding: 0 0 0 30px;
+  background: #990e17 url(text-1.png) no-repeat left 17px top 50%;
+  background-size: 18px 18px;
+  vertical-align: top;
 }
 .list>span {
 display: block;
@@ -183,19 +224,66 @@ line-height: 20px;
 text-align: left;
 letter-spacing: -1px;
 }
-
+.list>span:hover{
+  color: white;
+}
+.comment{
+  margin-bottom: -10px;
+}
+.commentZone{
+  margin-left: 10%;
+}
+.commentContent{
+  width: 89%;
+  height: 110px;
+  resize: none;
+  float: left;
+}
+.commentMakeBtn{
+  width: 11%;
+  height: 110px;
+  border: none;
+  background-color: #990e17;
+  color: white;
+}
 .commentCard {
 height: auto !important;
 width: 100%;
-border: 2px solid rgb(220, 220, 220);
+border: 2px solid rgb(210,210,210);
 margin-top: 30px;
 }
 
 .commentCard .commentWriter {
   float:left;
 }
+.recommentContent{
+  height: auto;
+  padding-left: 5px;
+}
+.replyMakeZone{
+  padding: 10px;
+  padding-bottom: 3px !important;
+}
+.replyContent{
+  width: 95%;
+}
+.replyMakeBtn{
+  background-color: #990e17;
+  border: none;
+  color: white;
+  font-size: 12px;
+  height: 30px;
+  width: 4.5%;
+}
 
 .replyCard {
   margin-left: 20px;
-  padding:10px;
+  margin-right: 20px;
+  padding: 5px;
+}
+.reCommentZone{
+  padding-left: 30px;
+  padding-right: 30px;
+  background-color: rgb(245, 245, 245);
+  border: 0.5px solid rgb(200,200,200);
 }
