@@ -44,17 +44,17 @@
             <div class="form-container">
               <label for="register">회원가입</label><br>
               <label for="userBirth">생년월일</label><br>
-              <select name="userBirth_1">
+              <select name="userBirth_1" class="userBirth">
                 <?php for($i=1990;$i<=2001;$i++) : ?>
-                 <option value="<?php echo $i; ?>"><?php echo $i; ?></option> <?php endfor; ?>
+                 <option value="<?php echo $i; ?>"><?php echo $i; ?>년</option> <?php endfor; ?>
               </select>
-              <select name="userBirth_2">
+              <select name="userBirth_2" class="userBirth">
                 <?php for($i=1;$i<=12;$i++) : ?>
-                 <option value="<?php echo $i; ?>"><?php echo $i; ?></option> <?php endfor; ?>
+                 <option value="<?php echo $i; ?>"><?php echo $i; ?>월</option> <?php endfor; ?>
               </select>
-              <select name="userBirth_3">
+              <select name="userBirth_3" class="userBirth">
                 <?php for($i=1;$i<=31;$i++) : ?>
-                <option value="<?php echo $i; ?>"><?php echo $i; ?></option> <?php endfor; ?>
+                <option value="<?php echo $i; ?>"><?php echo $i; ?>일</option> <?php endfor; ?>
               </select>
             </div>
           </div>
@@ -94,13 +94,13 @@
               <label for="userMajor">학과</label><br>
               <select name="userMajor"id="user_6" class = "userMajor">
                 <option value="">학과를 선택하세요.</option>
-                <option value="s1">소프트웨어학과</option>
-                <option value="s2">컴퓨터공학과</option>
-                <option value="s3">정보보호학과</option>
-                <option value="s4">데이터사이언스학과</option>
-                <option value="s5">지능기전공학부</option>
-                <option value="s6">창의소프트학부</option>
-                <option value="s7">디지털콘텐츠학과</option>
+                <option value="소프트웨어학과">소프트웨어학과</option>
+                <option value="컴퓨터공학과">컴퓨터공학과</option>
+                <option value="정보보호학과">정보보호학과</option>
+                <option value="데이터사이언스학과">데이터사이언스학과</option>
+                <option value="지능기전공학부">지능기전공학부</option>
+                <option value="창의소프트학부">창의소프트학부</option>
+                <option value="디지털콘텐츠학과">디지털콘텐츠학과</option>
               </select>
               <div class="userMajorchk"></div>
             </div>

@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="footerStyle.css">
 <div class="footer">
   <hr class="line">
    <div class="sejonglogo">

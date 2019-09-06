@@ -139,7 +139,15 @@ input[name="r"]{
   position: relative;
   top: 47px;
 }
-select {
+.userBirth{
+  width: 26%;
+  position: relative;
+  top: 85px;
+  padding: 15px;
+  border: 0.5px solid black;
+  background: white;
+}
+#user_6{
   width: 70%;
   position: relative;
   top: 85px;

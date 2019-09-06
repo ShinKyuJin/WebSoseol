@@ -45,6 +45,13 @@ include "db.php";
         <div class="text">
           <dl>
             <dt><?php echo $board['boardTitle'] ?></dt>
+            <?php
+            if($_SESSION['userID'] != $board['boardWriter']) {
+              $board['boardHit']++;
+              $boardHit = $board['boardHit'];
+              $stmt = mq("UPDATE BOARD SET boardHit='$boardHit' WHERE boardIdx = '$boardIdx'");
+            }
+             ?>
             <div class="txtInfo">
               <span class="writer">
                 <span class="sort">작성자</span><?php echo $board['boardWriter']; ?>
@@ -123,7 +130,7 @@ include "db.php";
                 echo "방금 전";
               }
           ?></div>
-         <div class="recommentContent"><?php echo $commentRow['commentContent']; ?></div>
+         <div class="recommentContent"><p><?php echo $commentRow['commentContent']; ?></p></div>
 
          <input type="hidden" class="commentIdx" value="<?php echo $commentRow['commentIdx']; ?>">
 
@@ -163,7 +170,7 @@ include "db.php";
                 echo "방금 전";
               }
                 ?></div>
-              <div class='recommentContent'><?php echo $replyRow['commentContent']; ?></div>
+              <div class='recommentContent'><p><?php echo htmlspecialchars($replyRow['commentContent']) ; ?></p></div>
             </div>
           </div>
         <?php endwhile; ?>

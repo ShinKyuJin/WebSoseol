@@ -93,6 +93,7 @@ $(document).on('click','.replyMakeBtn',(function() {
         console.log('fail');
       }
     })
+    commentContent = commentContent.replace(/(<([^>]+)>)/ig,"");
     var element = "<div class='replyCard'><div class='reCommentZone'><div class='commentWriter'><i class='fas fa-user'>"+commentWriter+"</i></div><div class='commentDateTime'>&nbsp&nbsp"+commentDateTime+"</div><div class='recommentContent'>"+commentContent+"</div></div></div>";
     $(this).parent().parent().append(element);
     var commentContent = $(this).parent().children('.replyContent').val("");

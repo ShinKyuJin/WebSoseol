@@ -5,11 +5,6 @@
     <title></title>
   </head>
   <body>
-
+    <?php echo "hello"; ?>
   </body>
-  <script type="text/javascript">
-    var tmp = 1;
-    var string = "hello" + tmp;
-    console.log(string);
-  </script>
 </html>

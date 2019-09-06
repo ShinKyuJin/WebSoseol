@@ -2,7 +2,7 @@
   include "db.php";
 
   $userID = $_POST['userID'];
-  $userPassword = $_POST['userPassword'];
+  $userPassword = $_POST['userPassword1'];
   $userEmail = $_POST['userEmail'];
   $userBirth_1 = $_POST['userBirth_1'];
   $userBirth_2 = $_POST['userBirth_2'];
@@ -17,7 +17,7 @@
 
   $stmt = mq("INSERT INTO USERPROFILE(userID,userPassword,userEmail,userBirth,userName,userMajor,userStudentID) VALUES(
     '$userID',
-    '$userPassword',
+    '$hashPassword',
     '$userEmail',
     '$userBirth',
     '$userName',
