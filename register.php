@@ -19,6 +19,9 @@
     </style>
   </head>
   <body>
+    <div class="wrap-loading display-none">
+      <div><img src="loading.gif" /></div>
+    </div>
     <?php include "nav.php"; ?>
     <form action="register_ok.php" method="post">
       <div class="slidershow middle">

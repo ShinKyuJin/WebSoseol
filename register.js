@@ -81,9 +81,16 @@ nextBtn.click(function() {
             idOverlapChk = true;
           }
         },
+        beforeSend:function(){
+          $('.wrap-loading').removeClass('display-none');
+        },
+        complete:function(){
+          $('.wrap-loading').addClass('display-none');
+        },
         error:function() {
           console.log('fail');
         }
+        ,timeout:100000
       });
 
 
