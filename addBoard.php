@@ -13,7 +13,6 @@
       <div class="tab_menu">
         <ul style="height: auto;">
           <?php
-          include "db.php";
           $link = mq("SELECT * FROM LISTOFBOARD");
           while($linkRow = mysqli_fetch_array($link)) : ?>
           <li ><a href="boardIdx.php?ci=<?php echo $linkRow['categoryIdx']; ?>"

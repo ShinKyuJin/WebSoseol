@@ -1,91 +1,133 @@
-body{
-  margin: 0;
-  overflow-x:hidden;
-}
-.TOP{
-  background: #990e17;
-  color: white;
-  width: 100%;
-  height: 40px;
-  text-align: center;
-  cursor: pointer;
-}
-.navBox {
-  background-color: none;
-  height:100px;
-  width:100%;
-}
-.navShadow{
-  background-color:none;
-  height:100px;
-  width:1200px;
-  margin:0 auto;
-}
-.navLogo {
-  float:left;
-  width: 100px;
-  height: 100px;
-  background-color: none;
-}
-.navMenu {
-  float:left;
-  margin-left:100px;
-  width:800px;
-  height:100px;
-  background-color:none;
-}
-img{
-  width:100px;
-  height:100px;
-}
-ul{
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  height: 100px;
-}
-li{
-  display: inline;
-}
-li a{
-  font-size: 20px;
-  font-weight: bold;
-  float:left;
-  display: block;
-  width: 200px;
-  height: 65px;
-  padding-top: 35px;
-  text-decoration: none;
-  color: black;
-  text-align: center;
-}
-li a:hover{
-  background-color: none;
-  color: #B90000;
-  font-weight: bold;
-}
-div img {
-  margin:0;
+body {
+  overflow-x: hidden;
+  background-color: #faf4e6;
 }
 
-.registerBtn {
-  text-decoration: none;
-  color: white;
-  float: right;
-  margin-top: 7px;
-  margin-right: 7px;
+.TOP {
+  margin-top:10px;
 }
-.loginBtn {
-  text-decoration: none;
-  color: white;
-  float: right;
-  margin-top: 7px;
-  margin-right: 15px;
+
+.TOP ul {
+  background-color: #990e17;
+  height:40px;
+  list-style: none;
+  margin:0;
+  padding:0;
 }
-.logoutBtn {
-  text-decoration: none;
-  color: white;
-  float: right;
-  margin-top: 7px;
-  margin-right: 15px;
+
+.TOP li {
+  float:right;
+  padding:0px;
+  margin-left:5px;
+  margin-right:5px;
+  vertical-align: middle;
+}
+.TOP li a {
+  text-decoration: none !important;
+  text-align: center;
+  line-height:40px;
+  border-right:1px red;
+  color:white;
+  margin-left:5px;
+  margin-right:5px;
+}
+.TOP li a:hover,.TOP li:hover {
+  background-color: #770005;
+}
+.TOP li p {
+  color:white;
+}
+
+.menubar{
+border:none;
+border:0px;
+padding:0px;
+font: 67.5% "Lucida Sans Unicode", "Bitstream Vera Sans", "Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica, sans-serif;
+font-size:14px;
+font-weight:bold;
+box-shadow: 3px 1px 5px 1px grey;
+}
+
+.menubar ul{
+background-color: white;
+height:50px;
+list-style:none;
+margin:0;
+padding:0;
+}
+
+.menubar li{
+float:left;
+padding:0px;
+}
+
+.menubar li a{
+background-color: white;
+color:black;
+display:block;
+font-weight:normal;
+line-height:50px;
+margin:0px;
+padding:0px 25px;
+text-align:center;
+text-decoration:none;
+}
+
+.menubar li a:hover, .menubar ul li:hover a{
+background: rgb(71,71,71);
+color:#FFFFFF;
+text-decoration:none;
+}
+
+.menubar li ul{
+opacity: 0.8;
+background-color: white;
+display:none; /* 평상시에는 드랍메뉴가 안보이게 하기 */
+height:auto;
+padding:0px;
+margin:0px;
+border:0px;
+position:absolute;
+width:200px;
+z-index:200;
+/*top:1em;
+/*left:0;*/
+}
+
+.menubar li:hover ul{
+display:block; /* 마우스 커서 올리면 드랍메뉴 보이게 하기 */
+}
+
+.menubar li li {
+background: rgb(109,109,109);
+display:block;
+float:none;
+margin:0px;
+padding:0px;
+width:200px;
+}
+
+.menubar li:hover li a{
+background:none;
+}
+
+.menubar li ul a{
+display:block;
+height:50px;
+font-size:12px;
+font-style:normal;
+margin:0px;
+padding:0px 10px 0px 15px;
+text-align:left;
+}
+
+.menubar li ul a:hover, .menubar li ul li:hover a{
+background: rgb(71,71,71);
+border:0px;
+color:#ffffff;
+text-decoration:none;
+}
+
+.menubar p{
+clear:left;
 }

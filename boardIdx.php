@@ -1,9 +1,3 @@
-<?php
-  include "db.php";
-  $categoryIdx = re('ci','get');
-  $boardSubject = mysqli_fetch_array(mq("SELECT * FROM LISTOFBOARD WHERE categoryIdx='$categoryIdx'"));
-  $stmt = mq("SELECT * FROM BOARD WHERE categoryIdx='$categoryIdx'");
- ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -15,6 +9,11 @@
   </head>
   <body>
     <?php include "nav.php"; ?>
+    <?php
+      $categoryIdx = re('ci','get');
+      $boardSubject = mysqli_fetch_array(mq("SELECT * FROM LISTOFBOARD WHERE categoryIdx='$categoryIdx'"));
+      $stmt = mq("SELECT * FROM BOARD WHERE categoryIdx='$categoryIdx'");
+     ?>
     <div class="container">
         <h1 class="bulletinboard">게시판</h1>
       <div class="tab_menu">

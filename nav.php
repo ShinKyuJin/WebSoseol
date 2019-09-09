@@ -1,30 +1,50 @@
 <?php session_start(); ?>
-<link rel="stylesheet" href="navStyle.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css?after" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-<div class="TOP">
-<?php
-if(!isset($_SESSION['userID'])) {
-  echo "<a href='register.php' style='text-decoration: none; color: white; float: right; margin-top: 7px; margin-right: 7px;' >회원가입</a>";
-  echo "<a href='login.php'style='text-decoration: none; color: white; float: right; margin-top: 7px; margin-right: 15px;'>로그인</a>";
-}
-else {
-  echo "<div class='userName'>".$_SESSION['userID']."</div>";
-  echo "<a href='logout.php'>로그아웃</a>";
-}
-?>
-</div>
-<div class="navBox">
-  <div class="navShadow">
-    <div class="navLogo">
-      <img src="logo.png">
-    </div>
-    <div class="navMenu">
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="navStyle.css">
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <div class="menubar">
       <ul>
-        <li><a href="boardIdx.php?ci=1">게시판</a></li>
-        <li><a href="#">학생회소개</a></li>
-        <li><a href="#">공모전</a></li>
-        <li><a href="#">소융대사회봉사</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
+        <li><a href="index.php">홈</a></li>
+        <li><a href="#">게시판</a>
+           <ul>
+             <?php
+             include "db.php";
+             $category = mq("SELECT * FROM LISTOFBOARD");
+             while($categoryRow = mysqli_fetch_array($category)) :
+              ?>
+             <li><a href="boardIdx.php?ci=<?php echo $categoryRow['categoryIdx']; ?>"><?php echo $categoryRow['boardSubject']; ?></a></li>
+           <?php endwhile; ?>
+           </ul>
+         </li>
+         <li><a href="#">학과 소개</a>
+           <ul>
+             <li><a href="">소프트웨어학과</a></li>
+             <li><a href="">컴퓨터공학과</a></li>
+             <li><a href="">정보보호학과</a></li>
+             <li><a href="">데이터사이언스학과</a></li>
+             <li><a href="">지능기전공학부</a></li>
+             <li><a href="">창의소프트학부</a></li>
+             <li><a href="">디지털콘텐츠학과</a></li>
+           </ul>
+         </li>
+         <li><a href="#">세종플로우</a>
+           <ul>
+             <li><a href="">C,C++</a></li>
+             <li><a href="">JAVA</a></li>
+             <li><a href="">Python</a></li>
+             <li><a href="">Javascript</a></li>
+           </ul>
+         </li>
+
+
+         <li style="float:right;"><a href="login.php">로그인</a></li>
+       </ul>
+     </div>
+  </body>
+</html>

@@ -1,98 +1,47 @@
-.login{
-  margin-top: 100px;
-  margin-left: 37%;
-  width: 30%;
+.loginForm {
+  height:500px;
+  background-color: #bbb;
+  margin-top: 50px;
 }
-.loginletter{
-  font-size: 30px;
-  font-weight: bold;
-  font-family: '고딕';
-  color:black;
-  text-align: center;
-  position: relative;
-  padding-top: 30px;
-}
-hr.line{
-  width: 100%;
-  border-color: black;
-  border-width: thin;
-}
-#loginform{
-  margin-left: 1%;
-  width: 90%;
-  height: 300px;
-  color: black;
-}
-.userID{
-  border: none;
-  margin-left: 10%;
-  width: 90%;
-}
-.userPassword{
-  border: none;
-  margin-left: 10%;
-  width: 90%;
-}
-input:focus{
-  outline-color: rgb(128,0,0);
-}
-.userID input[type=text]{
-  height: 50px;
-  margin-left: 10px;
-  margin-top: 40px;
-  border: 0.5px solid rgb(160,160,160);
-  border-top: none;
-  border-left: none;
-  border-right: none;
-}
-.userPassword input[type=password]{
-  height: 50px;
-  margin-left: 10px;
-  border: 0.5px solid rgb(160,160,160);
-  border-top: none;
-  border-left: none;
-  border-right: none;
-}
-.loginBtn{
-  margin-top: -55px;
-  margin-left: 3%;
-  background-color: #990e17;
-  color: white;
-  padding: 12px;
-  font-size: 18px;
-  text-align: center;
-  height: 50px;
-  width: 24%;
-  position: absolute;
-}
-.footer{
-  margin-top: 300px !important;
-}
-.line{
-    position: relative;
-    background-color: rgba(0, 0, 0, 0.8);
-    width:100%;
-  }
-.sejonglogo{
-    position: relative;
-    width: 6.5%;
-    height: 90%;
-    left: 15%;
-    float: left;
-  }
-  .copyright{
-    position: absolute;
-    margin-left: 4%;
-    width: 40%;
-    height: 100px;
-    left: 25%;
-    margin-right: 0% !important;
-  }
-  .snsicon{
-    position: relative;
-    background-color: none;
-    width: 15%;
-    height: 90%;
-    left: 70%;
 
-  }
+.loginBox {
+  position:relative;
+  width:70%;
+  margin-left: 15%;
+  top:20%;
+  height:300px;
+  background-color: white;
+  box-shadow: 3px 3px 5px 7px grey;
+  text-align: center;
+}
+
+.inputBox {
+  position: relative;
+  top:20%;
+}
+.login {
+  margin-top:10px;
+  border-radius: 3px;
+  border:0 0 0 1px solid black;
+  width:50%;
+  height:50px;
+  min-width: 200px;
+}
+
+.button {
+  margin-top:10px;
+  background-color:#990e17;
+  width:50%;
+  height:40px;
+  border:none;
+  min-width: 200px;
+  color:white;
+}
+
+.button:hover {
+  background-color: #770005;
+}
+
+@media (min-width:600px) {
+
+}
