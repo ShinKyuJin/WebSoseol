@@ -1,0 +1,29 @@
+.footer {
+  box-shadow: 1px 1px 3px 1px grey  ;
+  margin: 0 auto;
+  background-color: white;
+  position:fixed;
+  left:30%;
+  top:90%;
+}
+
+.footer img {
+  height:80px;
+  margin-top:-10px;
+}
+
+.logo{
+  float:left;
+}
+
+.copyright {
+  text-align: right;
+  float:left;
+}
+
+@@media (max-width:768) {
+  .footer {
+    position:fixed;
+    left:0;
+  }
+}

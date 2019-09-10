@@ -1,17 +1,12 @@
 <?php session_start(); ?>
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <link rel="stylesheet" href="navStyle.css">
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-
-    <div class="menubar">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="navStyle.css">
+<link rel="stylesheet" href="footerStyle.css">
+  <div class="menubar">
       <ul>
         <li><a href="index.php">홈</a></li>
-        <li><a href="#">게시판</a>
+        <li><a href="">게시판</a>
            <ul>
              <?php
              include "db.php";
@@ -42,9 +37,10 @@
            </ul>
          </li>
 
-
+         <?php if(isset($_SESSION['userID'])) {?>
+           <li style="float:right;"><a href="logout.php">로그아웃</a></li>
+       <?php }else { ?>
          <li style="float:right;"><a href="login.php">로그인</a></li>
+       <?php } ?>
        </ul>
      </div>
-  </body>
-</html>
