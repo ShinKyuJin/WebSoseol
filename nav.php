@@ -19,13 +19,12 @@
          </li>
          <li><a href="#">학과 소개</a>
            <ul>
-             <li><a href="">소프트웨어학과</a></li>
-             <li><a href="">컴퓨터공학과</a></li>
-             <li><a href="">정보보호학과</a></li>
-             <li><a href="">데이터사이언스학과</a></li>
-             <li><a href="">지능기전공학부</a></li>
-             <li><a href="">창의소프트학부</a></li>
-             <li><a href="">디지털콘텐츠학과</a></li>
+             <?php
+             $intro = mq("SELECT * FROM MAJORINTRO");
+             while($introRow = mysqli_fetch_array($intro)) :
+              ?>
+              <li><a href="introduce.php?i=<?php echo $introRow['idx']; ?>"><?php echo $introRow['MajorName']; ?></a></li>
+            <?php endwhile;  ?>
            </ul>
          </li>
          <li><a href="#">세종플로우</a>

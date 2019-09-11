@@ -2,9 +2,6 @@
   box-shadow: 1px 1px 3px 1px grey  ;
   margin: 0 auto;
   background-color: white;
-  position:fixed;
-  left:30%;
-  top:90%;
 }
 
 .footer img {
@@ -23,7 +20,5 @@
 
 @@media (max-width:768) {
   .footer {
-    position:fixed;
-    left:0;
   }
 }

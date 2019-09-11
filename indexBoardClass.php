@@ -7,11 +7,11 @@
       echo "<div class='boardX' style='height:300px;'>
         <h6>
         <a href='boardIdx.php?ci=$categoryIdx'>".$boardSubject['boardSubject']."</a></h6>
-        <table style='border-top:1px solid black;width:500px' class='boardTable'>
+        <table style='border-top:1px solid black; width:560px' class='boardTable'>
           <thead>
-            <th style='width:300px'></th>
-            <th style='width:100px'></th>
-            <th style='width:100px'></th>
+            <th style='width:350px'></th>
+            <th style='width:105px'></th>
+            <th style='width:105px'></th>
           </thead>
           <tbody>";
           while($boardRow = mysqli_fetch_array($board)) :
