@@ -17,6 +17,13 @@
         <ul class="carousel-indicators">
           <li class="item1 active"></li>
           <li class="item2"></li>
+          <!--
+            <li><?php
+            //$isLogo = mq("SELECT * FROM ADMINFILE WHERE category = 'logo' AND selected = 1");
+            //if($logoRow = mysqli_fetch_array($isLogo)) : ?>
+            <img src="<?php //echo "admin/logo/".$logoRow["saveName"]; ?>" width="50px" height="50px" />
+          <?php //endif; ?></li>
+          -->
         </ul>
         <div class="carousel-inner">
           <div class="carousel-item active" style="width: 100%;">

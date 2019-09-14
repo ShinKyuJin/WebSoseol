@@ -14,6 +14,7 @@
       <?php
       $hello = $_GET['i'];
       $name = mysqli_fetch_array(mq("SELECT * FROM MAJORINTRO WHERE idx='$hello'"));
+      $imgPath = $name["saveName"];
       echo $name['MajorName'];
        ?>
     </div>
@@ -29,7 +30,7 @@
       <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-            <img src="img_<?php echo $hello; ?>.jpg" alt="Avatar" style="width:100%; height:100%;">
+            <img src="<?php echo "admin/introduction/".$imgPath ?>" alt="Avatar" style="width:100%; height:100%;">
           </div>
           <div class="flip-card-back">
             <div class="title">학과소개</div>

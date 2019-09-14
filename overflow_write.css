@@ -1,0 +1,92 @@
+
+* {
+    margin: 0 auto;
+    padding: 0;
+    font-family: Verdana, Tahoma, sans-serif;
+}
+
+#head {
+    background-color: white;
+    margin-top: 10px;
+    width: 70%;
+    height: 60px;
+    font-size: 24px;
+    text-align: center;
+    color: black;
+}
+
+#selections {
+    padding: 5px 10px 15px 20px;
+    width: 70%;
+    margin-top: 5px;
+    margin-left: 15%;
+    border-style: groove;
+}
+
+#in_title {
+    background-color: #CDD;
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 30px;
+}
+
+#in_title textarea {
+    font-size: 20px;
+    color: black;
+    width: 70%;
+    resize: none;
+    height: 35px;
+}
+
+#bo_line {
+    width: 880px;
+    height: 2px;
+    background: #CCC;
+    margin-top: 20px;
+}
+
+#bo_content {
+    margin-left: 15%;
+    margin-top: 20px;
+}
+
+#bo_ser {
+    font-size: 14px;
+    margin-left: 15%;
+    color: #333;
+    position: absolute;
+    right: 0;
+}
+
+#bo_ser > ul > li {
+    float:left;
+    margin-left: 10px;
+}
+
+#content_2 {
+    background-color: #BBB;
+    height: 140px;
+    margin-left: 15%;
+    width: 70%;
+    resize: none;
+    margin-top: 20px;
+}
+
+#content_tag {
+    background-color: #BBB;
+    height: 40px;
+    margin-left: 15%;
+    width: 70%;
+    resize: none;
+    margin-top: 20px;
+    color: blue;
+}
+
+#preiew-form-submit {
+    margin-left: 15%;
+    width: 70%;
+    height: 40px;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+}

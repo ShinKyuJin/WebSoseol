@@ -1,15 +1,22 @@
-h1{
-  font-size: 60px;
+.bulletinboard{
+  margin-top: 2%;
+}
+.text{
+  position: relative;
+  margin-top: -27%;
+  font-size: 57px;
+  font-family: 'Jua', sans-serif;
   text-align: center;
   width: 100%;
   height: 300px;
   padding-top: 40px;
+  letter-spacing: 8px;
 }
-.article{
-  margin-top: -50px;
+.container{
+  margin-left: 5%;
 }
 .tab_menu{
-  width: 1200px;
+  width: 100%;
   line-height: 22.5px;
   overflow: hidden;
   margin-bottom: 30px;
@@ -18,11 +25,14 @@ h1{
   padding: 0px;
 }
 .tab_menu ul{
+  width: 110%;
   height: auto;
+  list-style: none;
 }
 .tab_menu li a{
   width: auto;
   height: auto;
+  color: black;
 }
 .tab_menu li {
   background-color: black;
@@ -31,7 +41,7 @@ h1{
   display: block;
   float: left;
   overflow: auto;
-  padding: 13px 45px;
+  padding: 13px 34px;
   border: 1px solid #dfdfdf;
   border-bottom: none;
   font-size: 18px;
@@ -93,32 +103,35 @@ text-indent: -100px;
 border: 0px;
 }
 table{
-  margin-left: -18px;
   margin-top: 70px;
+  color: black;
 }
-tr{
+td a{
+  color: black;
+}
+td a:hover{
+  color: black;
 }
 th {
   border-top : 1px solid #990e17;
 }
+.main{
+  width: 100%;
+}
 .submit{
-  border: 2px solid #990e17;
-  height: 50px;
-  width: 90px;
+  height: 40px;
+  width: 100px;
+  background-color: #990e17;
   text-align: center;
-  padding-top: 10px;
+  padding-top: 8px;
   float: right;
 }
 .submit a{
-  color: black;
+  color: white;
 }
 .submit a:hover{
   text-decoration: none;
   color: white;
-}
-.submit:hover{
-  color: white;
-  background-color: #990e17;
 }
 .Subject {
   background-image:url(inno.png);

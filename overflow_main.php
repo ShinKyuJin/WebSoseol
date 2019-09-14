@@ -1,69 +1,72 @@
 <?php
-    include "db.php"
+include_once "db.php"
 ?>
+
 <!DOCTYPE html>
+
 <head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="overflow_main.css" />
+  <meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="overflow_man.css?after" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
+
 <body>
-  <?php include "nav.php"; ?>
-    <?php
-        function rvsort($a,$b){
-            return ($a[1] <= $b[1]) ? 1 : -1;
-        }
+  <?php include "nav.php";
 
-        define("NUM_OF_CATEGORIES", 7);
-        $sortingElement = [];
+  $sortingElement = [];
+  $id_str = "box_id_";
+  $resultStr;
 
-        $sql = mq("SELECT contentCategoryNo, count(*) as numOfContents from OVERFLOW_BOARD
-            GROUP BY contentCategoryNo HAVING contentCategoryNo >= 1");
+  $sql = mq("SELECT * from OVERFLOW_LISTOFBOARD ORDER BY numOfContents DESC");
 
-        for($i = 1; $i <= NUM_OF_CATEGORIES; $i++) {
-            $sortingElement[] = array($i, 0);
-        }
+  for ($i = 1; $sqldata = $sql->fetch_array(); $i++) {
+    $sortingElement[] = array($sqldata["categoryIdx"], $sqldata["numOfContents"], $sqldata["categorySubject"]);
+  }
+  $categoryCnt = $i - 1;
 
-        while($sqldata = $sql->fetch_array()) {
-            $temp = $sqldata["contentCategoryNo"];
-            $temp2 = $sqldata["numOfContents"];
-            $sortingElement[$temp][1] = $temp2;
-        }
+  $account = 0;
+  for ($i = 0; $i < $categoryCnt; $i++) {
+    $account += $sortingElement[$i][1];
+  }
+  $rateElements = [];
+  ?>
 
-        usort($sortingElement, "rvsort");
-        $account = 0;
-        for($i=0;$i<7;$i++) {
-          $account += $sortingElement[$i][1];
-        }
-        $rateElements = [];
+  <input type="hidden" id="categoryCnt" value="<?php echo $categoryCnt; ?>" />
 
-    ?>
-
-    <div class="sidebar">
+  <div class="mid-content">
+    <div class="sidebar col-3 col-s-12">
       <?php
-      for($i=0;$i<7;$i++) :
+      for ($i = 0; $i < $categoryCnt; $i++) :
         $rateElements[$i][1] = $sortingElement[$i][1] / $account;
-      ?>
-      <div class="box" style="height:100px;width:<?php echo $rateElements[$i][1]*200 + 60; ?>px; background-color:red; border:1px solid black;" >
-
-      </div>
-    <?php endfor;  ?>
-
-        <a href="overflow_board_1.php?ci=1">C언어</a>
-        <a href="overflow_board_1.php?ci=2">C++</a>
-        <a href="overflow_board_1.php?ci=3">Python</a>
-        <a href="overflow_board_1.php?ci=4">Javascript</a>
-        <a href="overflow_board_1.php?ci=5">JAVA</a>
-        <a href="overflow_board_1.php?ci=6">C#</a>
-        <a href="overflow_board_1.php?ci=7">HTML/CSS/JS</a>
+        $resultStr = $id_str . $sortingElement[$i][0];
+        ?>
+        <div class="box" id="<?php echo $resultStr; ?>" style="width:<?php echo floor(log10($rateElements[$i][1] + 1) * 500) + 150; ?>px;">
+          <a href="overflow_board_1.php?ci=<?php echo $sortingElement[$i][0]; ?>"><?php echo $sortingElement[$i][2]; ?></a> <div id="bos-content"><?php echo $sortingElement[$i][1]; ?> Contents</div>
+        </div>
+      <?php endfor;  ?>
     </div>
+    <div class="main-area col-9 col-s-12">
+      <?php include "slides0.php"; ?>
+    </div>
+  </div>
+  <?php include "footer.php"; ?>
 
-    <script>
-        $(document).ready(function() {
-            $(".sidebar").hide();
-            $(".sidebar").show();
-        });
-    </script>
 
-    <?php include "footer.php"; ?>
+  <script>
+    $(document).ready(function() {
+      var numOfElem = $("#categoryCnt").val();
+      for (let index = 0; index < numOfElem; index++) {
+        var box_id_str = "#box_id";
+        var id_no_str = index + 1;
+        box_id_str = box_id_str.concat("_", id_no_str.toString());
+        var color = (255 / numOfElem) * index;
+        var rgbString = "rgb(255";
+        rgbString = rgbString.concat(",", color, ",", color, ")");
+        //console.log(box_id_str);
+        $(box_id_str).css("background", rgbString);
+      }
+    });
+  </script>
 </body>
+
 </html>

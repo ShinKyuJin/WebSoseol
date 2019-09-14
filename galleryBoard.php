@@ -7,8 +7,7 @@ session_start();
   <head>
     <meta charset="utf-8">
     <title></title>
-      <link rel="stylesheet" href="board.css">
-      <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="galleryBoard.css">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   </head>
 
@@ -18,28 +17,17 @@ session_start();
 
       <?php
       $boardIdx = re('bi','get');
-      $categoryIdx = re('ci','get');
-      $board = mysqli_fetch_array(mq("SELECT * FROM BOARD WHERE boardIdx = $boardIdx"));
-      $category = mysqli_fetch_array(mq("SELECT * FROM LISTOFBOARD WHERE categoryIdx='$categoryIdx'"));
+      $board = mysqli_fetch_array(mq("SELECT * FROM BOARD WHERE boardIdx = $boardIdx AND categoryIdx = 4"));
+      $category = mysqli_fetch_array(mq("SELECT * FROM LISTOFBOARD WHERE categoryIdx = 4"));
        ?>
        <!-- 여기부터  javascript용 히든값!-->
       <input type="hidden" class="boardIdx" value="<?php echo $boardIdx; ?>">
-      <input type="hidden" class="categoryIdx" value="<?php echo $categoryIdx; ?>">
+      <input type="hidden" class="categoryIdx" value="4">
       <input type="hidden" class="userID" value="<?php echo $_SESSION['userID']; ?>">
       <!-- 여기까지 !-->
 
       <!-- 여기부터  Board !-->
-      <div class="bulletinboard"><?php echo $category['boardSubject']; ?></div>
-      <div class="tab_menu">
-        <ul style="height: auto;">
-          <?php
-          $tmp = mq("SELECT * FROM LISTOFBOARD");
-          while($tmpRow = mysqli_fetch_array($tmp)) :
-          ?>
-          <li><a href="boardIdx.php?ci=<?php echo $tmpRow['categoryIdx']; ?>"><?php echo $tmpRow['boardSubject']; ?></a></li>
-        <?php endwhile; ?>
-        </ul>
-      </div>
+      <h1 class="bulletinboard"><?php echo $category['boardSubject']; ?></h1>
 
       <div class="boardArea">
         <div class="text">
@@ -69,9 +57,12 @@ session_start();
             <dd>
               <?php
                 $file = mysqli_fetch_array(mq("SELECT * FROM FILE_BOARD WHERE boardIdx = '$boardIdx'"));
-                $file_dwlink = "uploadFile/".$file['saveName'];
+                $file_dwlink = "uploadFile/gallery/".$file['saveName'];
               ?>
-              <div class="file_link"><a href="<?php echo $file_dwlink; ?>"><?php echo $file['originName']; ?></a></div>
+              <div class="file_link">
+                  <img src="<?php echo $file_dwlink; ?>">
+                  <p><?php echo $file_dwlink; ?></p>
+                </div>
             </dd>
           </dl>
         </div>
@@ -192,5 +183,5 @@ session_start();
   <?php include "footer.php"; ?>
   </body>
   <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js" ></script>
-  <script type="text/javascript"src = "board.js"></script>
+  <script type="text/javascript" src = "gallery_board.js"></script>
 </html>

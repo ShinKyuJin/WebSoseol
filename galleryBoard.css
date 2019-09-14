@@ -1,0 +1,290 @@
+h1{
+    font-size: 40px;
+    text-align: center;
+    width: 100%;
+    height: 200px;
+    padding-top: 40px;
+  }
+  .tabMenu{
+    width: 1200px;
+    line-height: 22.5px;
+    overflow: hidden;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #990e17;
+    margin: 0px;
+    padding: 0px;
+  }
+  .tabMenu ul{
+    height: auto;
+  }
+  .tabMenu li a{
+    width: auto;
+    height: auto;
+  }
+  .tabMenu ul li a{
+    display: block;
+    float: left;
+    overflow: auto;
+    padding: 13px 45px;
+    border: 1px solid #dfdfdf;
+    border-bottom: none;
+    font-size: 18px;
+    letter-spacing: -1px;
+    margin-top: 5px;
+    margin-right: -1px;
+  }
+  .tabMenu ul li a:hover{
+    background-color: #990e17;
+    color: white;
+    text-decoration-line: none;
+  }
+  .boardArea{
+    margin-top: 50px;
+    margin-left: 6%;
+  }
+  .text {
+  width: 100%;
+  border-top: 2px solid #990e17;
+  border-bottom: 2px solid #990e17;
+  }
+  .text dt {
+  overflow: hidden;
+  padding: 20px 0;
+  border-bottom: 1px solid #dfdfdf;
+  color: #000;
+  font-family: 'Noto Sans KR';
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 34px;
+  letter-spacing: -1px;
+  text-align: center;
+  }
+  .text .txtInfo {
+  display: table;
+  width: 100%;
+  margin: -1px 0 0;
+  font-size: 0;
+  border-top: 1px solid #dfdfdf;
+  border-bottom: 1px solid #dfdfdf;
+  }
+  .text .txtInfo span {
+  display: table-cell;
+  width: calc(33.33% - 20%);
+  height: 57px;
+  box-sizing: border-box;
+  margin: 0 15px 0 0;
+  padding: 0 15px 0 0;
+  color: #2d2d2d;
+  font-size: 15px;
+  vertical-align: middle;
+  text-align: left;
+  }
+  .text .txtInfo span>.sort {
+  display: inline-block;
+  width: 40%;
+  height: 57px;
+  margin-right: 20px;
+  background: #f4f5f9;
+  color: #2d2d2d;
+  font-size: 15px;
+  line-height: 57px;
+  text-align: center;
+  vertical-align: middle;
+  }
+  .text dd {
+  overflow: hidden;
+  }
+  .text dd .view_txt {
+  color: #222;
+  font-size: 15px;
+  line-height: 27px;
+  }
+  hr{
+    border: 1px solid rgb(220, 220, 220) !important;
+    width: 110% !important;
+  }
+  .buttonArea {
+  margin: 0 !important;
+  padding: 30px 0 0 !important;
+  font-size: 0;
+  text-align: center !important;
+  }
+  .modify {
+  display: inline-block;
+  width: auto;
+  margin-right: 10px;
+  box-sizing: border-box;
+  padding: 0 0 0 30px;
+  border: 2px solid #990e17;
+  background: #fff url(edit.png) no-repeat left 17px top 50%;
+  background-size: 16px 16px;
+  vertical-align: top;
+  }
+  .modify:hover {
+  display: inline-block;
+  width: auto;
+  margin-right: 10px;
+  box-sizing: border-box;
+  padding: 0 0 0 30px;
+  background: #990e17 url(edit-1.png) no-repeat left 17px top 50%;
+  background-size: 16px 16px;
+  vertical-align: top;
+  }
+  .modify>span {
+  display: block;
+  width: auto;
+  min-width: 59px;
+  min-height: 42px;
+  margin: 0;
+  box-sizing: border-box;
+  padding: 11px 0 11px 11px;
+  color: #990e17;
+  font-size: 15px;
+  font-weight: 550;
+  line-height: 20px;
+  text-align: left;
+  letter-spacing: -1px;
+  }
+  .modify>span:hover{
+    color: white;
+  }
+  .delete {
+  display: inline-block;
+  width: auto;
+  margin-right: 10px;
+  box-sizing: border-box;
+  padding: 0 0 0 30px;
+  border: 2px solid #990e17;
+  background: #fff url(delete.png) no-repeat left 17px top 50%;
+  background-size: 18px 18px;
+  vertical-align: top;
+  }
+  .delete:hover {
+  display: inline-block;
+  width: auto;
+  margin-right: 10px;
+  box-sizing: border-box;
+  padding: 0 0 0 30px;
+  background: #990e17 url(delete-1.png) no-repeat left 17px top 50%;
+  color: white;
+  background-size: 18px 18px;
+  vertical-align: top;
+  }
+  .delete>span {
+  display: block;
+  width: auto;
+  min-width: 59px;
+  min-height: 42px;
+  margin: 0;
+  box-sizing: border-box;
+  padding: 11px 0 11px 11px;
+  color: #990e17;
+  font-size: 15px;
+  font-weight: 550;
+  line-height: 20px;
+  text-align: left;
+  letter-spacing: -1px;
+  }
+  .delete>span:hover{
+    color: white;
+  }
+  .list {
+  display: inline-block;
+  width: auto;
+  margin: 0 0 5px 0;
+  box-sizing: border-box;
+  padding: 0 0 0 30px;
+  border: 2px solid #990e17;
+  background: #fff url(text.png) no-repeat left 17px top 50%;
+  background-size: 18px 18px;
+  vertical-align: top;
+  }
+  .list:hover{
+    display: inline-block;
+    width: auto;
+    margin: 0 0 5px 0;
+    box-sizing: border-box;
+    padding: 0 0 0 30px;
+    background: #990e17 url(text-1.png) no-repeat left 17px top 50%;
+    background-size: 18px 18px;
+    vertical-align: top;
+  }
+  .list>span {
+  display: block;
+  width: auto;
+  min-width: 59px;
+  min-height: 42px;
+  margin: 0;
+  box-sizing: border-box;
+  padding: 11px 0 11px 11px;
+  color: #990e17;
+  font-size: 15px;
+  font-weight: 550;
+  line-height: 20px;
+  text-align: left;
+  letter-spacing: -1px;
+  }
+  .list>span:hover{
+    color: white;
+  }
+  .comment{
+    margin-bottom: -10px;
+  }
+  .commentZone{
+    margin-left: 10%;
+  }
+  .commentContent{
+    width: 89%;
+    height: 110px;
+    resize: none;
+    float: left;
+  }
+  .commentMakeBtn{
+    width: 11%;
+    height: 110px;
+    border: none;
+    background-color: #990e17;
+    color: white;
+  }
+  .commentCard {
+  height: auto !important;
+  width: 100%;
+  border: 2px solid rgb(210,210,210);
+  margin-top: 30px;
+  }
+  
+  .commentCard .commentWriter {
+    float:left;
+  }
+  .recommentContent{
+    height: auto;
+    padding-left: 5px;
+  }
+  .replyMakeZone{
+    padding: 10px;
+    padding-bottom: 3px !important;
+  }
+  .replyContent{
+    width: 95%;
+  }
+  .replyMakeBtn{
+    background-color: #990e17;
+    border: none;
+    color: white;
+    font-size: 12px;
+    height: 30px;
+    width: 4.5%;
+  }
+  
+  .replyCard {
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 5px;
+  }
+  .reCommentZone{
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: rgb(245, 245, 245);
+    border: 0.5px solid rgb(200,200,200);
+  }
+  

@@ -1,18 +1,23 @@
 <?php
-    include "db.php";
+    include_once "db.php";
 ?>
 
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <title>BOARD</title>
-    <link rel="stylesheet" type="text/css" href="overflow_board-1.css?after" />
+    <link rel="stylesheet" type="text/css" href="overflow_board_1.css?after" />
 </head>
 
 <body>
-  <?php include "nav.php"; ?>
+  <?php 
+    include "nav.php"; 
+    $ci =  re('ci', 'get');
+    $searchTitle = re('contentTitle', 'get');
+    $isContent = false;
+  ?>
     <div id="board-area">
-        <h1><?php echo $_GET['tname']; ?></h1>
+        <h1><?php echo $searchTitle; echo " 검색 결과"; ?></h1>
         <table class="list-table">
             <thead>
                 <tr>
@@ -22,13 +27,12 @@
                   <th width="130">작성일</th>
                 </tr>
             </thead>
-            <?php
-            $tag_name = $_GET['tname'];
-            $sql = mq("select contentIdx from OVERFLOW_BOARD_TAG_RELATION where tagName = '$tag_name'");
-            while ($cidx = $sql->fetch_array()) :
-                $osql = mq("select * from OVERFLOW_BOARD where contentIdx = '$cidx[contentIdx]'");
-                $board = $osql->fetch_array();
 
+            <?php
+            $searchTitle = '%'.$searchTitle.'%';
+            $sql = mq("SELECT * from OVERFLOW_BOARD where contentCategoryNo = '$ci' and contentTitle LIKE '$searchTitle'");
+            while ($board = $sql->fetch_array()) :
+                $isContent = true;
                 $title = $board["contentTitle"];
                 if (strlen($title) > 30) {
                     $title = str_replace($board["contentTitle"], mb_substr($board["contentTitle"], 0, 30, "utf-8") . "...", $board["contentTitle"]);
@@ -44,9 +48,13 @@
                 </tbody>
             <?php endwhile; ?>
         </table>
+        <?php        
+            if(!$isContent) {
+                echo '<h1>NO CONTENTS</h1>';
+            }
+        ?>
     </div>
     <?php include "footer.php"; ?>
-    <?php echo "hello"; ?>
 </body>
 
 </html>

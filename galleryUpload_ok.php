@@ -21,20 +21,21 @@
     }
   }
 
-  $categoryIdx = $_GET['ci'];
+  $categoryIdx = 4;
   $boardTitle = re('boardTitle','post');
   $boardWriter = $_POST['userID'];
   $boardContent = re('boardContent','post');
   $boardFile = re('boardFile','post');
   $boardDate = date('Y-m-d H:i:s');
 
-  $file = $_FILES['boardFile'];
+  $file = $_FILES['boardImage'];
   $encFile = md5(uniqid(rand(), true));
   $fileOriginName = $file['name'];
   $path = substr($file['name'], strrpos($file['name'], '.') + 1);
   $path = md5(microtime()) . '.' . $path;
 
-  $upload_directory = 'uploadFile/';
+  $upload_directory = 'uploadFile/gallery/';
+
   
   $sql = mq("INSERT INTO BOARD(
     categoryIdx,

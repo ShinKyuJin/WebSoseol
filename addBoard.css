@@ -2,25 +2,32 @@
   margin-top: 80px;
 }
 .tab_menu{
-  width: 1110px;
+  width: 100%;
   line-height: 22.5px;
   overflow: hidden;
   margin-bottom: 30px;
   border-bottom: 1px solid #990e17;
+  margin: 0px;
   padding: 0px;
 }
 .tab_menu ul{
+  width: 110%;
   height: auto;
+  list-style: none;
 }
 .tab_menu li a{
   width: auto;
   height: auto;
+  color: black;
+}
+.tab_menu li {
+  background-color: black;
 }
 .tab_menu ul li a{
   display: block;
   float: left;
   overflow: auto;
-  padding: 13px 45px;
+  padding: 13px 34px;
   border: 1px solid #dfdfdf;
   border-bottom: none;
   font-size: 18px;
@@ -36,6 +43,7 @@
 form{
   border-top: 2px solid #990e17;
   border-bottom: 2px solid #990e17;
+  margin-top: 3%;
   height: auto;
 }
 .writing th {
@@ -70,14 +78,10 @@ border: 1px solid #990e17;
 background-color: white;
 }
 .buttonBox input[type=submit]{
-margin-top: 50px;
-width: 75px;
-height: 45px;
-background-color: white;
-border: 1px solid #990e17;
-color: black;
-}
-.buttonBox input[type=submit]:hover{
+margin-top: 23px;
+width: 90px;
+height: 40px;
 background-color: #990e17;
 color: white;
+border: none;
 }
