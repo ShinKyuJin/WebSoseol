@@ -64,6 +64,18 @@ session_start();
               </span>
             </div>
             <dd>
+              <?php
+              $recommendCnt = mq("SELECT * FROM RECOMMEND WHERE boardIdx='$boardIdx'");
+              $userID = $_SESSION['userID'];
+              $userRecommendChk =mysqli_fetch_array(mq("SELECT * FROM RECOMMEND WHERE reID='$userID' AND boardIdx='$boardIdx'"));
+               ?>
+              <div class="recommendBoard" style="float:right;color:#<?php if($userRecommendChk) echo '22bbee'; else echo '777777'; ?>;font-size:14px;">
+                <a style="text-decoration:none;" class="recommend">추천</a>
+                (<?php echo $recommendCnt->num_rows; ?>)
+                <input type="hidden" class="isRecommend" value="<?php if($userRecommendChk) echo "1"; else echo "0"; ?>">
+              </div>
+            </dd>
+            <dd>
               <div class="view_txt"><?php echo nl2br($board['boardContent']); ?></div>
             </dd>
             <dd>
