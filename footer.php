@@ -1,11 +1,11 @@
 <footer class="footer">
-  <div class="container">
-    <table style="">
+  <div class="footerBox">
+    <table>
       <tr style="height:100px">
         <td class="logo"> <img src="sejonglogo.png" > </td>
         <td class="copyright">
           010-7393-3434 | sejong1sc@gmail.com | 학생회관 409호<br>
-          COPYRIGHT ⓒ 2018 세종대학교 소프트웨어융합대학 LAON  학생회 ALL RIGHT RESERVED.
+          <p style="font-size:11px">COPYRIGHT ⓒ 2018 세종대학교 소프트웨어융합대학 LAON  학생회 ALL RIGHT RESERVED.</p>
         </td>
       </tr>
     </table>

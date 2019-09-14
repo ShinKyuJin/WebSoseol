@@ -1,7 +1,16 @@
 .footer {
   box-shadow: 1px 1px 3px 1px grey  ;
-  margin: 0 auto;
-  background-color: white;
+  margin-left: auto;
+  background-color: #f1f1f1;
+  float:left;
+  width:100%;
+  overflow-x: hidden;
+}
+
+.footerBox {
+  width:597px;
+  height:100px;
+  margin:0 auto;
 }
 
 .footer img {
@@ -14,11 +23,13 @@
 }
 
 .copyright {
+  margin-top:15px;
   text-align: right;
   float:left;
 }
 
 @@media (max-width:768) {
   .footer {
+    width:100%;
   }
 }

@@ -4,10 +4,10 @@
       $boardSubject = mysqli_fetch_array(mq("SELECT * FROM LISTOFBOARD WHERE categoryIdx='$categoryIdx'"));
       $board = mq("SELECT * FROM BOARD WHERE categoryIdx='$categoryIdx' ORDER BY boardIdx desc LIMIT 5 ");
       if($board->num_rows > 0) :
-      echo "<div class='boardX' style='height:300px;'>
+      echo "<div class='boardX' style='height:200px;'>
         <h6>
         <a href='boardIdx.php?ci=$categoryIdx'>".$boardSubject['boardSubject']."</a></h6>
-        <table style='border-top:1px solid black; width:560px' class='boardTable'>
+        <table  class='boardBox'>
           <thead>
             <th style='width:350px'></th>
             <th style='width:105px'></th>

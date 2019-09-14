@@ -24,6 +24,10 @@ body {
 .Board {
   height:70%;
 }
+.boardBox{
+  border-top:1px solid black;
+  width:560px;
+}
 table tbody tr td{
   font-size:13px;
 }
@@ -41,9 +45,14 @@ h6 a:hover {
   color:black;
   text-decoration: none;
 }
-@media (max-width:768px) {
+@media screen and (max-width:768px) {
   .Board {
     margin-top:2%;
     margin-left:0;
+    width:100%;
+  }
+  .boardBox{
+    border-top:1px solid black;
+    width:360px;
   }
 }
