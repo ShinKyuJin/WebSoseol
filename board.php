@@ -33,11 +33,14 @@ session_start();
       <div class="tab_menu">
         <ul style="height: auto;">
           <?php
-          $tmp = mq("SELECT * FROM LISTOFBOARD");
-          while($tmpRow = mysqli_fetch_array($tmp)) :
-          ?>
-          <li><a href="boardIdx.php?ci=<?php echo $tmpRow['categoryIdx']; ?>"><?php echo $tmpRow['boardSubject']; ?></a></li>
-        <?php endwhile; ?>
+          $link = mq("SELECT * FROM LISTOFBOARD");
+          while($linkRow = mysqli_fetch_array($link)) : ?>
+          <li ><a href="boardIdx.php?ci=<?php echo $linkRow['categoryIdx']; ?>"
+            <?php
+            if($linkRow['categoryIdx'] == $_GET['ci']) echo "style='background-color:#990e17;color:white;'";
+
+             ?>><?php echo $linkRow['boardSubject']; ?></a></li>
+          <?php endwhile; ?>
         </ul>
       </div>
 
@@ -70,8 +73,7 @@ session_start();
               $userRecommendChk =mysqli_fetch_array(mq("SELECT * FROM RECOMMEND WHERE reID='$userID' AND boardIdx='$boardIdx'"));
                ?>
               <div class="recommendBoard" style="float:right;color:#<?php if($userRecommendChk) echo '22bbee'; else echo '777777'; ?>;font-size:14px;">
-                <a style="text-decoration:none;" class="recommend">추천</a>
-                (<?php echo $recommendCnt->num_rows; ?>)
+                <a style="text-decoration:none;" class="recommend">추천(<?php echo $recommendCnt->num_rows; ?>)</a>
                 <input type="hidden" class="isRecommend" value="<?php if($userRecommendChk) echo "1"; else echo "0"; ?>">
               </div>
             </dd>

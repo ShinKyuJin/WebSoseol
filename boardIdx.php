@@ -16,7 +16,7 @@
       $stmt = mq("SELECT * FROM BOARD WHERE categoryIdx='$categoryIdx'");
      ?>
     <div class="container">
-      <div class="bulletinboard"><img src="ai.png" style="repeat: none; width: 103%; height: 400px; opacity: 0.7"></div>
+      <div class="bulletinboard"><img src="ai.jpg" style="repeat: none; width: 103%; height: 400px; opacity: 0.7"></div>
       <div class="text">게시판</div>
       <div class="tab_menu">
         <ul style="height: auto;">

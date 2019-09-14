@@ -7,11 +7,13 @@
       <ul>
         <li><?php
             $isLogo = mq("SELECT * FROM ADMINFILE WHERE category = 'logo' AND selected = 1");
-            if($logoRow = mysqli_fetch_array($isLogo)) : ?>
+            if($logoRow = mysqli_fetch_array($isLogo)) { ?>
             <img src="<?php echo "admin/logo/".$logoRow["saveName"]; ?>" width="50px" height="50px" />
-          <?php endif; ?></li>
+          <?php } ?>
+
+        </li>
         <li><a href="index.php">홈</a></li>
-        <li><a href="">게시판</a>
+        <li><a href="boardIdx.php?ci=1">게시판</a>
            <ul>
             <?php
              $category = mq("SELECT * FROM LISTOFBOARD");
@@ -21,7 +23,7 @@
            <?php endwhile; ?>
            </ul>
          </li>
-         <li><a href="#">학과 소개</a>
+         <li><a href="introduce.php?i=1">학과 소개</a>
            <ul>
              <?php
              $intro = mq("SELECT * FROM MAJORINTRO");
