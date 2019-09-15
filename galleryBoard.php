@@ -177,7 +177,6 @@ session_start();
       <!-- /Comment !-->
     </div>
 
-
     <!-- 여기까지 !-->
   </div>
   <?php include "footer.php"; ?>

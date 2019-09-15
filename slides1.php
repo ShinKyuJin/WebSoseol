@@ -2,24 +2,24 @@
 <html>
 <head>
   <meta charset="utf-8">
-<link rel="stylesheet" href="slide1.css">
+<link rel="stylesheet" href="slides1.css">
 </head>
 <body>
 <div class="slideshow-container1">
 
-<div class="mySlides1 fade">
+<div class="mySlides1">
   <div class="numbertext1">1 / 3</div>
-  <img src="point-1.png">
+  <img src="overflow-1.png">
 </div>
 
-<div class="mySlides1 fade">
+<div class="mySlides1">
   <div class="numbertext1">2 / 3</div>
-  <img src="point-2.png">
+  <img src="overflowimg-2.jpg">
 </div>
 
-<div class="mySlides1 fade">
+<div class="mySlides1">
   <div class="numbertext1">3 / 3</div>
-  <img src="point-3.png">
+  <img src="overflowimg-1.jpg">
   </div>
 
 </div>
@@ -32,24 +32,24 @@
 </div>
 
 <script>
-var slideIndex = 0;
-showSlides();
+var slideIndex1 = 0;
+showSlides1();
 
-function showSlides() {
+function showSlides1() {
   var i;
-  var slides = document.getElementsByClassName("mySlides1");
-  var dots = document.getElementsByClassName("dot1");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
+  var slides1 = document.getElementsByClassName("mySlides1");
+  var dots1 = document.getElementsByClassName("dot1");
+  for (i = 0; i < slides1.length; i++) {
+    slides1[i].style.display = "none";
   }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
+  slideIndex1++;
+  if (slideIndex1 > slides1.length) {slideIndex1 = 1}
+  for (i = 0; i < dots1.length; i++) {
+    dots1[i].className = dots1[i].className.replace(" active", "");
   }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-  setTimeout(showSlides, 4000);
+  slides1[slideIndex1-1].style.display = "block";
+  dots1[slideIndex1-1].className += " active";
+  setTimeout(showSlides1, 4000);
 }
 </script>
 

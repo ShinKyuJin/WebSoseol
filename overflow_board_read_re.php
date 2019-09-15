@@ -1,4 +1,4 @@
-    <div class="comment_area">
+<div class="comment_area">
     <div class="read_re_title"><?php echo $reboard["contentTitle"]; ?></div>
     <div id="user_info">
       <div class="txtInfo">

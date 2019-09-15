@@ -9,6 +9,7 @@
     $contentTags = $_POST['content_tag'];
     $theme_no = $_POST['theme_no'];
     $date = date('Y-m-d h:m:s');
+    $ci = $_POST['categoryNo'];
 
     function parseTag($content_tag, $iidx) {
         //1. 정규식을 통해 개행과 탭 제거 후 공백 문자를 모두 ','로 대체
@@ -39,7 +40,7 @@
         }
 
         if($tag_sql) echo 'suc';
-        else echo 'fuck2';
+        else echo 'fail2';
         echo '< br/>';
     }
 
@@ -59,9 +60,11 @@
     parseTag($contentTags, $index);
 
     if($sql) {
-         echo 'suc2'; 
-         if($sql3) echo 'suc3'; 
+         echo 'suc2';
+         if($sql3) echo 'suc3';
          else echo 'wrong1';
     }
     else echo 'wrong2';
+
+    header("Location:overflow_board_1.php?ci=$ci");
 ?>

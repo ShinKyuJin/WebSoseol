@@ -196,10 +196,16 @@
 
     <button id="pan_9">회원정보 검색</button>
         <div class="in_pan" id="pan_1_9">
-            <form method="post" action="admin_settings.php">
-            <p>Some text</p>
-                <input type="hidden" name="menuIdx" value="pan_9" />
-                <input type="submit" value="회원 검색" />
+            <form method="post">
+                <select id ="user_search_select">
+                    <option value="userID">유저ID키워드검색</option>
+                    <option value="userMajor">학과별유저검색</option>
+                    <option value="userName">유저이름검색</option>
+                </select>
+
+                <input type="text" id="id_keyWord">회원ID
+                <button type="button" onclick="getUserInfo()">회원정보검색</button><br/>
+                <div id="userSearchInfo"></div>
             </form>
         </div><br />      
 
@@ -277,6 +283,23 @@
             xmlhttp.send();
         }
 
+        function getUserInfo() {
+            var mtd = document.getElementById("user_search_select").value;
+            var kwd = document.getElementById("id_keyWord").value;
+            if (window.XMLHttpRequest) {
+                // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp=new XMLHttpRequest();
+            } else { // code for IE6, IE5
+                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange=function() {
+                if (this.readyState==4 && this.status==200) {
+                document.getElementById("userSearchInfo").innerHTML = this.responseText;
+                }
+            }
+            xmlhttp.open("GET","admin_getUser.php?mt="+mtd+"&kw="+kwd,true);
+            xmlhttp.send();
+        }
     </script>
 </body>
 

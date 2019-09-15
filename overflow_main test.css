@@ -1,0 +1,114 @@
+h1{
+  font-size: 55px;
+  font-weight: bold;
+  text-align: center;
+  font-family: 'Gamja Flower', cursive;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.intro h2{
+  margin-top: 5%;
+  margin-left:  20%;
+  margin-right: 20%;
+  margin-bottom: 5%;
+  font-size:30px;
+  font-weight: bold;
+  font-family: 'Sunflower', sans-serif;
+  text-align: center;
+}
+.describe{
+  margin: 0 auto;
+  width:1200px;
+  height: 600px;
+}
+
+.howtotag{
+  margin-left: 25%;
+  margin-top: 30px;
+   width: 700px;
+   height: 550px;
+   background-color: gray;
+   float: left;
+   white-space: normal;
+   border-radius: 10%;
+}
+.howto{
+  margin:0 auto;
+  width: 600px;
+}
+.int{
+  font-size: 29px;
+  font-family: 'Yeon Sung', cursive;
+}
+.ex{
+  font-size: 25px;
+  font-family: 'Yeon Sung', cursive;
+}
+.howto h2{
+  font-size: 30px;
+  text-align: center;
+  font-family: 'Song Myung', serif;
+}
+
+@media only screen and (min-width:768px) {
+  .mediaslide{
+    display:none;
+  }
+  .howtotag1{
+    display: none;
+  }
+  .describe2{
+    display:none;
+  }
+}
+@media only screen and (max-width:768px) {
+  .mainslide{
+    display: none;
+  }
+  .describe{
+    display: none;
+  }
+  .overbtn{
+    display: none;
+  }
+  .mediaslide{
+    display: block;
+  }
+  .howtotag1{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+     width: 370px;
+     height: 500px;
+     background-color: gray;
+     float: left;
+     white-space: normal;
+     border-radius: 10%;
+     display: block;
+  }
+  .howto1{
+    padding-left: 5px;
+    padding-right: 5px;
+    margin:0 auto;
+    width: 370px;
+    height: 500px;
+  }
+  .int1{
+    font-size: 20px;
+    font-family: 'Yeon Sung', cursive;
+  }
+  .ex1{
+    font-size: 18px;
+    font-family: 'Yeon Sung', cursive;
+  }
+  .howto1 h2{
+    font-size: 25px;
+    text-align: center;
+    font-family: 'Song Myung', serif;
+  }
+  .howtotag{
+    display: none;
+  }
+
+}

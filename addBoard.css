@@ -85,3 +85,17 @@ background-color: #990e17;
 color: white;
 border: none;
 }
+@media screen and (max-width:768px) {
+  .tab_menu{
+    display: none;
+  }
+  .writing th {
+    width: 55px;
+    border-bottom: 1px solid #e1e1e1;
+    background: #f4f5f9;
+    font-size: 15px;
+    color: #222;
+    text-align: center;
+    letter-spacing: -1px;
+  }
+}

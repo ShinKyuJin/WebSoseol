@@ -297,3 +297,32 @@ margin-top: 30px;
   background-color: rgb(245, 245, 245);
   border: 0.5px solid rgb(200,200,200);
 }
+@media screen and (max-width:768px) {
+  .tab_menu{
+    display: none;
+  }
+  .text .txtInfo span>.sort {
+  display: inline-block;
+  width: 35px;
+  height: 40px;
+  margin-right: 1px;
+  background: #f4f5f9;
+  color: #2d2d2d;
+  font-size: 12px;
+  line-height: 40px;
+  text-align: center;
+  vertical-align: middle;
+  }
+  .text .txtInfo span {
+  display: table-cell;
+  width: calc(19.33% - 20%);
+  height: 40px;
+  box-sizing: border-box;
+  margin: 0 15px 0 0;
+  padding: 0 0 0 0;
+  color: #2d2d2d;
+  font-size: 15px;
+  vertical-align: middle;
+  text-align: left;
+  }
+}

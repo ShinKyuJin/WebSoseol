@@ -1,8 +1,8 @@
 <div class="recomment">답글 작성</div>
   <div class="wi_line"></div>
     <div id="selections">
-        <?php 
-            include "theme_mode_selector.php";    
+        <?php
+            include "theme_mode_selector.php";
         ?>
     </div>
     <form id="preview-form" method="post" action="overflow_write_ok.php">
@@ -13,8 +13,8 @@
         <textarea class="content_2" name="content_2" id="preview-form-comment", placeholder="질문 작성"></textarea>
         <br />
         <textarea class="content_tag" name="content_tag" id="content_tag" placeholder="태그 삽입"></textarea>
-        
-        <input type="hidden" name="userID" value="<?php echo $_SESSION['userID']; ?>">        
+
+        <input type="hidden" name="userID" value="<?php echo $_SESSION['userID']; ?>">
         <input type="hidden" id="categoryNo" name="categoryNo" value="<?php echo $_GET['ci'];?>">
         <input type="hidden" name="root" value="false">
         <input type="hidden" name="rootIdx" value="<?php echo $index; ?>">
@@ -24,7 +24,7 @@
                 if(!isset($_SESSION['userID'])) echo "<a id='preview-form-submit' href='login.php'>글쓰기</a>";
                 else echo "<input type='submit' name='preview-form-submit' id='preview-form-submit' value='등록하기'>글쓰기</a>";
             ?>
-        
+
     </form>
     <div class="wi_line"></div>
 

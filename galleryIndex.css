@@ -1,0 +1,89 @@
+.Card {
+  width:200px;
+  height:275px;
+  float:left;
+  margin:10px;
+  box-shadow: 1px 1px 2px 1px grey;
+  border-radius: 5px 5px 5px 5px;
+}
+
+.Card img{
+  width:200px;
+  height:200px;
+  border:3px solid white;
+}
+
+@media screen and (max-width:768px) {
+  .Card {
+    width:150px;
+    height:225px;
+    float:left;
+    margin:10px;
+    box-shadow: 1px 1px 2px 1px grey;
+    border-radius: 5px 5px 5px 5px;
+  }
+
+  .Card img{
+    width:150px;
+    height:150px;
+    border:3px solid white;
+  }
+
+}
+
+.Card .info {
+  height:75px;
+  width:100%;
+  background-color: white;
+  text-align: center;
+  color:black;
+}
+.Card a:hover {
+  text-decoration: none !important;
+}
+
+
+.Card:hover {
+  box-shadow: 1px 1px 2px 1px #990e17;
+}
+
+.write  {
+  float:right;
+  text-decoration: none;
+  color:black;
+}
+.write:hover {
+  float:right;
+  text-decoration: none;
+  color:#990e17;
+}
+.plus {
+  font-size:100px;
+  margin-left: 45%;
+  color:black;
+}
+.plus:hover {
+  font-size:100px;
+  color:#990e17;
+  text-decoration: none;
+}
+.smallInfo {
+  text-align: left;
+}
+
+.Writer,.Title {
+  margin-right:10px;
+  float:left;
+}
+
+.Date {
+  font-size:14px;
+}
+.Title {
+  font-size:18px;
+  font-weight: bold;
+}
+.Writer {
+  line-height: 30px;
+  font-size:14px;
+}

@@ -5,58 +5,76 @@
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="boardIdx.css">
+    <link rel="stylesheet" href="galleryIndex.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
   </head>
   <body>
     <?php include "nav.php"; ?>
     <?php
-      $boardSubject = mysqli_fetch_array(mq("SELECT * FROM LISTOFBOARD WHERE categoryIdx=4"));
-      $stmt = mq("SELECT * FROM BOARD WHERE categoryIdx=4");
+    $paging = re('page','get');
      ?>
     <div class="container">
-        <h1 class="bulletinboard">소융대 갤러리</h1>
-      <div class="board_area">
-        <div class="search">
-          <input type="text" class="input" placeholder="검색어를 입력해주세요." name="search" onkeyup="searchEnterKey()" >
-          <button class="btn_search" type="submit"></button>
-        </div>
-      </div>
+      <h1 class="bulletinboard">소융대 갤러리&nbsp&nbsp<a class="write"href="galleryUpload.php"><i class="fas fa-pen"></i></a></h1>
+      <hr>
+      <?php
+      $cardViewBind = mq("SELECT * FROM BOARD WHERE categoryIdx=4");
+      $number = 0;
+      while($cardViewRow = mysqli_fetch_array($cardViewBind)) :
+        $boardIdx = $cardViewRow["boardIdx"];
+        $link = 'uploadFile/gallery/';
+        $imagesrc = mysqli_fetch_array(mq("SELECT * FROM FILE_BOARD WHERE boardIdx = $boardIdx"));
+        $link = $link.$imagesrc["saveName"];
 
-      <div class="container">
-        <table class="table" style="text-align:center; width: 1200px;">
-          <?php echo $boardSubject['boardSubject']; ?>
-          <thead>
-            <th>제목</th>
-            <th>작성자</th>
-            <th>날짜</th>
-            <th>조회수</th>
-          </thead>
-          <?php
-            while($row = mysqli_fetch_array($stmt)) :
-              $boardIdx = $row['boardIdx'];
-              $commentCnt = mq("SELECT * FROM COMMENT_BOARD WHERE boardIdx='$boardIdx'");
-              $link = "galleryBoard.php?bi=".$row['boardIdx'];
-              $boardDate = substr($row['boardDate'],0,10) == date('Y-m-d') ? substr($row['boardDate'],10,8) : substr($row['boardDate'],0,10);
-              $imagesrc = mysqli_fetch_array(mq("SELECT * FROM FILE_BOARD WHERE boardIdx = $boardIdx"));
-              $filepath = "uploadFile/gallery/".$imagesrc['saveName'];
-           ?>
-           <tr>
-             <td><a href="<?php echo $link; ?>"><?php echo $row['boardTitle']; ?></a>[<?php echo $commentCnt->num_rows; ?>]</td>
-             <td><?php echo $row['boardWriter']; ?></td>
-             <td><?php echo $boardDate; ?></td>
-             <td><?php echo $row['boardHit']; ?></td>
-             <td><?php echo "<a href='galleryBoard.php?bi=$boardIdx'><img src='$filepath' width='150px' height='150px'></a>"; ?></td>
-           </tr>
-         <?php endwhile; ?>
-        </table>
-        <?php
-        if(isset($_SESSION['userID'])) :
-         ?>
-        <div class="submit"><a href="galleryUpload.php">글쓰기</a></div>
-      <?php endif; ?>
+        ?>
+        <div class="Card Card<?php echo ++$number; ?>">
+          <a href="galleryBoard.php?bi=<?php echo $cardViewRow['boardIdx']; ?>"><img src="<?php echo $link;?>" alt="" >
+            <div class="info">
+              <div class="smallInfo Date">
+                <?php echo substr($cardViewRow['boardDate'],0,10); ?>
+              </div>
+              <div class="smallInfo Title">
+                <?php echo $cardViewRow['boardTitle']; ?>
+              </div>
+              <div class="smallInfo Writer">
+                <?php echo $cardViewRow['boardWriter']; ?>
+              </div>
+            </div>
+          </a>
+        </div>
+      <?php endwhile; ?>
+      <div class="plusBox">
+        <a class="plus" href="#" onclick="return false;">+</a>
       </div>
     </div>
+
   <?php include "footer.php"; ?>
   </body>
   <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js" ></script>
-  </html>
+  <script type="text/javascript">
+  var number = <?php echo $number; ?>;
+  var k = 5;
+  var beforeK = k;
+  if(number > 5) {
+    for(var i=6;i<=number;i++) {
+      var className = ".Card"+i;
+      $(className).css("display","none");
+    }
+  }
+  $('.plus').click(function() {
+    if(k+5 > number) {
+      k = number;
+      $('.plusBox').css("display","none");
+    }
+    else {
+      k+=5;
+    }
+    for(var i=beforeK;i<=k;i++) {
+      var className = ".Card"+i;
+      $(className).css("display","block");
+    }
+    beforeK = k;
+
+  })
+  </script>
+</html>

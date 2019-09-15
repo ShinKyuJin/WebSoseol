@@ -1,47 +1,144 @@
-.loginForm {
-  height:500px;
-  background-color: #bbb;
-  margin-top: 50px;
+
+@media screen and (min-width:768px) {
+  .loginForm {
+    height: 500px;
+    background-color: #bbb;
+    margin-top: 50px;
+    width: 80%;
+    margin-left: 10%;
 }
 
-.loginBox {
-  position:relative;
-  width:70%;
-  margin-left: 15%;
-  top:20%;
-  height:300px;
-  background-color: white;
-  box-shadow: 3px 3px 5px 7px grey;
-  text-align: center;
+  .loginBox {
+    position:relative;
+    width:50%;
+    margin-left: 25%;
+    top:20%;
+    height:300px;
+    background-color: white;
+    box-shadow: 3px 3px 5px 7px grey;
+    text-align: center;
+  }
+
+  .inputBox {
+    position: relative;
+    top:20%;
+  }
+  .login {
+    margin-top:10px;
+    border-radius: 3px;
+    border:0 0 0 1px solid black;
+    width:50%;
+    height:50px;
+    min-width: 200px;
+  }
+
+  .button {
+    margin-top:10px;
+    background-color:#990e17;
+    width:50%;
+    height:40px;
+    border:none;
+    min-width: 200px;
+    color:white;
+  }
+
+  .button:hover {
+    background-color: #770005;
+  }
 }
 
-.inputBox {
-  position: relative;
-  top:20%;
-}
-.login {
-  margin-top:10px;
-  border-radius: 3px;
-  border:0 0 0 1px solid black;
-  width:50%;
-  height:50px;
-  min-width: 200px;
+@media screen and (max-width:768px) {
+  .loginForm {
+    height:500px;
+    background-color: #bbb;
+    margin-top: 50px;
+  }
+
+  .loginBox {
+    position:relative;
+    width:60%;
+    margin-left: 20%;
+    top:20%;
+    height:300px;
+    background-color: white;
+    box-shadow: 3px 3px 5px 7px grey;
+    text-align: center;
+  }
+
+  .inputBox {
+    position: relative;
+    top:20%;
+  }
+  .login {
+    margin-top:10px;
+    border-radius: 3px;
+    border:0 0 0 1px solid black;
+    width:50%;
+    height:50px;
+    min-width: 200px;
+  }
+
+  .button {
+    margin-top:10px;
+    background-color:#990e17;
+    width:50%;
+    height:40px;
+    border:none;
+    min-width: 200px;
+    color:white;
+  }
+
+  .button:hover {
+    background-color: #770005;
+  }
 }
 
-.button {
-  margin-top:10px;
-  background-color:#990e17;
-  width:50%;
-  height:40px;
-  border:none;
-  min-width: 200px;
-  color:white;
-}
+@media screen and (max-width: 400px) {
+  .loginForm {
+    height:350px;
+    background-color: #bbb;
+  }
 
-.button:hover {
-  background-color: #770005;
-}
+  .loginBox {
+    position:relative;
+    width: 80%;
+    margin-left: 10%;
+    top:20%;
+    height:200px;
+    background-color: white;
+    box-shadow: 3px 3px 5px 7px grey;
+    text-align: center;
+  }
 
-@media (min-width:600px) {
+  .inputBox {
+    position: relative;
+    top:20%;
+  }
 
+  .login {
+    margin-top:10px;
+    border-radius: 3px;
+    border:0 0 0 1px solid black;
+    width:80%;
+    height:30px;
+    min-width: 60px;
+  }
+
+  .loginResult {
+    font-size: 11px;
+  }
+
+  .button {
+    margin-top:10px;
+    background-color:#990e17;
+    width:80%;
+    height:30px;
+    border:none;
+    min-width: 60px;
+    color:white;
+  }
+
+  .button:hover {
+    background-color: #770005;
+  }
 }

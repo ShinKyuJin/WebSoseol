@@ -55,9 +55,9 @@
               $boardDate = substr($row['boardDate'],0,10) == date('Y-m-d') ? substr($row['boardDate'],10,8) : substr($row['boardDate'],0,10);
            ?>
            <tr>
-             <td><a href="<?php echo $link; ?>"><?php echo $row['boardTitle']; ?></a>[<?php echo $commentCnt->num_rows; ?>]</td>
+             <td><a href="<?php echo $link; ?>" title="<?php echo $row['boardTitle']; ?>"><?php echo $row['boardTitle']; ?></a>[<?php echo $commentCnt->num_rows; ?>]</td>
              <td><?php echo $row['boardWriter']; ?></td>
-             <td><?php echo $boardDate; ?></td>
+             <td><?php echo substr($row['boardDate'],2,8); ?></td>
              <td><?php echo $row['boardHit']; ?></td>
            </tr>
          <?php endwhile; ?>
@@ -65,7 +65,7 @@
         <?php
         if(isset($_SESSION['userID'])) :
          ?>
-        <div class="submit"><a href="addBoard.php?ci=<?php echo $categoryIdx; ?>">글쓰기</a></div>
+        <div class="submit" style="margin-bottom:15px;"><a href="addBoard.php?ci=<?php echo $categoryIdx; ?>">글쓰기</a></div>
       <?php endif; ?>
       </div>
     </div>

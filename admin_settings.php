@@ -90,10 +90,6 @@
             WHERE userID = '$userID'");
     }
 
-    function searchUser($keyword, $search_mthd) {
-
-    }
-
     function presentLogoInNavigationBar($isPresent) {
         if($isPresent) {
             $sql = mq("SELECT fileIdx FROM ADMINFILE WHERE category ='logo' ORDER BY fileIdx DESC");

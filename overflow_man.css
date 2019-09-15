@@ -1,7 +1,7 @@
 
 * {
     box-sizing: border-box;
-}    
+}
 
 .mid-content::after {
     content: "";
@@ -24,13 +24,14 @@
 
 .sidebar {
     width: 25%;
+    height: 100%;
     z-index: 1;
     float: left;
     overflow-x: hidden;
     padding-top: 16px;
-    background-color: rgb(255, 174, 0);
-    border-style: solid;
-    border-color: black;
+    background-color: white;
+    box-shadow: rgb(210, 210,210);
+    border: none;
     border-width: 2px;
     padding : 10px 2px 150px 2px;
 }
@@ -40,6 +41,7 @@
     font-weight: 700;
     font-size : 15px;
     display: block;
+    color: black;
 }
 
 .sidebar a:hover {
@@ -47,8 +49,8 @@
 }
 
 div.box {
-    height: 40px;
-    border: 1px solid black;
+    height: 50px;
+    border: none;
     padding : 8px;
     margin-bottom : 5px;
     margin-left : 10px;
@@ -63,7 +65,7 @@ div.box {
     font-size: 28px;
     padding: 0px 10px;
     width: 75%;
-    background-color: #ff5050;
+    background-color: #fff;
     float:left;
     margin-bottom: 80px;
 }
@@ -72,8 +74,8 @@ div.box {
     [class*="col-"] {
         width: 100%;
         padding : 10px 2px 2px 2px;
-    } 
-      
+    }
+
       @media only screen and (min-width: 600px) {
         /* For tablets: */
         .col-s-1 {width: 8.33%; }
@@ -93,7 +95,7 @@ div.box {
       @media only screen and (min-width: 768px) {
         /* For desktop: */
         .col-1 {width: 8.33%;}
-        .col-2 {width: 16.66%;} 
+        .col-2 {width: 16.66%;}
         .col-3 {width: 25%;}
         .col-4 {width: 33.33%;}
         .col-5 {width: 41.66%;}
@@ -104,4 +106,6 @@ div.box {
         .col-10 {width: 83.33%;}
         .col-11 {width: 91.66%;}
         .col-12 {width: 100%;}
+      }
+      @media screen and (max-width:768px) {
       }

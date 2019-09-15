@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>세종대학교 소프트웨어 융합대학</title>
     <link rel="stylesheet" href="index.css?">
+    <link href="https://fonts.googleapis.com/css?family=Gamja+Flower|Nanum+Gothic+Coding|Nanum+Gothic:400,700,800|Nanum+Pen+Script|Song+Myung|Stylish|Sunflower:300|Yeon+Sung&display=swap&subset=korean" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -33,10 +34,10 @@
             <img src="sejong.jpg" alt="" style="width:100%; height: 400px;">
           </div>
         </div>
-        <a class="carousel-control-prev" href="#myCarousel">
+        <a class="carousel-control-prev" href="#myCarousel" onclick="return false">
           <span class="carousel-control-prev-icon"></span>
         </a>
-        <a class="carousel-control-next" href="#myCarousel">
+        <a class="carousel-control-next" href="#myCarousel" onclick="return false">
           <span class="carousel-control-next-icon"></span>
         </a>
       </div>

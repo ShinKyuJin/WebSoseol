@@ -50,7 +50,15 @@ div.content {
   height: 1000px;
 }
 
-@media screen and (max-width: 400px 1) { !important
+.flip-card {
+  background-color: transparent;
+  width: 50%;
+  height: 85%;
+  perspective: 100%;
+  margin-left: 16%;
+}
+
+@media screen and (max-width: 400px 1) {
   .sidebar {
     width: 100%;
     height: auto;
@@ -58,20 +66,47 @@ div.content {
   }
   .sidebar a {float: left;}
   div.content {margin-left: 0;}
+  .major{
+    width: 66%;
+    border-bottom: 2.5px solid rgb(180,152,131);
+    height: 70px;
+    margin-left: 17%;
+    margin-top: 7%;
+    font-size: 37px;
+    font-family: 'Do Hyeon', sans-serif;
+  }
 }
 
 @media screen and (max-width: 400px) {
-  .sidebar a {
-    text-align: center;
-    float: none;
+  .sidebar {
+    display: none;
   }
-}
-.flip-card {
-  background-color: transparent;
-  width: 50%;
-  height: 85%;
-  perspective: 100%;
-  margin-left: 16%;
+  .major{
+    width: 66%;
+    border-bottom: 2.5px solid rgb(180,152,131);
+    height: 50px;
+    margin-left: 17%;
+    margin-top: 7%;
+    font-size: 26px;
+    font-family: 'Do Hyeon', sans-serif;
+  }
+  .flip-card {
+    background-color: transparent;
+    float: left;
+    width: 66%;
+    height: 85%;
+    margin-left: 0%;
+  }
+
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.7s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  }
 }
 
 .flip-card-inner {

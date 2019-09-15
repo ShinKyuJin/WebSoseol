@@ -47,32 +47,32 @@
             </table>
 
             <div class="buttonBox">
-                <input type="hidden" name="userID" value="<?php echo $_SESSION['userID']; ?>">
-                <input type="submit" name="" value="저장" style="float:right;" class="buttons">
+              <input type="hidden" name="userID" value="<?php echo $_SESSION['userID']; ?>">
+              <div id="buttonSub"></div>
             </div>
-        </form>
+         </form>
     </div>
     <?php include "footer.php"; ?>
 </body>
 <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript">
-    window.onload = function() {
-        CKEDITOR.replace('ckeditor', {
-            height: '100px'
-        });
-    };
+window.onload = function() {
+    CKEDITOR.replace('ckeditor', {
+        height: '500px'
+    });
+};
 
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
+            $("#buttonSub").innerHTML = '<input type="submit" name="" value="저장" style="float:right;" class="buttons">';
 
             reader.onload = function(e) {
                 $('#image_preview').attr('src', e.target.result);
             }
-
             reader.readAsDataURL(input.files[0]);
-        }
+            }
     }
 
     $("#imgfile").change(function() {

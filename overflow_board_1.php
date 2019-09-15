@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <title>BOARD</title>
     <link rel="stylesheet" type="text/css" href="overflow_board_1.css?after" />
-    <link rel="stylesheet" href="overflow_main.css?after" />
+    <link rel="stylesheet" href="overflow_man.css?after" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <style>
@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <?php 
+    <?php
         include "nav.php";
         $categoryNo = $_GET['ci'];
         $categoryName = "C언어";
@@ -32,13 +32,13 @@
     ?>
     <div id="board-area">
         <h1><?php echo $categoryName; ?></h1>
-        <table class="list-table">
+        <table class="list-table" style="width:100%;">
             <thead>
                 <tr>
-                    <th width="100">글번호</th>
-                    <th width="720">제목</th>
-                    <th width="150">작성자</th>
-                    <th width="130">작성일</th>
+                    <th>글번호</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>작성일</th>
                 </tr>
             </thead>
             <?php
@@ -51,10 +51,10 @@
                 ?>
                 <tbody>
                     <tr>
-                        <td width="100" style="text-align:center;"><?php echo $board["contentIdx"]; ?></td>
-                        <td width="720"><a href="overflow_board_read.php?ci=<?php echo $categoryNo; ?>&idx=<?php echo $board["contentIdx"]; ?>"><?php echo $title; ?></a></td>
-                        <td width="150"><?php echo $board["contentWriter"]; ?></td>
-                        <td width="130"><?php echo $board["contentWriteDateTime"]; ?></td>
+                        <td style="text-align:center;"><?php echo $board["contentIdx"]; ?></td>
+                        <td><a href="overflow_board_read.php?ci=<?php echo $categoryNo; ?>&idx=<?php echo $board["contentIdx"]; ?>"><?php echo $title; ?></a></td>
+                        <td><?php echo $board["contentWriter"]; ?></td>
+                        <td><?php echo $board["contentWriteDateTime"]; ?></td>
                     </tr>
                 </tbody>
             <?php endwhile; ?>
@@ -63,7 +63,7 @@
           <div class="write_btn">
             <?php
                 if(!isset($_SESSION['userID'])) echo "<a href='login.php'>글쓰기</a>";
-                else  echo "<a href='overflow_write.php?ci=".$categoryNo."'>글쓰기</a>";
+                else echo "<a href='overflow_write.php?ci=".$categoryNo."'>글쓰기</a>";
             ?>
             </div>
         </div>

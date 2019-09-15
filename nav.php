@@ -17,7 +17,7 @@
         <li><a href="boardIdx.php?ci=1">게시판</a>
            <ul>
             <?php
-             $category = mq("SELECT * FROM LISTOFBOARD");
+             $category = mq("SELECT * FROM LISTOFBOARD WHERE categoryIdx!=4");
              while($categoryRow = mysqli_fetch_array($category)) :
               ?>
              <li><a href="boardIdx.php?ci=<?php echo $categoryRow['categoryIdx']; ?>"><?php echo $categoryRow['boardSubject']; ?></a></li>
@@ -65,7 +65,7 @@
              <div id="myLinks">
                <a href="javascript:void(0);" class="big" onclick="board()">게시판</a>
                <div id="small1">
-                 <?php  $category = mq("SELECT * FROM LISTOFBOARD"); while($categoryRow = mysqli_fetch_array($category)) :  ?>
+                 <?php  $category = mq("SELECT * FROM LISTOFBOARD WHERE categoryIdx!=4"); while($categoryRow = mysqli_fetch_array($category)) :  ?>
                    <a href="boardIdx.php?ci=<?php echo $categoryRow['categoryIdx']; ?>"><?php echo $categoryRow['boardSubject']; ?></a>
                  <?php endwhile; ?>
                </div>
@@ -79,7 +79,7 @@
                 <?php endwhile; ?>
                </div>
                <a href="galleryIndex.php" class="big">갤러리</a>
-               <a href="#overFlow" class="big">오버플로우세종</a>
+               <a href="overflow_main.php" class="big">오버플로우세종</a>
                <div class="small">
 
                </div>

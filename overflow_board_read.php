@@ -26,8 +26,7 @@
 
 <body>
   <?php include "nav.php"; ?>
-  <h2>OVERFLOW SEJONG</h2>
-  <h1>질문</h1>
+  <div class="title">OVERFLOW SEJONG<br>질문</div>
     <?php
     $index = $_GET["idx"];
     $sql = mq("select * from OVERFLOW_BOARD where contentIdx='" . $index . "'");
@@ -39,11 +38,11 @@
       $index = $board["contentIdx"];
     }
     $tagIdx_sql = mq("select tagName from OVERFLOW_BOARD_TAG_RELATION where contentIdx='" . $index . "'");
-    
+
     ?>
     <div id="selections" style="display: none;">
-      <?php 
-        include "overflow_theme_text.php"; 
+      <?php
+        include "overflow_theme_text.php";
       ?>
     </div>
 
@@ -84,7 +83,7 @@
                     <a href="overflow_board_sortbytag.php?tname=<?php echo $tagIdxes['tagName']; ?>" style="color: blue;">
                     <?php echo $tagIdxes['tagName']; ?></a>
             <?php } ?>
-            
+
             <div class="wi_line"></div>
         </div>
         <div id="buttonArea">
@@ -112,11 +111,11 @@
       ?>
 
       <?php include "overflow_write_child.php"; ?>
-    </div>    
+    </div>
 
       <div id="buttonArea">
         <button type="button" class="list">
-          <span><a href="overflow_board_1.php">목록</a></span>
+          <span><a href="overflow_board_1.php?ci=<?php echo $_GET['ci']; ?>">목록</a></span>
         </button>
       </div>
 
@@ -166,4 +165,4 @@
     </script>
 </body>
 
-</html> 
+</html>

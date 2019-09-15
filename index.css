@@ -17,9 +17,14 @@ body {
 }
 .boardX {
   margin-top: 10px;
+  margin-bottom: 15px;
   background-color: white;
   float:left;
   margin-right: 15px;
+  font-family: 'Nanum Gothic Coding', monospace;
+  padding: 3px;
+  -webkit-box-shadow: 1px 1px 1px 1px grey;
+box-shadow: 1px 1px 1px 1px grey;
 }
 .Board {
   height:70%;
@@ -40,6 +45,7 @@ table tbody tr td a:hover{
 h6 a {
   color:black;
   text-decoration: none;
+  font-weight: 900;
 }
 h6 a:hover {
   color:black;

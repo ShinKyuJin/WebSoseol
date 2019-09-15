@@ -34,7 +34,7 @@
           <input type="radio" name="r" id="r6">
           <input type="radio" name="r" id="r7">
 
-          <div class="slide s1 fade">
+          <div class="slide s1 ">
             <div class="form-container">
               <label for="register">회원가입</label><br>
               <label for="userName">이름</label><br>
@@ -43,7 +43,7 @@
             </div>
           </div>
 
-          <div class="slide fade">
+          <div class="slide ">
             <div class="form-container">
               <label for="register">회원가입</label><br>
               <label for="userBirth">생년월일</label><br>
@@ -62,7 +62,7 @@
             </div>
           </div>
 
-          <div class="slide fade">
+          <div class="slide ">
             <div class="form-container">
               <label for="register">회원가입</label><br>
               <label for="userID">ID</label><br>
@@ -71,7 +71,7 @@
             </div>
           </div>
 
-          <div class="slide fade">
+          <div class="slide ">
             <div class="form-container">
               <label for="register">회원가입</label><br>
               <label for="userPassword1">비밀번호</label><br>
@@ -82,7 +82,7 @@
             </div>
           </div>
 
-          <div class="slide fade">
+          <div class="slide ">
             <div class="form-container">
               <label for="register">회원가입</label><br>
               <label for="userEmail">이메일</label><br>
@@ -91,7 +91,7 @@
             </div>
           </div>
 
-          <div class="slide fade">
+          <div class="slide ">
             <div class="form-container">
               <label for="register">회원가입</label><br>
               <label for="userMajor">학과</label><br>
@@ -109,7 +109,7 @@
             </div>
           </div>
 
-          <div class="slide fade">
+          <div class="slide ">
             <div class="form-container">
               <label for="register">회원가입</label><br>
               <label for="userStudentID">학번</label><br>
