@@ -12,7 +12,7 @@
     <script src="mode/css/css.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-    <?php 
+    <?php
         include_once "db.php";
         include "theme_mode_links.php";
         $categIdx = $_GET["ci"];
@@ -26,16 +26,18 @@
 </head>
 
 <body>
+  <?php include "nav.php"; ?>
     <div id="head">
-        <h3>ENJOY CODING <?php echo $_SESSION['userID']; ?></h3>
+      <div class="coding"><img src="coding-1.jpg" style="height: 400px; width: 100%; opacity: 0.7;"></div>
+      <div class="title">ENJOY CODING <?php echo $_SESSION['userID']; ?></div>
     </div>
     <form id="preview-form" method="post" action="overflow_write_ok.php">
         <div id="in_title">
             <textarea name="title" , id="utitle" , rows="1" , cols="55" , placeholder="제목(필수)" , maxlength="100" , required></textarea>
         </div>
         <div id="selections">
-            <?php 
-                include "theme_mode_selector.php";    
+            <?php
+                include "theme_mode_selector.php";
             ?>
         </div>
         <textarea id="code" name="content_1"></textarea>
@@ -43,7 +45,7 @@
         <textarea id="content_2" class="content_2" name="content_2" placeholder="질문 작성"></textarea>
         <br />
         <textarea id="content_tag" class="content_tag" name="content_tag" placeholder="태그 삽입"></textarea>
-        <input type="hidden" name="userID" value="<?php echo $_SESSION['userID']; ?>">        
+        <input type="hidden" name="userID" value="<?php echo $_SESSION['userID']; ?>">
         <input type="hidden" id="categoryNo" name="categoryNo" value="<?php echo $categIdx;?>">
         <input type="hidden" name="root" value="true">
         <input type="hidden" name="rootIdx" value="0">
@@ -52,7 +54,7 @@
             $echosql = $csql->fetch_array();
             echo $echosql["codemirrorMode"];
         ?>">
-        <input type="hidden" name="theme_no" id="theme_no" value="0"> 
+        <input type="hidden" name="theme_no" id="theme_no" value="0">
         <br />
         <input type="submit" name="preview-form-submit" id="preiew-form-submit" value="Submit">
     </form>
@@ -61,7 +63,7 @@
         $(document).ready(function() {
             var categoryNo = $("#categoryNo").val();
             var mode = $("#cm_mode").val();
-            
+
             var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
                 mode: "text/x-csrc",
                 theme: "default",
@@ -79,7 +81,7 @@
 
             localStorage.setItem("mode", mode);
             editor.setOption("mode", mode);
-            
+
             // theme mode region
             var selTheme = document.getElementById("theme");
             selTheme.addEventListener("input",selectTheme);
@@ -94,6 +96,7 @@
             }
         });
     </script>
+    <?php include "footer.php"; ?>
 </body>
 
 </html>

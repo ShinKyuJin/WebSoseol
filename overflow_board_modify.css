@@ -5,16 +5,13 @@
     font-family: Verdana, Tahoma, sans-serif;
 }
 
-#head {
-    margin-top: 20px;
-    width: 70%;
-    font-size: 40px;
-    text-align: center;
-    color: black;
+#board-write {
+    margin-top: -30px !important;
 }
 .title{
   position: relative;
-  margin-top: -19%;
+  margin-top: 5%;
+  text-align: center;
   font-size: 50px;
   font-weight: bold;
 }
@@ -37,7 +34,7 @@
 
 #selections {
     padding: 5px 10px 15px 20px;
-    width: 70%;
+    width: 68%;
     height: 45px;
     margin-top: 5px;
     margin-left: 13.7%;
@@ -85,9 +82,10 @@
     margin-left: 10px;
 }
 
-#content_2 {
+.content_2 {
     background-color: rgb(250,250,250);
     height: 140px;
+    margin-top: 10px;
     margin-left: 15%;
     width: 70%;
     resize: none;

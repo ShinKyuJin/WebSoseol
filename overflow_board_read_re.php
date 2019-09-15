@@ -26,10 +26,16 @@
         <?php } ?>
     </div>
     <div id="buttonArea">
-        <button type="button" class="modify">
+        <button type="button" class="modify" style="<?php
+              if(isset($_SESSION['userID']) && $_SESSION['userID'] == $reboard["contentWriter"]) echo 'display:inline';
+              else echo 'display:none;'
+            ?>">
         <span><a href="overflow_board_modify.php?ci=<?php echo $reboard['contentCategoryNo']; ?>&idx=<?php echo $reboard['contentIdx']; ?>">수정</a></span>
         </button>
-        <button type="button" class="delete">
+        <button type="button" class="delete" style="<?php
+              if(isset($_SESSION['userID']) && $_SESSION['userID'] == $reboard["contentWriter"]) echo 'display:inline';
+              else echo 'display:none;'
+            ?>">
         <span><a href="overflow_board_delete.php?ci=<?php echo $reboard['contentCategoryNo']; ?>&isR=N&idx=<?php echo $reboard['contentIdx']; ?>">삭제</a></span>
         </button>
     </div>
@@ -62,7 +68,7 @@
             var mode= $("#cm_mode").val();
 
             localStorage.setItem("mode", mode);
-            codeeditor2.setOption("mode", mode);      
+            codeeditor2.setOption("mode", mode);
 
             console.log(idString);
             console.log(editorString);

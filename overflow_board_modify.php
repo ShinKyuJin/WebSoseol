@@ -8,21 +8,22 @@ $board = $sql->fetch_array();
 $user = $board["contentWriter"];
 $string = "Location:overflow_main.php";
 if(!isset($_SESSION['userID']) || $_SESSION['userID'] != $user) {
-    echo "<script>alert('권한 없음');location.href='overflow_main.php'</script>";
+    echo "<script>alert('권한 없음');</script>";
+    header($string);
     die();
 }
 
 ?>
 
 <!DOCTYPE html>
-<html>
+
 <head>
     <meta charset="utf-8" />
     <title>OVERFLOW SEJONG</title>
     <script src="lib/codemirror.js"></script>
     <link rel="stylesheet" href="lib/codemirror.css" />
     <link rel="stylesheet" href="theme/blackboard.css" />
-    <link rel="stylesheet" href="overflow_write.css" />
+    <link rel="stylesheet" href="overflow_board_modify.css" />
     <script src="mode/javascript/javascript.js"></script>
     <script src="mode/css/css.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -30,6 +31,8 @@ if(!isset($_SESSION['userID']) || $_SESSION['userID'] != $user) {
 </head>
 
 <body>
+  <?php include "nav.php"; ?>
+  <div class="title">수정하기</div>
     <div id="board-write">
         <div id="write-area">
             <form id="preview-form" method="post" action="overflow_board_modify_ok.php">
@@ -50,13 +53,7 @@ if(!isset($_SESSION['userID']) || $_SESSION['userID'] != $user) {
                 <input type="hidden" id="categoryNo" name="categoryNo" value="<?php echo $_GET['ci']; ?>">
                 <input type="hidden" name="idx", value="<?php echo $_GET['idx'];?>">
                 <input type="hidden" name="theme_no" id="theme_no" value="0">
-                <input type="hidden" name="cm_mode" id="cm_mode" value="<?php
-                    $categIdx = $_GET["ci"];
-                    $csql = mq("SELECT categoryIdx, codemirrorMode FROM OVERFLOW_LISTOFBOARD WHERE categoryIdx = $categIdx");
-                    $echosql = $csql->fetch_array();
-                    echo $echosql["codemirrorMode"];
-                ?>">
-                <input type="hidden" name="theme_no" id="theme_no" value="0">
+                <input type="hidden" name="cm_mode" id="cm_mode" value="foo">
                 <input type="submit" name="preview-form-submit" id="preiew-form-submit" value="Submit">
             </form>
 
@@ -67,10 +64,23 @@ if(!isset($_SESSION['userID']) || $_SESSION['userID'] != $user) {
             var contentCode = $("#bo_content").val();
             var categoryNo = $("#categoryNo").val();
             var mode = $("#cm_mode").val();
+            if (categoryNo == 1) {
+                mode = "text/x-csrc";
+            } else if (categoryNo == 2) {
+                mode = "text/x-c++src";
+            } else if (categoryNo == 3) {
+                mode = "python";
+            } else if (categoryNo == 4) {
+                mode = "javascript";
+            } else if (categoryNo == 5) {
+                mode = "text/x-java";
+            } else if (categoryNo == 6) {
+                mode = "text/x-csharp";
+            }
 
             var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
                 mode: "text/x-csrc",
-                theme: "default",
+                theme: "blackboard",
                 tabSize: 4,
                 indentWithTabs: true,
                 lineNumbers: true
@@ -102,6 +112,7 @@ if(!isset($_SESSION['userID']) || $_SESSION['userID'] != $user) {
             return str.replace(/<br\s*\/?>/mg,"");
         }
     </script>
+    <?php include "footer.php"; ?>
 </body>
 
 </html>

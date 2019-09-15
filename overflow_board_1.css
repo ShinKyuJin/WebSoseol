@@ -10,11 +10,28 @@ a {
     text-decoration: none;
     color: #333;
 }
+.title{
+  font-size: 40px;
+  text-align: center;
+}
 
 ul li {
     list-style: none;
+    text-align: center;
 }
-
+tr{
+  text-align: center;
+  width: 25%;
+}
+td{
+  width: 25%;
+}
+td a{
+  color: black;
+}
+td a:hover{
+  color: black;
+}
 .fl {
     float: left;
 }
@@ -24,7 +41,7 @@ ul li {
 }
 
 #board-area {
-    width: 1200px;
+    width: 75%;
     position: relative;
 }
 
@@ -61,20 +78,23 @@ ul li {
 }
 
 .write_btn {
-  border: 1.5px solid #990e17;
+  border: none;
   font-size: 14px;
   padding-top: 8px;
-  background-color: white;
-  height: 32px;
-  width: 80px;
+  background-color: #990e17;
+  color: white;
+  height: 40px;
+  width: 100px;
   text-align: center;
   margin-top: 10px;
 }
-.write_btn:hover{
-  background-color: #990e17;
+.write_btn a{
   color: white;
 }
-
+.write_btn a:hover{
+  text-decoration: none;
+  color: white;
+}
 
 #board-write {
     width:1200px;
@@ -425,4 +445,14 @@ vertical-align: middle;
 .list a:hover{
   text-decoration: none;
   color: black;
+}
+.search-form{
+  float: right;
+  margin-top: 20px;
+}
+@media screen and (max-width: 768px) {
+  #board-area{
+    width: 100%;
+  }
+
 }

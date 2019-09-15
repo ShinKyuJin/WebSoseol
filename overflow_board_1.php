@@ -31,7 +31,7 @@
 
     ?>
     <div id="board-area">
-        <h1><?php echo $categoryName; ?></h1>
+        <div class="title"><?php echo $categoryName; ?></div>
         <table class="list-table" style="width:100%;">
             <thead>
                 <tr>
@@ -46,7 +46,7 @@
             while ($board = $osql->fetch_array()) :
                 $title = $board["contentTitle"];
                 if (strlen($title) > 30) {
-                    $title = str_replace($board["contentTitle"], mb_substr($board["contentTitle"], 0, 30, "utf-8") . "...", $board["contentTitle"]);
+                    $title = iconv_substr($board['contentTitle'],0,30)."...";
                 }
                 ?>
                 <tbody>
@@ -54,7 +54,7 @@
                         <td style="text-align:center;"><?php echo $board["contentIdx"]; ?></td>
                         <td><a href="overflow_board_read.php?ci=<?php echo $categoryNo; ?>&idx=<?php echo $board["contentIdx"]; ?>"><?php echo $title; ?></a></td>
                         <td><?php echo $board["contentWriter"]; ?></td>
-                        <td><?php echo $board["contentWriteDateTime"]; ?></td>
+                        <td><?php echo substr($board["contentWriteDateTime"],0,10); ?></td>
                     </tr>
                 </tbody>
             <?php endwhile; ?>
@@ -71,11 +71,11 @@
             <form method="get" action="overflow_board_search_query.php">
                 <input type="hidden" name="ci" value="<?php echo $categoryNo; ?>" />
                 <input type="text" name="contentTitle" id="searchthing"/>
-                <input type="submit" value="검색">
+                <input type="submit" value="검색" style="background-color: #990e17; color: white; border: none; width: 50px; height: 30px; font-size: 14px;">
             </form>
         </div>
-        <?php include "footer.php"; ?>
     </div>
+    <?php include "footer.php"; ?>
 </body>
 
 </html>

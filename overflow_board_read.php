@@ -89,10 +89,16 @@
         <div id="buttonArea">
         <?php
             if(isset($_SESSION['userID'])) { ?>
-          <button type="button" class="modify">
+          <button type="button" class="modify" style="<?php
+              if(isset($_SESSION['userID']) && $_SESSION['userID'] == $board["contentWriter"]) echo 'display:inline';
+              else echo 'display:none;'
+            ?>">
             <span><a href="overflow_board_modify.php?ci=<?php echo $board['contentCategoryNo']; ?>&idx=<?php echo $board['contentIdx']; ?>">수정</a></span>
           </button>
-          <button type="button" class="delete">
+          <button type="button" class="delete" style="<?php
+              if(isset($_SESSION['userID']) && $_SESSION['userID'] == $board["contentWriter"]) echo 'display:inline';
+              else echo 'display:none;'
+            ?>">
             <span><a href="overflow_board_delete.php?ci=<?php echo $board['contentCategoryNo']; ?>&isR=Y&idx=<?php echo $board['contentIdx']; ?>">삭제</a></span>
           </button>
           <?php  } ?>
