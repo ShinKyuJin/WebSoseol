@@ -58,7 +58,7 @@ div.content {
   margin-left: 16%;
 }
 
-@media screen and (max-width: 400px 1) {
+@media screen and (max-width: 768px 1) {
   .sidebar {
     width: 100%;
     height: auto;
@@ -77,7 +77,7 @@ div.content {
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 768px) {
   .sidebar {
     display: none;
   }

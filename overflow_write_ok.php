@@ -72,7 +72,7 @@
     echo $content;
 
     $sql = mq("INSERT INTO OVERFLOW_BOARD (contentWriter, contentTitle, contentCategoryNo,
-    contentTextPrimary, contentTextSecondary, contentTextTags, contentWriteDateTime, contentIsRoot, 
+    contentTextPrimary, contentTextSecondary, contentTextTags, contentWriteDateTime, contentIsRoot,
     contentIsQuestion, contentRootIdx, theme_no)
     values (
         '$userID',
@@ -88,7 +88,7 @@
         $themeno)"
     );
 
-    if($sql) echo 'firstsuc'; 
+    if($sql) echo 'firstsuc';
     else echo mysqli_error($db);
 
     $contentIdx = $db->insert_id;
@@ -111,4 +111,5 @@
     } else {
         echo 'err';
     }
+    header("Location:overflow_board_1.php?ci=$categoryNo");
 ?>

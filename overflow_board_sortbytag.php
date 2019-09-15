@@ -12,7 +12,7 @@
 <body>
   <?php include "nav.php"; ?>
     <div id="board-area">
-        <h1><?php echo $_GET['tname']; ?></h1>
+        <h1><?php echo urldecode($_GET['tname']); ?></h1>
         <table class="list-table">
             <thead>
                 <tr>
@@ -31,7 +31,7 @@
 
                 $title = $board["contentTitle"];
                 if (strlen($title) > 30) {
-                    $title = str_replace($board["contentTitle"], mb_substr($board["contentTitle"], 0, 30, "utf-8") . "...", $board["contentTitle"]);
+                    $title = iconv_substr($board['contentTitle'],0,30)."...";
                 }
                 ?>
                 <tbody>

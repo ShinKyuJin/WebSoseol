@@ -2,7 +2,7 @@
     include_once "db.php";
 
     function insBoard($param_1, $param_2) {
-        $sql_insert = mq("INSERT INTO 
+        $sql_insert = mq("INSERT INTO
         LISTOFBOARD(boardSubject, boardType, isComment, boardAccessLevel) VALUES(
             '$param_1',
             1,
@@ -11,51 +11,55 @@
             )");
     }
 
-    
+
     function delBoard($categoryIdx) {
-        // delete all 
-        $sql_delete = mq("DELETE FROM FILE_BOARD WHERE boardIdx IN  
+    // delete all
+    if($categoryIdx == 4){
+        return;
+    }
+    else {
+        $sql_delete = mq("DELETE FROM FILE_BOARD WHERE boardIdx IN
         (SELECT boardIdx FROM BOARD WHERE categoryIdx = $categoryIdx)");
-        $sql_delete = mq("DELETE FROM COMMENT_BOARD WHERE boardIdx IN  
+        $sql_delete = mq("DELETE FROM COMMENT_BOARD WHERE boardIdx IN
         (SELECT boardIdx FROM BOARD WHERE categoryIdx = $categoryIdx)");
         $sql_delete = mq("DELETE FROM BOARD WHERE categoryIdx = $categoryIdx");
         $sql_delete = mq("DELETE FROM LISTOFBOARD WHERE categoryIdx = $categoryIdx");
     }
-
+}
     function modBoard($categoryIdx, $param_1, $param_2) {
-        mq("UPDATE LISTOFBOARD 
+        mq("UPDATE LISTOFBOARD
             SET boardSubject = '$param_1',
             boardAccessLevel = $param_2
             WHERE categoryIdx = $categoryIdx");
     }
 
     function insOverflowBoard($param_1, $param_2) {
-        $sql_insert = mq("INSERT INTO 
+        $sql_insert = mq("INSERT INTO
         OVERFLOW_LISTOFBOARD(categorySubject, codemirrorMode) VALUES(
             '$param_1',
             '$param_2'
             )");
     }
-    
+
     function delOverflowBoard($categoryIdx) {
-        // delete all 
-        $sql_delete = mq("DELETE FROM OVERFLOW_BOARD_TAG_RELATION 
+        // delete all
+        $sql_delete = mq("DELETE FROM OVERFLOW_BOARD_TAG_RELATION
                         WHERE contentIdx IN (SELECT contentIdx FROM OVERFLOW_BOARD WHERE contentCategoryNo = $categoryIdx)");
         $sql_delete = mq("DELETE FROM OVERFLOW_BOARD WHERE contentCategoryNo = $categoryIdx");
         $sql_delete = mq("DELETE FROM OVERFLOW_LISTOFBOARD WHERE categoryIdx = $categoryIdx");
     }
 
     function getoffIllegalUser($userID) {
-        $sql_delete = mq("DELETE FROM FILE_BOARD WHERE boardIdx IN  
+        $sql_delete = mq("DELETE FROM FILE_BOARD WHERE boardIdx IN
         (SELECT boardIdx FROM BOARD WHERE boardWriter = '$userID')");
         if(!$sql_delete) echo 'fail1';
         $sql_delete = mq("DELETE FROM COMMENT_BOARD WHERE commentWriter = '$userID'");
         if(!$sql_delete) echo 'fail2';
-        $sql_delete = mq("DELETE FROM BOARD WHERE boardWriter = '$userID'"); 
-        if(!$sql_delete) echo 'fail3';     
-        $sql_delete = mq("DELETE FROM OVERFLOW_BOARD_TAG_RELATION 
+        $sql_delete = mq("DELETE FROM BOARD WHERE boardWriter = '$userID'");
+        if(!$sql_delete) echo 'fail3';
+        $sql_delete = mq("DELETE FROM OVERFLOW_BOARD_TAG_RELATION
                         WHERE contentIdx IN (SELECT contentIdx FROM OVERFLOW_BOARD WHERE contentWriter = '$userID')");
-        if(!$sql_delete) echo 'fail4';   
+        if(!$sql_delete) echo 'fail4';
         $sql_mod = mq("SELECT categoryIdx, numOfContents FROM OVERFLOW_LISTOFBOARD");
         if(!$sql_mod) echo 'fail60';
         while($sql_m = $sql_mod->fetch_array()) {
@@ -74,7 +78,7 @@
             echo $sql_mo2_cnt; echo '<br />';
 
             if($cnt > 0) {
-                $sql_delete = mq("DELETE FROM OVERFLOW_BOARD WHERE contentWriter = '$userID' and contentCategoryNo = $categoryId");  
+                $sql_delete = mq("DELETE FROM OVERFLOW_BOARD WHERE contentWriter = '$userID' and contentCategoryNo = $categoryId");
                 if(!$sql_delete) echo 'fail6';
                 $sql_update = mq("UPDATE OVERFLOW_LISTOFBOARD SET numOfContents = $sql_mo2_cnt WHERE categoryIdx = $categoryId");
                 if(!$sql_update) echo 'fail62';
@@ -85,7 +89,7 @@
     }
 
     function superUser($userID, $userGrant) {
-        mq("UPDATE USERPROFILE 
+        mq("UPDATE USERPROFILE
             SET userGrant = $userGrant
             WHERE userID = '$userID'");
     }
@@ -95,11 +99,11 @@
             $sql = mq("SELECT fileIdx FROM ADMINFILE WHERE category ='logo' ORDER BY fileIdx DESC");
             $s = $sql->fetch_array();
             $update = $s["fileIdx"];
-            $sql = mq("UPDATE ADMINFILE SET 
+            $sql = mq("UPDATE ADMINFILE SET
             selected = 1 WHERE
             fileIdx = $update");
         } else {
-            $sql = mq("UPDATE ADMINFILE SET 
+            $sql = mq("UPDATE ADMINFILE SET
             selected = 0 WHERE
             category = 'logo'");
         }
@@ -111,9 +115,9 @@
         $fileOriginName = $file['name'];
         $path = substr($file['name'], strrpos($file['name'], '.') + 1);
         $path = md5(microtime()) . '.' . $path;
-      
+
         $upload_directory = 'admin/logo/';
-      
+
         if(move_uploaded_file($file['tmp_name'], $upload_directory.$path)) {
             chmod($upload_directory.$path, 0777);
             $sql2 = mq("INSERT INTO ADMINFILE(
@@ -126,7 +130,7 @@
                 '$fileOriginName',
                 '$path'
                 ,'logo'
-                )");  
+                )");
         }
     }
 
@@ -136,12 +140,12 @@
         $fileOriginName = $file['name'];
         $path = substr($file['name'], strrpos($file['name'], '.') + 1);
         $path = md5(microtime()) . '.' . $path;
-      
+
         $upload_directory = 'admin/introduction/';
-        
+
         if(move_uploaded_file($file['tmp_name'], $upload_directory.$path)) {
             chmod($upload_directory.$path, 0777);
-              $sql2 = mq("UPDATE MAJORINTRO SET 
+              $sql2 = mq("UPDATE MAJORINTRO SET
               fileExt = '$encFile',
               originName = '$fileOriginName',
               saveName = '$path' WHERE
@@ -150,7 +154,7 @@
     }
 
     function changeStudentPageText($idx, $text) {
-        $sql2 = mq("UPDATE MAJORINTRO SET 
+        $sql2 = mq("UPDATE MAJORINTRO SET
         IntroText = '$text' WHERE idx = $idx");
     }
     //$sql->fetch_array();
@@ -189,17 +193,17 @@
         case "pan_5" :
             $param_1 = $_POST["select_board_r"];
             delOverflowBoard($param_1);
-            break;  
+            break;
         case "pan_6" :
             if($_POST["logo_present"] == "true") presentLogoInNavigationBar(true);
             else presentLogoInNavigationBar(false);
             if(isset($_FILES['logoFile'])) changeLogo();
-            break;   
+            break;
         case "pan_7" :
             $introIdx = $_POST['introduction_select'];
-            if(isset($_FILES['studentFile'])) changeStudentPageImage($introIdx); 
+            if(isset($_FILES['studentFile'])) changeStudentPageImage($introIdx);
             $text = $_POST['introText'];
-            changeStudentPageText($introIdx, $text); 
+            changeStudentPageText($introIdx, $text);
             break;
         case "pan_10" :
             $param_1 = $_POST["userID"];
@@ -211,7 +215,7 @@
                 getoffIllegalUser($param_1);
             else
                 echo 'fail';
-            break;     
+            break;
         case "pan_11" :
             $param_1 = $_POST["userID_a"];
             if($_POST["usrauth_m"] == "admin" || $param_1 == $_SESSION['userID']) {
@@ -219,11 +223,11 @@
             } else {
                 superUser($param_1, 0);
             }
-            break;   
+            break;
         default:
             break;
     }
-    
+
     header("Location:admin_portal.php");
     /*
     $stmt = mq("INSERT INTO USERPROFILE(userID,userPassword,userEmail,userBirth,userName,userMajor,userStudentID) VALUES(

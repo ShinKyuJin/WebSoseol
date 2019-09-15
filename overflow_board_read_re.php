@@ -21,7 +21,7 @@
         <?php
         while ($retagIdxes = $retagIdx_sql->fetch_array()) {
             ?>
-            <a href="overflow_board_sortbytag.php?tname=<?php echo $retagIdxes['tagName']; ?>" style="color: blue;">
+            <a href="overflow_board_sortbytag.php?tname=<?php echo urlencode($retagIdxes['tagName']); ?>" style="color: blue;">
                 <?php echo $retagIdxes['tagName']; ?></a>
         <?php } ?>
     </div>

@@ -33,8 +33,10 @@
       </div>
       <div class="board_area">
         <div class="search">
-          <input type="text" class="input" placeholder="검색어를 입력해주세요." name="search" onkeyup="searchEnterKey()" >
-          <button class="btn_search" type="submit"></button>
+          <form action="boardIdxSearch.php" method="post">
+            <input type="text" class="input" placeholder="검색어를 입력해주세요." name="search" onkeyup="searchEnterKey()" autofocus >
+            <button class="btn_search" type="submit"></button>
+          </form>
         </div>
       </div>
 
