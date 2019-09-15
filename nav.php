@@ -35,7 +35,7 @@
            </ul>
          </li>
          <li><a href="galleryIndex.php">갤러리</a></li>
-         <li><a href="overflow_main.php">오버플로우세종</a>
+         <li><a href="overflow_main.php" style="color:yellow">오버플로우세종</a>
            <ul>
            <?php
              $ovfl = mq("SELECT * FROM OVERFLOW_LISTOFBOARD");

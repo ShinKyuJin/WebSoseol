@@ -13,7 +13,7 @@
     <?php
       $categoryIdx = re('ci','get');
       $boardSubject = mysqli_fetch_array(mq("SELECT * FROM LISTOFBOARD WHERE categoryIdx='$categoryIdx'"));
-      $stmt = mq("SELECT * FROM BOARD WHERE categoryIdx='$categoryIdx'");
+      $stmt = mq("SELECT * FROM BOARD WHERE categoryIdx='$categoryIdx' ORDER BY boardIdx desc");
      ?>
     <div class="container">
       <div class="bulletinboard"><img src="ai.jpg" style="repeat: none; width: 103%; height: 400px; opacity: 0.7"></div>
@@ -21,7 +21,7 @@
       <div class="tab_menu">
         <ul style="height: auto;">
           <?php
-          $link = mq("SELECT * FROM LISTOFBOARD");
+          $link = mq("SELECT * FROM LISTOFBOARD WHERE categoryIdx!=4");
           while($linkRow = mysqli_fetch_array($link)) : ?>
           <li ><a href="boardIdx.php?ci=<?php echo $linkRow['categoryIdx']; ?>"
             <?php
@@ -33,7 +33,7 @@
       </div>
       <div class="board_area">
         <div class="search">
-          <form action="boardIdxSearch.php" method="post">
+          <form action="boardIdxSearch.php" method="get">
             <input type="text" class="input" placeholder="검색어를 입력해주세요." name="search" onkeyup="searchEnterKey()" autofocus >
             <button class="btn_search" type="submit"></button>
           </form>

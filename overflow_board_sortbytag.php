@@ -46,7 +46,6 @@
         </table>
     </div>
     <?php include "footer.php"; ?>
-    <?php echo "hello"; ?>
 </body>
 
 </html>

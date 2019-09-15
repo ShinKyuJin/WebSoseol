@@ -10,9 +10,29 @@ a {
     text-decoration: none;
     color: #333;
 }
+.title{
+  text-align: center;
+  font-size: 45px;
+  font-weight: bold;
+  margin-top: 20px;
+}
 
 ul li {
     list-style: none;
+    text-align: center;
+}
+tr{
+  text-align: center;
+  width: 25%;
+}
+td{
+  width: 25%;
+}
+td a{
+  color: black;
+}
+td a:hover{
+  color: black;
 }
 
 .fl {
@@ -24,14 +44,10 @@ ul li {
 }
 
 #board-area {
-    width: 1200px;
+    width: 75%;
     position: relative;
 }
-h1{
-  text-align: center;
-  margin-top: 20px;
-  font-size: 50px;
-}
+
 h2{
   text-align: center;
   margin-top: 60px;
@@ -358,4 +374,9 @@ vertical-align: middle;
   line-height: 20px;
   text-align: left;
   letter-spacing: -1px;
+}
+@media screen and (max-width: 768px) {
+  #board-area{
+    width: 100%;
+  }
 }
