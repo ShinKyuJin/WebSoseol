@@ -81,7 +81,7 @@
                 while($tagIdxes = $tagIdx_sql->fetch_array()){
             ?>
                     <a href="overflow_board_sortbytag.php?tname=<?php echo urlencode($tagIdxes['tagName']); ?>" style="color: blue;">
-                    <?php echo $tagIdxes['tagName']; ?></a>
+                    #<?php echo $tagIdxes['tagName']; ?></a>
             <?php } ?>
 
             <div class="wi_line"></div>

@@ -22,7 +22,7 @@
         while ($retagIdxes = $retagIdx_sql->fetch_array()) {
             ?>
             <a href="overflow_board_sortbytag.php?tname=<?php echo urlencode($retagIdxes['tagName']); ?>" style="color: blue;">
-                <?php echo $retagIdxes['tagName']; ?></a>
+                #<?php echo $retagIdxes['tagName']; ?></a>
         <?php } ?>
     </div>
     <div id="buttonArea">

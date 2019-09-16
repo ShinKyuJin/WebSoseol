@@ -7,11 +7,11 @@
   </head>
   <body>
     <?php include "nav.php"; ?>
-    검색
     <div class="container">
 
     <div class="main">
     <table class="table" style="text-align:center;">
+      <h1 style="margin-top:30px;"><?php echo $_GET['search']."검색 결과"; ?></h1>
       <thead>
         <th>제목</th>
         <th>작성자</th>
