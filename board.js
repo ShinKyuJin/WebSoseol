@@ -101,10 +101,11 @@ $(document).on('click','.replyMakeBtn',(function() {
 }));
 
 
-$('.recommend').click(function() {
+$('.thumb').click(function() {
   var recommendID = $('.userID').val();
   var boardIdx = $('.boardIdx').val();
-  var isRecommend = $('.isRecommend').val();
+  var isRecommend = $('.isRecommend');
+  var num = $(this).children('span').val();
   if(recommendID == "") {
     var toLogin = confirm("로그인이 필요한 작업입니다. 로그인 하시겠습니까?");
     if(toLogin) {
@@ -112,7 +113,7 @@ $('.recommend').click(function() {
     }
   }
   else {
-    if(isRecommend == "1") {
+    if(isRecommend.val() == 1) {
       $.ajax({
         type:'post',
         dataType:'json',
@@ -130,9 +131,9 @@ $('.recommend').click(function() {
           console.log('fail');
         }
       })
-      $(this).parent().text("추천 취소");
-      $(this).css("color","#777777");
-      isRecommend = "false";
+      isRecommend.val('0');
+      $(this).children('span').val(num-1);
+      alert('추천이 취소되었습니다.');
     }
     else {
       $.ajax({
@@ -152,9 +153,9 @@ $('.recommend').click(function() {
           console.log('fail');
         }
       })
-      $(this).parent().text("추천 됨");
-      $(this).css("color","#22bbee");
-      isRecommend = "true";
+      isRecommend.val('1');
+      $(this).children('span').val(num+1);
+      alert('추천되었습니다.');
     }
   }
 });

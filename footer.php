@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="footerStyle.css">
 <footer class="footer">
   <div class="footerBox">
     <table>

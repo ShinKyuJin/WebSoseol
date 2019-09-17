@@ -201,6 +201,7 @@ letter-spacing: -1px;
 display: inline-block;
 width: auto;
 margin: 0 0 5px 0;
+margin-right: 10px;
 box-sizing: border-box;
 padding: 0 0 0 30px;
 border: 2px solid #990e17;
@@ -212,6 +213,7 @@ vertical-align: top;
   display: inline-block;
   width: auto;
   margin: 0 0 5px 0;
+  margin-right: 10px;
   box-sizing: border-box;
   padding: 0 0 0 30px;
   background: #990e17 url(text-1.png) no-repeat left 17px top 50%;
@@ -220,6 +222,46 @@ vertical-align: top;
   color: white;
 }
 .list>span {
+display: block;
+width: auto;
+min-width: 59px;
+min-height: 42px;
+margin: 0;
+box-sizing: border-box;
+padding: 11px 0 11px 11px;
+color: #990e17;
+font-size: 15px;
+font-weight: 550;
+line-height: 20px;
+text-align: left;
+letter-spacing: -1px;
+}
+.thumb>span:hover{
+  color: white;
+}
+.thumb {
+display: inline-block;
+width: auto;
+margin: 0 0 5px 0;
+box-sizing: border-box;
+padding: 0 0 0 30px;
+border: 2px solid #990e17;
+background: #fff url(thumb-1.png) no-repeat left 17px top 50%;
+background-size: 18px 18px;
+vertical-align: top;
+}
+.thumb:hover{
+  display: inline-block;
+  width: auto;
+  margin: 0 0 5px 0;
+  box-sizing: border-box;
+  padding: 0 0 0 30px;
+  background: #990e17 url(thumb.png) no-repeat left 17px top 50%;
+  background-size: 18px 18px;
+  vertical-align: top;
+  color: white;
+}
+.thumb>span {
 display: block;
 width: auto;
 min-width: 59px;

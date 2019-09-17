@@ -71,24 +71,21 @@
     '$boardDate'
   )");
 
-  $link = 'boardIdx.php?ci='.$categoryIdx;
-
   if($sql) {
     echo $boardIdx; echo '<br />';
-    echo $encFile; echo '<br />';
-    echo $fileOriginName; echo '<br />';
-    echo $path; echo '<br />';
-    echo $boardDate; echo '<br />';
-
     if($sql2) {  
+      echo $encFile; echo '<br />';
+      echo $fileOriginName; echo '<br />';
+      echo $path; echo '<br />';
+      echo $boardDate; echo '<br />';
+  
       echo 'suc2';
-      header("Location:$link");
-    } else {
-      echo mysqli_error($db);
-    }
+    } 
   }
   else {
     echo mysqli_error($db);
   }
 }
+$string = "Location:boardIdx.php?ci=".$categoryIdx;
+header($string);
  ?>

@@ -52,10 +52,7 @@
             <fieldset>
                 <legend>게시판 개설</legend>
                 <form method="post" action="admin_settings.php">
-                    게시판 이름 <input type="text" name="bdname"/><br />
-                    글쓰기 권한 <input type="radio" name="bdauth" value="admin" checked>관리자
-                    <input type="radio" name="bdauth" value="user"/>유저
-                    
+                    게시판 이름 <input type="text" name="bdname"/><br />                    
                     <input type="hidden" name="menuIdx" value="pan_1" />
                     <input type="submit" value="생성" />
                 </form>
@@ -77,8 +74,6 @@
                 ?>
                 </select>
                 게시판 이름 수정 <input type="text" name="bdname_m"/>
-                글쓰기 권한 수정 <input type="radio" name="bdauth_m" value="admin" checked/>관리자 
-                <input type="radio" name="bdauth_m" value="user"/>유저
                 <input type="hidden" name="menuIdx" value="pan_2" />
                 <input type="submit" value="수정" />            
             </form>
@@ -181,13 +176,6 @@
                 <br /><input type="file" name="studentFile">
                 <input type="hidden" name="menuIdx" value="pan_7" />
                 <input type="submit" value="수정" />
-            </form>
-        </div><br />
-        <button id="pan_8">메인 페이지 사진 수정</button>
-        <div class="in_pan" id="pan_1_8">
-            <form method="post" enctype="multipart/form-data" action="admin_settings.php">
-                <p>개발중입니다...ㄱㄷㄱㄷ</p>
-                <input type="hidden" name="menuIdx" value="pan_8" />     
             </form>
         </div><br />
     </div>

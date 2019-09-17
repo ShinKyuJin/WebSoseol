@@ -67,17 +67,6 @@ session_start();
               </span>
             </div>
             <dd>
-              <?php
-              $recommendCnt = mq("SELECT * FROM RECOMMEND WHERE boardIdx='$boardIdx'");
-              $userID = $_SESSION['userID'];
-              $userRecommendChk =mysqli_fetch_array(mq("SELECT * FROM RECOMMEND WHERE reID='$userID' AND boardIdx='$boardIdx'"));
-               ?>
-              <div class="recommendBoard" style="float:right;color:#<?php if($userRecommendChk) echo '22bbee'; else echo '777777'; ?>;font-size:14px;">
-                <a style="text-decoration:none;" class="recommend">추천(<?php echo $recommendCnt->num_rows; ?>)</a>
-                <input type="hidden" class="isRecommend" value="<?php if($userRecommendChk) echo "1"; else echo "0"; ?>">
-              </div>
-            </dd>
-            <dd>
               <div class="view_txt"><?php echo nl2br($board['boardContent']); ?></div>
             </dd>
             <dd>
@@ -103,6 +92,15 @@ session_start();
           <button type="button" class="list">
             <span>목록</span>
           </button>
+          <button type="button" class="thumb">
+            <?php
+            $recommendCnt = mq("SELECT * FROM RECOMMEND WHERE boardIdx='$boardIdx'");
+            $userID = $_SESSION['userID'];
+            $userRecommendChk =mysqli_fetch_array(mq("SELECT * FROM RECOMMEND WHERE reID='$userID' AND boardIdx='$boardIdx'"));
+             ?>
+            <span>&nbsp&nbsp&nbsp<?php echo $recommendCnt->num_rows; ?></span>
+            <input type="hidden" class="isRecommend" value="<?php if($userRecommendChk) echo "1"; else echo "0"; ?>">
+          </button>
         </div>
     </div>
     <!-- 여기까지 !-->
@@ -127,7 +125,7 @@ session_start();
       while($commentRow = mysqli_fetch_array($comment)) :
        ?>
        <div class="commentCard">
-         <div class="commentWriter"> <i class="fas fa-user"><?php echo $commentRow['commentWriter']; ?></i></div>
+         <div class="commentWriter"> <i class="fas fa-user"></i>&nbsp<?php echo $commentRow['commentWriter']; ?></div>
          <div class="commentDateTime">&nbsp&nbsp
            <?php
            $timeString = (strtotime(date("Y-m-d H:i:s")) - strtotime($commentRow['commentDateTime']));
@@ -167,7 +165,7 @@ session_start();
           ?>
           <div class='replyCard'>
             <div class='reCommentZone'>
-              <div class='commentWriter'> <i class="fas fa-user"><?php echo $replyRow['commentWriter']; ?></i></div>
+              <div class='commentWriter'> <i class="fas fa-user"></i>&nbsp<?php echo $replyRow['commentWriter']; ?></div>
               <div class='commentDateTime'>&nbsp&nbsp
                 <?php
                 $timeString = (strtotime(date("Y-m-d H:i:s")) - strtotime($replyRow['commentDateTime']));
@@ -206,5 +204,6 @@ session_start();
   <?php include "footer.php"; ?>
   </body>
   <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js" ></script>
+  <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
   <script type="text/javascript"src = "board.js"></script>
 </html>

@@ -27,7 +27,7 @@ session_start();
       <!-- 여기까지 !-->
 
       <!-- 여기부터  Board !-->
-      <h1 class="bulletinboard"><?php echo $category['boardSubject']; ?></h1>
+      <h1 class="bulletinboard">소융대 갤러리</h1>
 
       <div class="boardArea">
         <div class="text">

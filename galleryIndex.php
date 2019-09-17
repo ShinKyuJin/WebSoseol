@@ -72,9 +72,12 @@
     for(var i=beforeK;i<=k;i++) {
       var className = ".Card"+i;
       $(className).css("display","block");
+      $(className).addClass('fade');
     }
     beforeK = k;
-
+    setTimeout(function() {
+      $(".Card").removeClass("fade");
+    },1400);
   })
   </script>
 </html>

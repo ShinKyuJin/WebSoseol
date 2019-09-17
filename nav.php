@@ -63,6 +63,7 @@
      <div class="topnav">
              <a href="index.php" class="active" class="big">HOME</a>
              <div id="myLinks">
+               <a href="login.php" class="big"></a>
                <a href="javascript:void(0);" class="big" onclick="board()">게시판</a>
                <div id="small1">
                  <?php  $category = mq("SELECT * FROM LISTOFBOARD WHERE categoryIdx!=4"); while($categoryRow = mysqli_fetch_array($category)) :  ?>
@@ -83,7 +84,7 @@
                <div class="small">
 
                </div>
-               <a href="#admin" class="big">관리자페이지</a>
+               <a href="admin_portal.php" class="big">관리자페이지</a>
              </div>
              <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                <i class="fa fa-bars"></i>

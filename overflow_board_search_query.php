@@ -10,8 +10,8 @@
 </head>
 
 <body>
-  <?php 
-    include "nav.php"; 
+  <?php
+    include "nav.php";
     $ci =  re('ci', 'get');
     $searchTitle = re('contentTitle', 'get');
     $isContent = false;
@@ -35,7 +35,7 @@
                 $isContent = true;
                 $title = $board["contentTitle"];
                 if (strlen($title) > 30) {
-                    $title = str_replace($board["contentTitle"], mb_substr($board["contentTitle"], 0, 30, "utf-8") . "...", $board["contentTitle"]);
+                    $title = iconv_substr($board['contentTitle'],0,30)."...";
                 }
                 ?>
                 <tbody>
@@ -48,7 +48,7 @@
                 </tbody>
             <?php endwhile; ?>
         </table>
-        <?php        
+        <?php
             if(!$isContent) {
                 echo '<h1>NO CONTENTS</h1>';
             }
