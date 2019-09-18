@@ -21,8 +21,8 @@
         <input type="hidden" id="theme_no" name="theme_no" value="0">
 
         <?php
-                if(!isset($_SESSION['userID'])) echo "<a id='preview-form-submit' href='login.php'>글쓰기</a>";
-                else echo "<input type='submit' name='preview-form-submit' id='preview-form-submit' value='등록하기'>글쓰기</a>";
+                if(!isset($_SESSION['userID'])) echo "<a id='preview-form-submit' href='login.php'>글쓰려면로그인</a>";
+                else echo "<input type='submit' name='preview-form-submit' id='preview-form-submit' value='등록하기' style='background-color: #990e17; color: white; width: 100%; height: 40px; border: none;'></a>";
             ?>
 
     </form>
@@ -52,6 +52,9 @@
             // theme mode region
             var selTheme = document.getElementById("theme");
             selTheme.addEventListener("input",selectTheme);
+
+            localStorage.setItem("mode", mode);
+            editor.setOption("mode", mode);
 
             function selectTheme() {
                 var theme = selTheme.options[selTheme.selectedIndex].textContent;

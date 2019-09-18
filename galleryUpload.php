@@ -40,6 +40,7 @@
                             <input type='file' id="imgfile" name="boardImage"/>
                             <br /><b>미리보기</b><br />
                             <img id="image_preview" src="#" width="200px" height="200px" alt="your image"/>
+
                         </form>
                         </td>
                         </th>
@@ -47,8 +48,10 @@
             </table>
 
             <div class="buttonBox">
-              <input type="hidden" name="userID" value="<?php echo $_SESSION['userID']; ?>">
-              <div id="buttonSub"></div>
+                <p>게시글 업로드</p>
+                <input type="hidden" name="userID" value="<?php echo $_SESSION['userID']; ?>">
+                <p id="buttonSub"></p>
+                <p id="buttonSub2"></p>
             </div>
          </form>
     </div>
@@ -57,26 +60,36 @@
 <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript">
-window.onload = function() {
-    CKEDITOR.replace('ckeditor', {
-        height: '500px'
-    });
-};
 
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
-            $("#buttonSub").innerHTML = '<input type="submit" name="" value="저장" style="float:right;" class="buttons">';
-
             reader.onload = function(e) {
                 $('#image_preview').attr('src', e.target.result);
             }
             reader.readAsDataURL(input.files[0]);
+
+            var imgParent = input.files[0].name.lastIndexOf(".");
+            var fileExt = input.files[0].name.substring(imgParent+1,input.files[0].name.length);
+            var imgtype = fileExt.toLowerCase();
+
+            if ( imgtype != "jpg" && imgtype != "jpeg" && imgtype != "gif" && imgtype != "png" ){
+
+                alert("사진은 jpg / gif / png 파일만 업로드할 수 있습니다.");
+
+                return false;
+            } else {
+                return true;
             }
+        }
     }
 
     $("#imgfile").change(function() {
-        readURL(this);
+        var b = readURL(this);
+        console.log(b);
+        if(b) {
+            document.getElementById("buttonSub").innerHTML = '<input type="submit" value="저장" class="buttons">';
+        }
     });
 </script>
 

@@ -54,7 +54,7 @@ $('.commentMakeBtn').click(function() {
         console.log('fail');
       }
     })
-    var element = "<div class='commentCard'><div class='commentWriter'><i class='fas fa-user'>"+commentWriter+"</i></div>"+"<div class='commentDateTime'>&nbsp&nbsp&nbsp"+commentDateTime+"</div>" + "<div class='recommentContent'>"+commentContent+"</div><div class='replyMakeZone'><input type='text' class='replyContent' placeholder='대댓글을 입력하세요.'><button type='button' class='replyMakeBtn'>작성</button></div>"+"<input type='hidden' class='commentIdx' value='"+replySourceIdx+"'></div>";
+    var element = "<div class='commentCard'><div class='commentWriter'><i class='fas fa-user'></i>"+commentWriter+"</div>"+"<div class='commentDateTime'>&nbsp&nbsp&nbsp"+commentDateTime+"</div>" + "<div class='recommentContent'>"+commentContent+"</div><div class='replyMakeZone'><input type='text' class='replyContent' placeholder='대댓글을 입력하세요.'><button type='button' class='replyMakeBtn'>작성</button></div>"+"<input type='hidden' class='commentIdx' value='"+replySourceIdx+"'></div>";
     $(this).parent().parent().append(element);
     var commentContent = $('.commentContent').val("");
   }
@@ -94,7 +94,7 @@ $(document).on('click','.replyMakeBtn',(function() {
       }
     })
     commentContent = commentContent.replace(/(<([^>]+)>)/ig,"");
-    var element = "<div class='replyCard'><div class='reCommentZone'><div class='commentWriter'><i class='fas fa-user'>"+commentWriter+"</i></div><div class='commentDateTime'>&nbsp&nbsp"+commentDateTime+"</div><div class='recommentContent'>"+commentContent+"</div></div></div>";
+    var element = "<div class='replyCard'><div class='reCommentZone'><div class='commentWriter'><i class='fas fa-user'></i>"+commentWriter+"</div><div class='commentDateTime'>&nbsp&nbsp"+commentDateTime+"</div><div class='recommentContent'>"+commentContent+"</div></div></div>";
     $(this).parent().parent().append(element);
     var commentContent = $(this).parent().children('.replyContent').val("");
   }
@@ -104,8 +104,8 @@ $(document).on('click','.replyMakeBtn',(function() {
 $('.thumb').click(function() {
   var recommendID = $('.userID').val();
   var boardIdx = $('.boardIdx').val();
-  var isRecommend = $('.isRecommend');
-  var num = $(this).children('span').val();
+  var isRecommend = $('.isRecommend').val();
+  var num = $(this).children('recommendSpan').val();
   if(recommendID == "") {
     var toLogin = confirm("로그인이 필요한 작업입니다. 로그인 하시겠습니까?");
     if(toLogin) {
@@ -113,7 +113,7 @@ $('.thumb').click(function() {
     }
   }
   else {
-    if(isRecommend.val() == 1) {
+    if(isRecommend == 1) {
       $.ajax({
         type:'post',
         dataType:'json',
@@ -131,8 +131,11 @@ $('.thumb').click(function() {
           console.log('fail');
         }
       })
-      isRecommend.val('0');
-      $(this).children('span').val(num-1);
+      $('.isRecommend').val("0");
+      var realNum = 0;
+      realNum = parseInt(num);
+      $(this).children('.recommendSpan').val(3);
+      $(this).css("border","2px solid #990e17");
       alert('추천이 취소되었습니다.');
     }
     else {
@@ -153,8 +156,11 @@ $('.thumb').click(function() {
           console.log('fail');
         }
       })
-      isRecommend.val('1');
-      $(this).children('span').val(num+1);
+      $('.isRecommend').val("1");
+      var realNum = parseInt(num)+1;
+      console.log(typeof realNum);
+      $(this).children('.recommendSpan').text(realNum);
+      $(this).css("border","2px solid #00f");
       alert('추천되었습니다.');
     }
   }

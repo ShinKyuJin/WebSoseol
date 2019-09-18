@@ -35,7 +35,7 @@
   $path = md5(microtime()) . '.' . $path;
 
   $upload_directory = 'uploadFile/';
-  
+
   $sql = mq("INSERT INTO BOARD(
     categoryIdx,
     boardTitle,
@@ -73,14 +73,14 @@
 
   if($sql) {
     echo $boardIdx; echo '<br />';
-    if($sql2) {  
+    if($sql2) {
       echo $encFile; echo '<br />';
       echo $fileOriginName; echo '<br />';
       echo $path; echo '<br />';
       echo $boardDate; echo '<br />';
-  
+
       echo 'suc2';
-    } 
+    }
   }
   else {
     echo mysqli_error($db);

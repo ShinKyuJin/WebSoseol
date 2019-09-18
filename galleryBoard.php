@@ -61,7 +61,6 @@ session_start();
               ?>
               <div class="file_link">
                   <img src="<?php echo $file_dwlink; ?>">
-                  <p><?php echo $file_dwlink; ?></p>
                 </div>
             </dd>
           </dl>

@@ -50,7 +50,8 @@
               <li><a href="admin_portal.php">ADMIN</a></li>
            </ul>
          </li>
-
+         <li><a href="game.php" <?php if(isset($_SESSION['userID'])) echo "style='display:block;'"; ?>>게임</a>
+         </li>
          <?php if(isset($_SESSION['userID'])) {?>
            <li style="float:right;"><a href="logout.php">로그아웃</a></li>
        <?php }else { ?>

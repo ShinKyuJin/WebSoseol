@@ -71,8 +71,10 @@
     }
     for(var i=beforeK;i<=k;i++) {
       var className = ".Card"+i;
-      $(className).css("display","block");
-      $(className).addClass('fade');
+      if(i!=beforeK) {
+        $(className).css("display","block");
+        $(className).addClass('fade');
+      }
     }
     beforeK = k;
     setTimeout(function() {

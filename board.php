@@ -98,7 +98,7 @@ session_start();
             $userID = $_SESSION['userID'];
             $userRecommendChk =mysqli_fetch_array(mq("SELECT * FROM RECOMMEND WHERE reID='$userID' AND boardIdx='$boardIdx'"));
              ?>
-            <span>&nbsp&nbsp&nbsp<?php echo $recommendCnt->num_rows; ?></span>
+            <span class="recommendSpan">&nbsp&nbsp&nbsp<?php echo $recommendCnt->num_rows; ?></span>
             <input type="hidden" class="isRecommend" value="<?php if($userRecommendChk) echo "1"; else echo "0"; ?>">
           </button>
         </div>
@@ -206,4 +206,9 @@ session_start();
   <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js" ></script>
   <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
   <script type="text/javascript"src = "board.js"></script>
+  <script type="text/javascript">
+    var getData = function() {
+      $.get('getRecommendCnt.php',function() {})
+    }
+  </script>
 </html>

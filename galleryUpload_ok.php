@@ -36,7 +36,7 @@
 
   $upload_directory = 'uploadFile/gallery/';
 
-  
+
   $sql = mq("INSERT INTO BOARD(
     categoryIdx,
     boardTitle,
@@ -72,7 +72,7 @@
     '$boardDate'
   )");
 
-  $link = 'boardIdx.php?ci='.$categoryIdx;
+  $link = 'galleryIndex.php';
 
   if($sql) {
     echo $boardIdx; echo '<br />';
@@ -81,7 +81,7 @@
     echo $path; echo '<br />';
     echo $boardDate; echo '<br />';
 
-    if($sql2) {  
+    if($sql2) {
       echo 'suc2';
       header("Location:$link");
     } else {
