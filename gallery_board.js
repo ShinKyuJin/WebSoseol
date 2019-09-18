@@ -2,7 +2,7 @@ var categoryIdx = $('.categoryIdx').val();
 var boardIdx = $('.boardIdx').val();
 
 $('.modify').click(function() {
-  var link = "modifyBoard.php?bi=" + boardIdx + "&ci=" + categoryIdx;
+  var link = "galleryModify.php?bi=" + boardIdx;
   location.href = link;
 });
 

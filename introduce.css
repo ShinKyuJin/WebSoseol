@@ -121,6 +121,7 @@ div.content {
 
 .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
+  -webkit-transform:rotateY(180deg);
 }
 
 .flip-card-front, .flip-card-back {
@@ -139,6 +140,7 @@ div.content {
   background-color: rgb(240,240,240);
   color: black;
   transform: rotateY(180deg);
+  -webkit-transform:rotateY(180deg);
   margin-top: -425px;
   opacity: 0.8;
   font-size: 19px;

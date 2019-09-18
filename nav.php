@@ -50,8 +50,7 @@
               <li><a href="admin_portal.php">ADMIN</a></li>
            </ul>
          </li>
-         <li><a href="game.php" <?php if(isset($_SESSION['userID'])) echo "style='display:block;'"; ?>>게임</a>
-         </li>
+
          <?php if(isset($_SESSION['userID'])) {?>
            <li style="float:right;"><a href="logout.php">로그아웃</a></li>
        <?php }else { ?>
@@ -64,7 +63,6 @@
      <div class="topnav">
              <a href="index.php" class="active" class="big">HOME</a>
              <div id="myLinks">
-               <a href="login.php" class="big"></a>
                <a href="javascript:void(0);" class="big" onclick="board()">게시판</a>
                <div id="small1">
                  <?php  $category = mq("SELECT * FROM LISTOFBOARD WHERE categoryIdx!=4"); while($categoryRow = mysqli_fetch_array($category)) :  ?>
@@ -86,6 +84,12 @@
 
                </div>
                <a href="admin_portal.php" class="big">관리자페이지</a>
+               <?php if(isset($_SESSION['userID'])) {?>
+                  <a href="logout.php" class="big" style="background-color:#222;">로그아웃</a>
+              <?php }else { ?>
+                <a href="register.php" class="big" style="background-color:#222;">회원가입</a>
+                <a href="login.php" class="big" style="background-color:#222;">로그인</a>
+              <?php } ?>
              </div>
              <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                <i class="fa fa-bars"></i>

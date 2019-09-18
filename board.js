@@ -113,15 +113,17 @@ $('.thumb').click(function() {
     }
   }
   else {
+    var num = 0;
     if(isRecommend == 1) {
       $.ajax({
         type:'post',
         dataType:'json',
+        async:false,
         url:'recommend.php',
         data:{boardIdx:boardIdx,reID:recommendID,isRecommend:isRecommend},
         success:function(json) {
-          if(json.res == 'suc') {
-            console.log("suc");
+          if(json.res != 'fail') {
+            num = json.res;
           }
           else {
             console.log('fail2');
@@ -132,9 +134,9 @@ $('.thumb').click(function() {
         }
       })
       $('.isRecommend').val("0");
-      var realNum = 0;
-      realNum = parseInt(num);
-      $(this).children('.recommendSpan').val(3);
+      console.log(typeof num);
+      console.log(num);
+      $(this).children('.recommendSpan').text(num);
       $(this).css("border","2px solid #990e17");
       alert('추천이 취소되었습니다.');
     }
@@ -142,11 +144,12 @@ $('.thumb').click(function() {
       $.ajax({
         type:'post',
         dataType:'json',
+        async:false,
         url:'recommend.php',
         data:{boardIdx:boardIdx,reID:recommendID,isRecommend:isRecommend},
         success:function(json) {
-          if(json.res == 'suc') {
-            console.log("suc");
+          if(json.res != 'fail') {
+            num = json.res;
           }
           else {
             console.log('fail2');
@@ -157,9 +160,9 @@ $('.thumb').click(function() {
         }
       })
       $('.isRecommend').val("1");
-      var realNum = parseInt(num)+1;
-      console.log(typeof realNum);
-      $(this).children('.recommendSpan').text(realNum);
+      console.log(typeof num);
+      console.log(num);
+      $(this).children('.recommendSpan').text(num);
       $(this).css("border","2px solid #00f");
       alert('추천되었습니다.');
     }

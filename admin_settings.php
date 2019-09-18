@@ -119,6 +119,10 @@
         $upload_directory = 'admin/logo/';
 
         if(move_uploaded_file($file['tmp_name'], $upload_directory.$path)) {
+            $sql3 = mq("UPDATE ADMINFILE SET
+            selected = 0 WHERE
+            category = 'logo'");
+
             chmod($upload_directory.$path, 0777);
             $sql2 = mq("INSERT INTO ADMINFILE(
                 fileExt,
@@ -131,6 +135,12 @@
                 '$path'
                 ,'logo'
                 )");
+            $sql = mq("SELECT fileIdx FROM ADMINFILE WHERE category ='logo' ORDER BY fileIdx DESC");
+            $s = $sql->fetch_array();
+            $update = $s["fileIdx"];
+            $sql = mq("UPDATE ADMINFILE SET
+            selected = 1 WHERE
+            fileIdx = $update");
         }
     }
 

@@ -23,7 +23,7 @@ tr{
   text-align: center;
   width: 25%;
 }
-td{
+td:not(.logo):not(.copyright){
   width: 25%;
 }
 td a{
@@ -40,15 +40,9 @@ td a:hover{
     text-align: center;
 }
 
-#board_area {
+#board-area {
     width: 75%;
     position: relative;
-}
-#board-area{
-  width: 75%;
-}
-#user_info{
-  width: 100%;
 }
 
 .title{
@@ -103,7 +97,7 @@ td a:hover{
 }
 
 #board-write {
-    width: 100%;;
+    width:1200px;
     position: relative;
     margin: 0 auto;
 }
@@ -175,9 +169,7 @@ td a:hover{
   margin-top: 30px;
   width: 100%;
 }
-#cm_mode{
-  width: 70%;
-}
+
 #in_name {
     margin-top: 30px;
 }
@@ -186,7 +178,7 @@ td a:hover{
     font-weight: bold;
     font-size: 26px;
     color: #333;
-    width: 100%;
+    width: 1200px;
     border: none;
     resize: none;
 }
@@ -198,7 +190,7 @@ td a:hover{
 #in_content textarea {
     font: 14px;
     color: #333;
-    width: 100%;
+    width: 1200px;
     height: 400px;
     resize: none;
 }
@@ -206,7 +198,7 @@ td a:hover{
 
 #preview-form-comment{
   height: 100px;
-  width: 100%;
+  width: 1200px;
   resize: none;
   margin-top: 5px;
 }
@@ -266,7 +258,7 @@ text-align: left;
 }
 #user_info .txtInfo span>.sort {
 display: inline-block;
-width: 30%;
+width: 130px;
 height: 57px;
 margin-right: 20px;
 background: #f4f5f9;
@@ -296,12 +288,12 @@ vertical-align: middle;
 }
 
 .bt_se button {
-    width: 10%;
+    width: 100px;
     height: 30px;
 }
 
 #board_read {
-    width: 70%;
+    width: 1200px;
     position: relative;
     word-break:break-all;
 }
@@ -316,7 +308,7 @@ vertical-align: middle;
 }
 
 #bo_line {
-    width: 100%;
+    width: 880px;
     height: 2px;
     background: #CCC;
     margin-top: 20px;
@@ -459,7 +451,7 @@ vertical-align: middle;
   margin-top: 20px;
 }
 @media screen and (max-width: 768px) {
-  #board_read{
-    width: 95%;
+  #board-area{
+    width: 100%;
   }
 }
