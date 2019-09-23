@@ -2,7 +2,7 @@ h1{
   font-size: 55px;
   font-weight: bold;
   text-align: center;
-  font-family: 'Gamja Flower', cursive;
+  font-family: '굴림', cursive;
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -14,7 +14,7 @@ h1{
   margin-bottom: 5%;
   font-size:30px;
   font-weight: bold;
-  font-family: 'Sunflower', sans-serif;
+  font-family: '굴림', sans-serif;
   text-align: center;
 }
 .describe{
@@ -39,16 +39,16 @@ h1{
 }
 .int{
   font-size: 29px;
-  font-family: 'Yeon Sung', cursive;
+  font-family: '맑은 고딕', cursive;
 }
 .ex{
   font-size: 25px;
-  font-family: 'Yeon Sung', cursive;
+  font-family: '맑은 고딕', cursive;
 }
 .howto h2{
   font-size: 30px;
   text-align: center;
-  font-family: 'Song Myung', serif;
+  font-family: '맑은 고딕', serif;
 }
 
 @media only screen and (min-width:768px) {

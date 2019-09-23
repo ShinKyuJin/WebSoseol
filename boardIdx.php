@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>게시판</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="boardIdx.css">
     <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">

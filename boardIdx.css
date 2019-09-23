@@ -170,11 +170,8 @@ td a:hover{
     width: 25%;
     font-size: 14px;
     overflow:hidden;
-  white-space : nowrap;
-  text-overflow: ellipsis;
   }
   table{
     width: 25%;
-    table-layout:fixed
   }
 }

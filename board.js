@@ -138,7 +138,6 @@ $('.thumb').click(function() {
       console.log(num);
       $(this).children('.recommendSpan').text(num);
       $(this).css("border","2px solid #990e17");
-      alert('추천이 취소되었습니다.');
     }
     else {
       $.ajax({
@@ -164,7 +163,6 @@ $('.thumb').click(function() {
       console.log(num);
       $(this).children('.recommendSpan').text(num);
       $(this).css("border","2px solid #00f");
-      alert('추천되었습니다.');
     }
   }
 });

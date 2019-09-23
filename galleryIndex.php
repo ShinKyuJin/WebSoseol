@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>갤러리</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="boardIdx.css">
     <link rel="stylesheet" href="galleryIndex.css">
@@ -15,10 +15,10 @@
     $paging = re('page','get');
      ?>
     <div class="container">
-      <h1 class="bulletinboard">소융대 갤러리&nbsp&nbsp <?php if(isset($_SESSION['userID'])) :?><a class="write"href=""><i class="fas fa-pen"></i></a><?php endif; ?></h1>
+      <h1 class="bulletinboard">소융대 갤러리&nbsp&nbsp<a class="write"href="galleryUpload.php"><i class="fas fa-pen"></i></a></h1>
       <hr>
       <?php
-      $cardViewBind = mq("SELECT * FROM BOARD WHERE categoryIdx=4");
+      $cardViewBind = mq("SELECT * FROM BOARD WHERE categoryIdx=4 ORDER BY boardIdx desc");
       $number = 0;
       while($cardViewRow = mysqli_fetch_array($cardViewBind)) :
         $boardIdx = $cardViewRow["boardIdx"];

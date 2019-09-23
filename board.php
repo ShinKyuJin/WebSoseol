@@ -6,7 +6,7 @@ session_start();
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>게시판</title>
       <link rel="stylesheet" href="board.css">
       <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -33,7 +33,7 @@ session_start();
       <div class="tab_menu">
         <ul style="height: auto;">
           <?php
-          $link = mq("SELECT * FROM LISTOFBOARD");
+          $link = mq("SELECT * FROM LISTOFBOARD WHERE categoryIdx!=4");
           while($linkRow = mysqli_fetch_array($link)) : ?>
           <li ><a href="boardIdx.php?ci=<?php echo $linkRow['categoryIdx']; ?>"
             <?php

@@ -76,7 +76,6 @@
             if ( imgtype != "jpg" && imgtype != "jpeg" && imgtype != "gif" && imgtype != "png" ){
 
                 alert("사진은 jpg / gif / png 파일만 업로드할 수 있습니다.");
-
                 return false;
             } else {
                 return true;

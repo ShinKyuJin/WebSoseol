@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="introduce.css">
     <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Sunflower:300&display=swap" rel="stylesheet">
-    <title></title>
+    <title>학과 소개</title>
   </head>
   <body>
     <?php include "nav.php"; ?>

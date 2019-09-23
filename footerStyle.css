@@ -9,8 +9,8 @@
 }
 
 .footerBox {
+  width:597px;
   height:100px;
-  width:80%;
   margin:0 auto;
 }
 
@@ -24,12 +24,12 @@
 }
 
 .copyright {
+  margin-top:15px;
   text-align: right;
-  width:90%;
   float:left;
 }
 
-@@media (max-width:768) {
+@media (max-width:768) {
   .footer {
     width:100%;
   }
